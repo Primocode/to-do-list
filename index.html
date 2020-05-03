@@ -67,6 +67,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="deleted">
+                    <div class="deleted-container">
+                        <div class="deleted-text main-title">
+                            <span class="far fa-circle"></span><h2>Usunięte</h2>
+                        </div>
+                        <div class="deleted-list main-list">
+                            <h3></h3>
+                            <h3>Pójście do szkoły</h3>
+                        </div>
+                    </div>
+                </div>
                 <div class="add-button">
                     <button class="add">
                         +
@@ -87,15 +98,15 @@
                 <div class="add-new-talk-main-container">
                     <div class="add-new-talk-text-container">
                         <h4 class="title">Tytuł</h4>
-                        <input type="text">
+                        <input class="entry-title" type="text">
                     </div>
                     <div class="add-new-talk-select">
                         <h4 class="title">Kategoria</h4>
                         <select id="select">
-                            <option class="to-do" value="to-do">Do zrobienia</option>
-                            <option class="done" value="done">Zrobione</option>
-                            <option class="important" value="important">Ważne</option>
-                            <option class="notes" value="notes">Notatki</option>
+                            <option class="to-do" value="Do zrobienia">Do zrobienia</option>
+                            <option class="done" value="Zrobione">Zrobione</option>
+                            <option class="important" value="Ważne">Ważne</option>
+                            <option class="notes" value="Notatki">Notatki</option>
                           </select>
                     </div>
                     <div class="date">
@@ -122,6 +133,10 @@
                         <div class="entry-top-right">
                             <div class="date">05/02/2020</div>
                             <div class="category">Do zrobienia</div>
+                        </div>
+                        <div class="entry-top-right-buttons">
+                            <button class="remove-entry"><span class="far fa-trash-alt"></span></button>
+                            <button class="done-entry"><span class="far fa-check-circle"></span></button>
                         </div>
                     </div>
                     <div class="entry-bottom">

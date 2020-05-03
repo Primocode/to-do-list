@@ -153,6 +153,24 @@ header .notes .notes-container h3:hover {
   border-left: 5px solid #1C8AF5;
 }
 
+header .deleted .deleted-container {
+  height: 150px;
+}
+
+header .deleted .deleted-container span {
+  color: #D23030;
+  padding-left: 10px;
+}
+
+header .deleted .deleted-container h2 {
+  color: #D23030;
+  margin-left: 10px;
+}
+
+header .deleted .deleted-container h3:hover {
+  border-left: 5px solid #D23030;
+}
+
 header .add-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -361,7 +379,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry {
-  margin-left: 15px;
+  margin: 0px 10px 10px 15px;
   width: 500px;
   border: 1px solid #CBCBCB;
 }
@@ -398,6 +416,31 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .main-content-all .main-content-entry .entry .entry-top .category {
   font-size: 20px;
+}
+
+.main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons {
+  width: 30px;
+  height: 50px;
+}
+
+.main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .remove-entry {
+  width: 30px;
+  border: none;
+  background-color: #1C8AF5;
+  height: 50%;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .done-entry {
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  background-color: #0A9C00;
+  font-size: 18px;
+  color: white;
+  height: 50%;
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom {

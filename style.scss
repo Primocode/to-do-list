@@ -133,6 +133,22 @@ header {
                     }
                 }
             }
+            .deleted {
+                .deleted-container {
+                    height: 150px;
+                    span {
+                        color: #D23030;
+                        padding-left: 10px;
+                    }
+                    h2 {
+                        color: #D23030;
+                        margin-left: 10px;
+                    }
+                    h3:hover {
+                        border-left: 5px solid #D23030;
+                    }
+                }
+            }
             .add-button {
                 display: flex;
                 justify-content: center;
@@ -306,7 +322,7 @@ main {
     display: flex;
     .main-content-entry {
         .entry {
-            margin-left: 15px;
+            margin: 0px 10px 10px 15px;
             width: 500px;
             border: 1px solid #CBCBCB;
             .entry-top {
@@ -331,6 +347,28 @@ main {
 
                 .category {
                     font-size: 20px;
+                }
+                .entry-top-right-buttons {
+                    width: 30px;
+                    height: 50px;
+                    .remove-entry {
+                        width: 30px;
+                        border: none;
+                        background-color: #1C8AF5;
+                        height: 50%;
+                        font-size: 16px;
+                        color: white;
+                        cursor: pointer;
+                    }
+                    .done-entry {
+                        border: none;
+                        cursor: pointer;
+                        width: 30px;
+                        background-color: #0A9C00;
+                        font-size: 18px;
+                        color: white;
+                        height: 50%;
+                    }
                 }
             }
             .entry-bottom {
