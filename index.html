@@ -19,6 +19,11 @@
                 <div id="day"></div>
             </div>
             <div class="to-do-list-category">
+                <div class="all">
+                    <div class="all-container">
+                        <h2>Wszystko</h2>
+                    </div>
+                </div>
                 <div class="to-do">
                     <div class="to-do-container">
                         <div class="to-do-text main-title">
@@ -71,7 +76,46 @@
         </nav>
     </header>
     <main>
+        <div class="top-header">
+            <h1>Lista zadań</h1>
+        </div>
+        <div class="top-new-talk">
+            <div class="new-talk">
+                <button class="new-talk-button">Nowy wpis</button>
+            </div>
+            <div class="add-new-talk-container">
+                <div class="add-new-talk-main-container">
+                    <div class="add-new-talk-text-container">
+                        <h4 class="title">Tytuł</h4>
+                        <input type="text">
+                    </div>
+                    <div class="add-new-talk-select">
+                        <h4 class="title">Kategoria</h4>
+                        <select id="select">
+                            <option class="to-do" value="to-do">Do zrobienia</option>
+                            <option class="done" value="done">Zrobione</option>
+                            <option class="important" value="important">Ważne</option>
+                            <option class="notes" value="notes">Notatki</option>
+                          </select>
+                    </div>
+                    <div class="date">
+                        <h4 class="title">Data</h4>
+                        <input type="text" placeholder="dzień/miesiąc/rok">
+                    </div>
+                </div>
+                <div class="add-new-talk-field">
+                    <h4 class="title">Treść</h4>
+                    <input type="text">
+                </div>
+                <div class="add-new-button-container">
+                    <button class="exit">Wyjdz</button>
+                    <button class="add-new">Dodaj wpis</button>
+                </div>
+            </div>
+        </div>
+        <div class="main-content-all">
 
+        </div>
     </main>
     
     <script src="main.js"></script>
