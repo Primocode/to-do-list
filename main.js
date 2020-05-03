@@ -41,7 +41,7 @@ newEntryCircle.addEventListener('click', newEntryOpenBox);
 
 const mainEntry = document.querySelector('.main-content-entry');
 
-const creationNewEntry = (contents, title, entryCategory) => {
+const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
 
   const entry = document.createElement('div');
   mainEntry.appendChild(entry)
@@ -65,7 +65,7 @@ const creationNewEntry = (contents, title, entryCategory) => {
   const date = document.createElement('div');
   EntryTopRight.appendChild(date);
   date.className = "date";
-  date.textContent = "02/10/2021" // -- TEXT CONTENT DATY WPISU
+  date.textContent = entryDateValue // -- TEXT CONTENT DATY WPISU
 
   // KATEGORIA WPISU!! KATEGORIA WPISU!!
   const category = document.createElement('div');
@@ -123,9 +123,10 @@ const addEntryButton = document.querySelector('.add-new');
 const addEntryButtonFunction = () => {
   const entryContents = document.querySelector('.text-area').value // pobieranie treści 
   const entryTitle = document.querySelector('.entry-title').value // pobieranie tytułu
-  const selectCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
+  const EntryCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
+  const entryDate = document.querySelector('.entry-date').value;
 
-  creationNewEntry(entryContents, entryTitle, selectCategory)
+  creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate)
 }
 
 addEntryButton.addEventListener('click', addEntryButtonFunction);
