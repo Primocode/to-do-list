@@ -12,7 +12,7 @@ var myVar = setInterval(myTimer, 1000);
 
 // end timer
 
-// Otwieranie panelu do tworzenia notatek
+// Otwieranie panelu i zamykanie
 
 const newEntry = document.querySelector('.add-new-entry')
 const boxToCreateEntries = document.querySelector('.add-new-talk-container')
@@ -34,4 +34,7 @@ exitButton.addEventListener('click', exitFunction);
 newEntryCircle.addEventListener('click', newEntryOpenBox);
 
 
-// Koniec otwierania panelu do tworzenia notatek
+// Koniec otwierania panelu i zamykanie
+
+
+
