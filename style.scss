@@ -291,7 +291,14 @@ main {
                 }
             }
             .add-new-button-container {
-                text-align: right;
+                justify-content: flex-end;
+                display: flex;
+                align-items: center;
+                .mess {
+                    color: #D23030;
+                    margin-right: 10px;
+                    font-weight: 900;
+                }
                 .exit {
                     width: 80px;
                     border: none;
@@ -301,6 +308,7 @@ main {
                     background-color: #1C8AF5;
                     color: white;
                     cursor: pointer;
+                    margin-right: 5px;
                 }
                 .add-new {
                     width: 100px;

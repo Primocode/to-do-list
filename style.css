@@ -347,7 +347,21 @@ main .top-new-talk .active .add-new-talk-field textarea {
 }
 
 main .top-new-talk .active .add-new-button-container {
-  text-align: right;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .top-new-talk .active .add-new-button-container .mess {
+  color: #D23030;
+  margin-right: 10px;
+  font-weight: 900;
 }
 
 main .top-new-talk .active .add-new-button-container .exit {
@@ -359,6 +373,7 @@ main .top-new-talk .active .add-new-button-container .exit {
   background-color: #1C8AF5;
   color: white;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 main .top-new-talk .active .add-new-button-container .add-new {

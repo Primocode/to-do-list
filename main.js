@@ -36,6 +36,15 @@ newEntryCircle.addEventListener('click', newEntryOpenBox);
 
 // Koniec otwierania panelu i zamykanie
 
+// Dodawanie wpisów do tablicy
+
+let entryTitleArray = [];
+let entryContentsArray = [];
+let entryCategoryArray = [];
+let entryDateArray = [];
+
+// dodawanie wpisów do tablicy
+
 // Tworzenie nowych wpisów
 
 
@@ -72,6 +81,23 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
   EntryTopRight.appendChild(category);
   category.className = "category";
   category.textContent = entryCategory // -- TEXT CONTENT KATEGORI WPISU
+
+  if (entryCategory == "Do zrobienia") {
+    category.style.color = "#1C8AF5";
+    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
+  }
+  else if (entryCategory == "Zrobione") {
+    category.style.color = "#0A9C00";
+    entryTopH2.style.borderLeft = "4px solid #0A9C00";
+  }
+  else if (entryCategory == "Ważne") {
+    category.style.color = "#D23030";
+    entryTopH2.style.borderLeft = "4px solid #D23030";
+  }
+  else {
+    category.style.color = "#1C8AF5";
+    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
+  }
 
 
 
@@ -113,25 +139,73 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
 
 // koniec tworzenia nowych wpisów
 
+// Usuwanie wszystkich wpisów 
+
+const deletingAllEntries = () => {
+  const addAllEntry = document.querySelectorAll('.entry')
+  for (let i = 0; i < addAllEntry.length; i++) {
+    addAllEntry[i].remove();
+  }
+}
+
+// koniec usuwania wszystkich wpisów 
+
+
 
 
 
 // Przycisk do dodawania nowych wpisów 
 
+const mess = document.querySelector('.mess')
+
+function error() {
+  mess.textContent = "";
+}
+
+let minute = setInterval(error, 4000);
+
+
 const addEntryButton = document.querySelector('.add-new');
 
 const addEntryButtonFunction = () => {
-  const entryContents = document.querySelector('.text-area').value // pobieranie treści 
+  const entryContents = document.querySelector('.text-area').value // pobieranie treści
   const entryTitle = document.querySelector('.entry-title').value // pobieranie tytułu
   const EntryCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
   const entryDate = document.querySelector('.entry-date').value;
+  if (entryContents.length < 1) {
+    mess.textContent = "Treść nie może zostać pusta";
+  }
+  else if (entryTitle.length < 1) {
+    mess.textContent = "Tytuł nie może być pusty";
+  }
+  else {
+    creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate)
+    entryContentsArray.push(entryContents);
+    entryTitleArray.push(entryTitle);
+    entryCategoryArray.push(EntryCategory);
+    entryDateArray.push(entryDate);
+  }
 
-  creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate)
+  
 }
 
 addEntryButton.addEventListener('click', addEntryButtonFunction);
 
 // koniec przycisku do dodawania nowych wpisów
+
+// Funkcja usuwania poszczególnych wpisów
+
+const removeIndividualEntry = document.querySelector('.remove-entry');
+
+const doneIndividualEntry = document.querySelectorAll('.done-entry');
+
+
+// koniec funkcji usuwnia poszczególnych wpisów
+
+
+
+
+
 
 
 
