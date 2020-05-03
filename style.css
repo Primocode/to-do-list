@@ -157,9 +157,9 @@ header .add-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 header .add-button .add {
@@ -206,18 +206,23 @@ main .top-new-talk .new-talk .new-talk-button {
 }
 
 main .top-new-talk .add-new-talk-container {
+  display: none;
+}
+
+main .top-new-talk .active {
+  display: block;
   width: 600px;
   margin: 10px;
   -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
   box-shadow: 0px 0px 5px 1px #d1d1d1;
 }
 
-main .top-new-talk .add-new-talk-container .title {
+main .top-new-talk .active .title {
   padding: 5px 0px 5px 0px;
   font-weight: 300;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container {
+main .top-new-talk .active .add-new-talk-main-container {
   margin: 10px 10px 0px 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -226,12 +231,12 @@ main .top-new-talk .add-new-talk-container .add-new-talk-main-container {
       justify-content: space-around;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-text-container {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container {
   text-aligN: center;
   font-size: 18px;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-text-container input {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container input {
   width: 200px;
   height: 25px;
   border: none;
@@ -241,12 +246,12 @@ main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new
   font-size: 16px;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-select {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select {
   text-aligN: center;
   font-size: 18px;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-select select {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select {
   width: 200px;
   height: 25px;
   border: none;
@@ -257,28 +262,28 @@ main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new
   color: #1C8AF5;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-select select .to-do {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select .to-do {
   color: #1C8AF5;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-select select .done {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select .done {
   color: #0A9C00;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-select select .important {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select .important {
   color: #D23030;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .add-new-talk-select select .notes {
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select .notes {
   color: #1C8AF5;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .date {
+main .top-new-talk .active .add-new-talk-main-container .date {
   text-aligN: center;
   font-size: 18px;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .date input {
+main .top-new-talk .active .add-new-talk-main-container .date input {
   width: 100px;
   height: 25px;
   border: none;
@@ -288,33 +293,32 @@ main .top-new-talk .add-new-talk-container .add-new-talk-main-container .date in
   font-size: 16px;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .date input::-webkit-input-placeholder {
+main .top-new-talk .active .add-new-talk-main-container .date input::-webkit-input-placeholder {
   font-size: 12px;
   text-align: center;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .date input:-ms-input-placeholder {
+main .top-new-talk .active .add-new-talk-main-container .date input:-ms-input-placeholder {
   font-size: 12px;
   text-align: center;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .date input::-ms-input-placeholder {
+main .top-new-talk .active .add-new-talk-main-container .date input::-ms-input-placeholder {
   font-size: 12px;
   text-align: center;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-main-container .date input::placeholder {
+main .top-new-talk .active .add-new-talk-main-container .date input::placeholder {
   font-size: 12px;
   text-align: center;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-field {
+main .top-new-talk .active .add-new-talk-field {
   text-align: center;
   margin: 0px 10px 10px 10px;
-  padding-bottom: 10px;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-talk-field input {
+main .top-new-talk .active .add-new-talk-field input {
   min-height: 70px;
   border: none;
   -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
@@ -322,11 +326,11 @@ main .top-new-talk .add-new-talk-container .add-new-talk-field input {
   width: 100%;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-button-container {
+main .top-new-talk .active .add-new-button-container {
   text-align: right;
 }
 
-main .top-new-talk .add-new-talk-container .add-new-button-container .exit {
+main .top-new-talk .active .add-new-button-container .exit {
   width: 80px;
   border: none;
   font-size: 15px;
@@ -334,5 +338,17 @@ main .top-new-talk .add-new-talk-container .add-new-button-container .exit {
   height: 28px;
   background-color: #1C8AF5;
   color: white;
+  cursor: pointer;
+}
+
+main .top-new-talk .active .add-new-button-container .add-new {
+  width: 100px;
+  border: none;
+  font-size: 15px;
+  border-radius: 6px;
+  height: 28px;
+  background-color: #1C8AF5;
+  color: white;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
