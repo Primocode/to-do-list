@@ -183,7 +183,24 @@ const deletingAllEntries = () => {
 // koniec usuwania wszystkich wpisów 
 
 
+// tworzeniei wszystkich wpisów 
 
+const allButtonCreatingAllEntries = document.querySelector('.all');
+
+const CreatingAllEntries = () => {
+  deletingAllEntries()
+  for (let i = 0; i < entryTitleArray.length; i++) {
+    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i]);
+  }
+}
+
+CreatingAllEntries()
+allButtonCreatingAllEntries.addEventListener('click', CreatingAllEntries);
+console.log("AUTOMATYCZNE TWORZENIE WPISÓW")
+
+
+
+//koniec tworzenia wwszystkich wpisów 
 
 
 // Przycisk do dodawania nowych wpisów 
@@ -235,10 +252,10 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 const refresh = document.querySelector('.new-talk-button-refresh');
 
 const refreshFunction = () => {
-  entryTitleArray = ["Samochód", "rower", "przykładowa notatka", "nie ważne", "nic ważnego", "bardzo ważne"];
-  entryContentsArray = ["Daihatsu cuore", "trek 1,2", "Notatka na temat niczego", "Nic ważnego", "ważne", "jakis tam tekst"];
-  entryCategoryArray = ["Do zrobienia", "Zrobione", "Ważne", "Notatki", "Usunięte", "Ważne"];
-  entryDateArray = ["04/05/2020", "", "04/00/2019", "", "", ""];
+  // entryTitleArray = ["Samochód", "rower", "przykładowa notatka", "nie ważne", "nic ważnego", "bardzo ważne"];
+  // entryContentsArray = ["Daihatsu cuore", "trek 1,2", "Notatka na temat niczego", "Nic ważnego", "ważne", "jakis tam tekst"];
+  // entryCategoryArray = ["Do zrobienia", "Zrobione", "Ważne", "Notatki", "Usunięte", "Ważne"];
+  // entryDateArray = ["04/05/2020", "", "04/00/2019", "", "", ""];
 
   console.log(entryContentsArray);
   console.log(entryTitleArray);
@@ -298,12 +315,19 @@ const messageActive = () => {
 // Tworzenie i dodawanie do kategorii
 
 const mainCategoryFunction = (e) => {
+  deletingAllEntries();
   let nameCategory = e.target.dataset.category
   console.log(nameCategory + " to jest nazwa kategori")
   // console.log(entryCategoryArray.indexOf(nameCategory) + "to jest index");
 
-  indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
-  console.log(indexes[nameCategory])
+  let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
+  console.log(indexes[nameCategory]) // wyświetla listę tylko z nameCategory
+
+  for (let i = 0; i < indexes[nameCategory].length; i++) {
+    creationNewEntry(entryContentsArray[indexes[nameCategory]], entryTitleArray[indexes[nameCategory]], entryCategoryArray[indexes[nameCategory]], entryDateArray[indexes[nameCategory]])
+  }
+  
+
   }
 
 const mainTitle = document.querySelectorAll(".to-do-main-title").forEach(item => item.addEventListener('click', mainCategoryFunction))
