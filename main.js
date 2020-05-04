@@ -46,15 +46,16 @@ let entryDateArray = [];
 // dodawanie wpisów do tablicy
 
 // Tworzenie nowych wpisów
-
+number = 0;
 
 const mainEntry = document.querySelector('.main-content-entry');
 
 const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
-
+  number++
   const entry = document.createElement('div');
   mainEntry.appendChild(entry)
   entry.className = "entry";
+  entry.dataset.value = number;
 
   const entryTop = document.createElement('div');
   entry.appendChild(entryTop);
@@ -113,6 +114,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
   const removeIcon = document.createElement('span');
   removeEntryButton.appendChild(removeIcon);
   removeIcon.className = "far fa-trash-alt";
+  removeIcon.dataset.key = "88"
 
   // dodawanie do zrobionych
   const doneEntry = document.createElement('button');
@@ -133,9 +135,19 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
   entryBottom.appendChild(entryBottomTextP);
   entryBottomTextP.textContent = contents // TU JEST TEXT 
 
+  // funkcja do usuwania wpisów
 
-
+  const removeIndividualEntryFunction = (e) => {
+    let removeDatasetValue = entry.dataset.value
+    entry.remove(removeDatasetValue);
+    console.log(removeDatasetValue)
+  }
+  
+  entry.addEventListener('click', removeIndividualEntryFunction);
+  
+  // koniec funkcji do usuwania wpisów
 }
+
 
 // koniec tworzenia nowych wpisów
 
@@ -193,20 +205,23 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 
 // koniec przycisku do dodawania nowych wpisów
 
-// Funkcja usuwania poszczególnych wpisów
-
-const removeIndividualEntry = document.querySelector('.remove-entry');
-
-const doneIndividualEntry = document.querySelectorAll('.done-entry');
-
 
 // koniec funkcji usuwnia poszczególnych wpisów
 
+// odświeżanie i tworzenie od nowa z listy
+
+const refresh = document.querySelector('.new-talk-button-refresh');
+
+const refreshFunction = () => {
+  console.log(entryContentsArray);
+  console.log(entryTitleArray);
+  console.log(entryCategoryArray);
+  console.log(entryDateArray);
+}
+
+refresh.addEventListener('click', refreshFunction);
 
 
-
-
-
-
+// koniec oodświeżania i tworzenia od nowa z lity
 
 
