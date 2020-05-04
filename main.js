@@ -235,6 +235,11 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 const refresh = document.querySelector('.new-talk-button-refresh');
 
 const refreshFunction = () => {
+  entryTitleArray = ["Samochód", "rower", "przykładowa notatka", "nie ważne", "nic ważnego", "bardzo ważne"];
+  entryContentsArray = ["Daihatsu cuore", "trek 1,2", "Notatka na temat niczego", "Nic ważnego", "ważne", "jakis tam tekst"];
+  entryCategoryArray = ["Do zrobienia", "Zrobione", "Ważne", "Notatki", "Usunięte", "Ważne"];
+  entryDateArray = ["04/05/2020", "", "04/00/2019", "", "", ""];
+
   console.log(entryContentsArray);
   console.log(entryTitleArray);
   console.log(entryCategoryArray);
@@ -244,6 +249,8 @@ const refreshFunction = () => {
   console.log(deleteEntryTitleArray + " usunięta tablica ");
   console.log(deleteEntryCategoryArray + " usunięta tablica ");
   console.log(deleteEntryDateArray + " usunięta tablica ");
+
+
   deletingAllEntries()
   for (let i = 0; i < entryTitleArray.length; i++) {
     creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i])
@@ -286,22 +293,54 @@ const messageActive = () => {
 // }
 // createNewCategory()
 
-
-
-
 //  KONIEC TOWRZENIA NOWEJ KATEGORI TESTOWO
-
-
-
-
-
 
 // Tworzenie i dodawanie do kategorii
 
 const mainCategoryFunction = (e) => {
-  console.log(e.target.dataset.category);
-}
+  let nameCategory = e.target.dataset.category
+  console.log(nameCategory + " to jest nazwa kategori")
+  // console.log(entryCategoryArray.indexOf(nameCategory) + "to jest index");
+
+  indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
+  console.log(indexes[nameCategory])
+  }
 
 const mainTitle = document.querySelectorAll(".to-do-main-title").forEach(item => item.addEventListener('click', mainCategoryFunction))
 
 // koniec tworzenia i dodawania do kategorii
+
+// Funkcje do kategori
+
+
+// koniec funkcji do kategori
+
+
+
+
+// array = ["jeden","dwa", "dwa", "jeden", "trzy", "jeden"];
+
+// for(let i = 0; i < array.length; i++) {
+//   console.log(array[i].includes("jeden"))
+// }
+
+
+// array = ["trzy", "jeden", "jeden" ,"dwa", "trzy", "dwa", "jeden", "trzy", "jeden", "osiem", "siedem"];
+
+// function test() {
+//   console.log(
+//     entryCategoryArray.reduce(function(a,e,i) {
+//       try{
+//         a[e].push(i)
+//       }
+//       catch
+//       (_){a[e]=[i]
+//       };
+//       return a},
+//       {})
+//   );
+// }
+
+
+
+
