@@ -139,11 +139,15 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
 
   const removeIndividualEntryFunction = (e) => {
     let removeDatasetValue = entry.dataset.value
+
+    entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
+    entryContentsArray.splice(entryContentsArray.indexOf(contents), 1);
+    entryCategoryArray.splice(entryCategoryArray.indexOf(entryCategory), 1);
+    entryDateArray.splice(entryDateArray.indexOf(entryDateValue), 1);
     entry.remove(removeDatasetValue);
-    console.log(removeDatasetValue)
   }
   
-  entry.addEventListener('click', removeIndividualEntryFunction);
+  removeEntryButton.addEventListener('click', removeIndividualEntryFunction);
   
   // koniec funkcji do usuwania wpisów
 }
@@ -196,6 +200,7 @@ const addEntryButtonFunction = () => {
     entryTitleArray.push(entryTitle);
     entryCategoryArray.push(EntryCategory);
     entryDateArray.push(entryDate);
+    newEntryOpenBox()
   }
 
   
@@ -217,6 +222,10 @@ const refreshFunction = () => {
   console.log(entryTitleArray);
   console.log(entryCategoryArray);
   console.log(entryDateArray);
+  deletingAllEntries()
+  for (let i = 0; i < entryTitleArray.length; i++) {
+    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i])
+  }
 }
 
 refresh.addEventListener('click', refreshFunction);
