@@ -43,6 +43,12 @@ let entryContentsArray = [];
 let entryCategoryArray = [];
 let entryDateArray = [];
 
+
+let deleteEntryTitleArray = [];
+let deleteEntryContentsArray = [];
+let deleteEntryCategoryArray = [];
+let deleteEntryDateArray = [];
+
 // dodawanie wpisów do tablicy
 
 // Tworzenie nowych wpisów
@@ -140,11 +146,21 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
   const removeIndividualEntryFunction = (e) => {
     let removeDatasetValue = entry.dataset.value
 
+    deleteEntryTitleArray.push(title);
+    deleteEntryContentsArray.push(contents);
+    deleteEntryCategoryArray.push(entryCategory);
+    deleteEntryDateArray.push(entryDateValue);
+
     entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
     entryContentsArray.splice(entryContentsArray.indexOf(contents), 1);
     entryCategoryArray.splice(entryCategoryArray.indexOf(entryCategory), 1);
     entryDateArray.splice(entryDateArray.indexOf(entryDateValue), 1);
+
+
+
+
     entry.remove(removeDatasetValue);
+    messageActive();
   }
   
   removeEntryButton.addEventListener('click', removeIndividualEntryFunction);
@@ -201,6 +217,7 @@ const addEntryButtonFunction = () => {
     entryCategoryArray.push(EntryCategory);
     entryDateArray.push(entryDate);
     newEntryOpenBox()
+    messageActive();
   }
 
   
@@ -222,6 +239,11 @@ const refreshFunction = () => {
   console.log(entryTitleArray);
   console.log(entryCategoryArray);
   console.log(entryDateArray);
+
+  console.log(deleteEntryContentsArray + " usunięta tablica ")
+  console.log(deleteEntryTitleArray + " usunięta tablica ");
+  console.log(deleteEntryCategoryArray + " usunięta tablica ");
+  console.log(deleteEntryDateArray + " usunięta tablica ");
   deletingAllEntries()
   for (let i = 0; i < entryTitleArray.length; i++) {
     creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i])
@@ -234,3 +256,52 @@ refresh.addEventListener('click', refreshFunction);
 // koniec oodświeżania i tworzenia od nowa z lity
 
 
+// wyświetlanie napisu o pustej tablicy 
+
+const emptyMessage = document.querySelector(".empty-entry-message-active");
+
+const messageActive = () => {
+  if (!entryTitleArray.length < 1) {
+    emptyMessage.className = "empty-entry-message"
+  } 
+  else {
+    emptyMessage.className = "empty-entry-message-active";
+  }
+}
+
+
+//  TWORZENIE NOWEJ KATEGORI TESTOWO
+
+// const toDoListCategory = document.querySelector('.individual-category');
+
+// append = ''
+
+// const createNewCategory = () => {
+//   const cyclic = document.createElement('div');
+//   toDoListCategory.after(cyclic);
+//   cyclic.className = "cyclic";
+//   append += 
+//   '<div class="cyclic-container"><div class="cyclic-text main-title"><span class="far fa-circle"></span><h2>wartość</h2></div><div class="cyclic-list main-list"><h2>Jakaś wartość</h2></div></div>';
+//   cyclic.innerHTML = append
+// }
+// createNewCategory()
+
+
+
+
+//  KONIEC TOWRZENIA NOWEJ KATEGORI TESTOWO
+
+
+
+
+
+
+// Tworzenie i dodawanie do kategorii
+
+const mainCategoryFunction = (e) => {
+  console.log(e.target.dataset.category);
+}
+
+const mainTitle = document.querySelectorAll(".to-do-main-title").forEach(item => item.addEventListener('click', mainCategoryFunction))
+
+// koniec tworzenia i dodawania do kategorii
