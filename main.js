@@ -228,6 +228,7 @@ const addEntryButtonFunction = () => {
     mess.textContent = "Tytuł nie może być pusty";
   }
   else {
+    deletingAllEntries();
     creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate)
     entryContentsArray.push(entryContents);
     entryTitleArray.push(entryTitle);
@@ -235,6 +236,7 @@ const addEntryButtonFunction = () => {
     entryDateArray.push(entryDate);
     newEntryOpenBox()
     messageActive();
+    CreatingAllEntries()
   }
 
   
@@ -324,9 +326,10 @@ const mainCategoryFunction = (e) => {
   console.log(indexes[nameCategory]) // wyświetla listę tylko z nameCategory
 
   for (let i = 0; i < indexes[nameCategory].length; i++) {
-    creationNewEntry(entryContentsArray[indexes[nameCategory]], entryTitleArray[indexes[nameCategory]], entryCategoryArray[indexes[nameCategory]], entryDateArray[indexes[nameCategory]])
+    creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]])
+    console.log("ile razy pokazać wpis" + i)
+
   }
-  
 
   }
 
