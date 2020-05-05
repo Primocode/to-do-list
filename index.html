@@ -22,6 +22,7 @@
                 <div class="all">
                     <div class="all-container">
                         <h2>Wszystko</h2>
+                        <h3 id="number-entry">Aktualnych wpisów: 0</h3>
                     </div>
                 </div>
                 <div class="to-do">
@@ -29,9 +30,9 @@
                         <div class="to-do-text main-title" id="main-title">
                             <span class="far fa-circle"></span><h2 class="to-do-main-title" data-category="Do zrobienia">Do zrobienia</h2>
                         </div>
-                        <div class="to-do-list main-list">
-                            <h3>Odrobić lekcje</h3>
-                            <h3>Pójść do sklepu</h3>
+                        <div class="to-do-list main-list" data-subCategory="Do zrobienia">
+                            <h3 id="subCategory">Odrobić lekcje</h3>
+                            <h3 id="subCategory">Pójść do sklepu</h3>
                         </div>
                     </div>
                 </div>
@@ -40,8 +41,8 @@
                         <div class="done-text main-title" id="main-title">
                             <span class="far fa-circle"></span><h2 class="to-do-main-title" data-category="Zrobione">Zrobione</h2>
                         </div>
-                        <div class="done-list main-list" >
-                            <h3>Ćwiczenie</h3>
+                        <div class="done-list main-list" data-subCategory="Zrobione">
+                            <h3 id="subCategory">Ćwiczenie</h3>
                         </div>
                     </div>
                 </div>
@@ -50,9 +51,9 @@
                         <div class="important-text main-title" id="main-title" >
                             <span class="far fa-circle"></span><h2 class="to-do-main-title" data-category="Ważne">Ważne</h2>
                         </div>
-                        <div class="important-list main-list">
-                            <h3>Zapłacenie rachunków</h3>
-                            <h3>Wysłanie paczki</h3>
+                        <div class="important-list main-list" data-subCategory="Ważne">
+                            <h3 id="subCategory">Zapłacenie rachunków</h3>
+                            <h3 id="subCategory">Wysłanie paczki</h3>
                         </div>
                     </div>
                 </div>
@@ -61,9 +62,9 @@
                         <div class="notes-text main-title" >
                             <span class="far fa-circle"></span><h2 class="to-do-main-title" data-category="Notatki">Notatki</h2>
                         </div>
-                        <div class="notes-list main-list">
-                            <h3>Esej </h3>
-                            <h3>Plan działań</h3>
+                        <div class="notes-list main-list" data-subCategory="Notatki">
+                            <h3 id="subCategory">Esej </h3>
+                            <h3 id="subCategory">Plan działań</h3>
                         </div>
                     </div>
                 </div>
@@ -72,9 +73,8 @@
                         <div class="deleted-text main-title" >
                             <span class="far fa-circle"></span><h2 class="to-do-main-title" data-category="Usunięte">Usunięte</h2>
                         </div>
-                        <div class="deleted-list main-list">
-                            <h3></h3>
-                            <h3>Pójście do szkoły</h3>
+                        <div class="deleted-list main-list" data-subCategory="Usunięte">
+                            <h3 id="subCategory">Pójście do szkoły</h3>
                         </div>
                     </div>
                 </div>

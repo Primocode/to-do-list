@@ -85,6 +85,13 @@ header nav .to-do-list-category .all h2:hover {
   background-color: #fbfbfb;
 }
 
+header nav .to-do-list-category .all h3 {
+  color: #d6d6d6;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+
 header nav .to-do .to-do-container {
   height: 150px;
 }
