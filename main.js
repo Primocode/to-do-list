@@ -35,10 +35,10 @@ newEntryCircle.addEventListener('click', newEntryOpenBox);
 // ------------------------------------------------
 
 // Dodawanie wpisów do tablicy
-let entryTitleArray = ["Samochód"];
-let entryContentsArray = ["Samochód jest super"];
-let entryCategoryArray = ["Ważne"];
-let entryDateArray = [""];
+let entryTitleArray = ["Samochód", "rower", ];
+let entryContentsArray = ["Samochód jest super", "trek 1,2"];
+let entryCategoryArray = ["Ważne", "Ważne"];
+let entryDateArray = ["", ""];
 
 
 let deleteEntryTitleArray = [];
@@ -245,21 +245,22 @@ const refreshFunction = () => {
   // entryCategoryArray = ["Do zrobienia", "Zrobione", "Ważne", "Notatki", "Usunięte", "Ważne"];
   // entryDateArray = ["04/05/2020", "", "04/00/2019", "", "", ""];
 
-  console.log(entryContentsArray);
-  console.log(entryTitleArray);
-  console.log(entryCategoryArray);
-  console.log(entryDateArray);
+  // console.log(entryContentsArray);
+  // console.log(entryTitleArray);
+  // console.log(entryCategoryArray);
+  // console.log(entryDateArray);
 
-  console.log(deleteEntryContentsArray + " usunięta tablica ")
-  console.log(deleteEntryTitleArray + " usunięta tablica ");
-  console.log(deleteEntryCategoryArray + " usunięta tablica ");
-  console.log(deleteEntryDateArray + " usunięta tablica ");
-  deletingAllSubCategories()
-  subCategoryFunction()
-  deletingAllEntries()
-  for (let i = 0; i < entryTitleArray.length; i++) {
-    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i])
-  }
+  // console.log(deleteEntryContentsArray + " usunięta tablica ")
+  // console.log(deleteEntryTitleArray + " usunięta tablica ");
+  // console.log(deleteEntryCategoryArray + " usunięta tablica ");
+  // console.log(deleteEntryDateArray + " usunięta tablica ");
+  // deletingAllSubCategories()
+  // subCategoryFunction()
+  // deletingAllEntries()
+  // for (let i = 0; i < entryTitleArray.length; i++) {
+  //   creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i])
+  // }
+  refreshCategories();
 }
 
 refresh.addEventListener('click', refreshFunction);
@@ -320,12 +321,33 @@ const mainCategoryFunction = (e) => {
   let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
   console.log(indexes[nameCategory]) // wyświetla listę tylko z nameCategory
 
-  for (let i = 0; i < indexes[nameCategory].length; i++) {
-    creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]])
-    console.log("ile razy pokazać wpis" + i)
-
-    }
+  if (!indexes[nameCategory]) {
+    console.log('PUSTO, NIE MA NIC!')
   }
+  else {
+    for (let i = 0; i < indexes[nameCategory].length; i++) {
+      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]])
+      console.log("ile razy pokazać wpis" + i)
+      }
+    console.log(indexes[nameCategory].length);
+  }
+
+  
+    // --------------------------------------------
+
+    
+  // console.log(nameCategory);
+
+
+  // for (let number = 0; number < indexes[nameCategory].length; number++) {
+  //   const mainList = document.querySelectorAll('.main-list');
+  //   let subCategoryList = mainList[number].dataset.subcategory
+  //   console.log(subCategoryList);
+  // }
+
+
+    // ----------------------------------------------
+}
 
 const mainTitle = document.querySelectorAll(".to-do-main-title").forEach(item => item.addEventListener('click', mainCategoryFunction))
 
@@ -347,11 +369,19 @@ deletingAllSubCategories();
 // ----------------------------------
 
 // tworzenie pod kategori DOM 
-const createSubCategoryFunction = (index, cos) => { 
-  const createSubCategory = document.createElement('h3');
-  mainContainerOnSubCatergory[index].appendChild(createSubCategory);
-  createSubCategory.id = "subCategory";
-  createSubCategory.textContent = entryTitleArray[cos];
+const createSubCategoryFunction = (index, cos, 
+  amount) => { 
+  // for (let i = 0; i < cos; i++) {
+  //     console.log(cos.length + " to jest length"); 
+  // }
+
+  console.log(amount);
+  for (let i = 0; i < amount; i++) {
+    const createSubCategory = document.createElement('h3');
+    mainContainerOnSubCatergory[index].appendChild(createSubCategory);
+    createSubCategory.id = "subCategory";
+    createSubCategory.textContent = entryTitleArray[i];
+  }
 }
 
 // ----------------------------------
@@ -359,20 +389,42 @@ const createSubCategoryFunction = (index, cos) => {
 let numberSubCategory = -1;
 // Pod kategorie
 const subCategoryFunction = () => {   
-  // console.log(allMainListSubCategory[0].dataset.subcategory);
-  // const subCategory = allMainListSubCategory.dataset.subcategory;
-  // let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
-  console.log(toOoMainTitle); // trzeba sprawdzić jaki index ma dana kategoria, żeby pózniej po indexie dodać do pod kategori tytuły
-  for (let i = 0; i < mainContainerOnSubCatergory.length; i++) {
-    let subCategoryList = mainContainerOnSubCatergory[i].dataset.subcategory
-    let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
-    numberSubCategory++
-    console.log(subCategoryList + " ma index " + numberSubCategory);
-    console.log(indexes[subCategoryList]); //to są indeksy poszczególnych wpisów
-    createSubCategoryFunction(numberSubCategory, [indexes[subCategoryList]]);
-  }
-numberSubCategory = -1;
+  const mainList = document.querySelectorAll('.main-list');
 
+  // console.log(mainList.dataset.subcategory);
+
+
+  console.log(toOoMainTitle); // trzeba sprawdzić jaki index ma dana kategoria, żeby pózniej po indexie dodać do pod kategori tytuły
+  let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+  let amount = 0;
+  for (let i = 0; i < mainList.length; i++) { // funkcja wywołuje się tyle razy ile jest kategori
+    let subCategoryList = mainList[i].dataset.subcategory // nazwa  kategori 
+    numberSubCategory++
+    console.log(subCategoryList + " ma index " + numberSubCategory);  
+    console.log(indexes[subCategoryList]); //to są indeksy poszczególnych wpisów
+
+    if (!indexes[subCategoryList]) {
+      console.log('PUSTO, NIE MA NIC!')
+    }
+    else {
+      amount = indexes[subCategoryList].length;
+    }
+
+    
+    createSubCategoryFunction(numberSubCategory, [indexes[subCategoryList]], amount);
+    amount = 0;
+     //1 argument to index do której kategori dodać, a drugi argument to są indeksy poszczególnych wpisów
+  }
+  
+
+
+  //  1 ma zrobić pętle która wykona się tyle razy ile jest kategori
+  //  pózniej pętla musi zobaczyć ile jest w kategori długość indexów, tak aby 2 razy dodało tytuły a nie tylko jeden raz.
+
+
+  // 
+
+numberSubCategory = -1;
 }
 subCategoryFunction()
 
