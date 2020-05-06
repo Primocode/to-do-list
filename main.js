@@ -35,10 +35,10 @@ newEntryCircle.addEventListener('click', newEntryOpenBox);
 // ------------------------------------------------
 
 // Dodawanie wpisów do tablicy
-let entryTitleArray = ["Samochód", "rower", ];
-let entryContentsArray = ["Samochód jest super", "trek 1,2"];
-let entryCategoryArray = ["Ważne", "Ważne"];
-let entryDateArray = ["", ""];
+let entryTitleArray = ["Samochód", "rower", "kanapka" ];
+let entryContentsArray = ["Samochód jest super", "trek 1,2", "ser szynka"];
+let entryCategoryArray = ["Ważne", "Ważne", "Do zrobienia"];
+let entryDateArray = ["", "", ""];
 
 
 let deleteEntryTitleArray = [];
@@ -240,26 +240,6 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 const refresh = document.querySelector('.new-talk-button-refresh');
 
 const refreshFunction = () => {
-  // entryTitleArray = ["Samochód", "rower", "przykładowa notatka", "nie ważne", "nic ważnego", "bardzo ważne"];
-  // entryContentsArray = ["Daihatsu cuore", "trek 1,2", "Notatka na temat niczego", "Nic ważnego", "ważne", "jakis tam tekst"];
-  // entryCategoryArray = ["Do zrobienia", "Zrobione", "Ważne", "Notatki", "Usunięte", "Ważne"];
-  // entryDateArray = ["04/05/2020", "", "04/00/2019", "", "", ""];
-
-  // console.log(entryContentsArray);
-  // console.log(entryTitleArray);
-  // console.log(entryCategoryArray);
-  // console.log(entryDateArray);
-
-  // console.log(deleteEntryContentsArray + " usunięta tablica ")
-  // console.log(deleteEntryTitleArray + " usunięta tablica ");
-  // console.log(deleteEntryCategoryArray + " usunięta tablica ");
-  // console.log(deleteEntryDateArray + " usunięta tablica ");
-  // deletingAllSubCategories()
-  // subCategoryFunction()
-  // deletingAllEntries()
-  // for (let i = 0; i < entryTitleArray.length; i++) {
-  //   creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i])
-  // }
   refreshCategories();
 }
 
@@ -368,21 +348,67 @@ deletingAllSubCategories();
 
 // ----------------------------------
 
+// Tworzenie napisu w kategori jeżeli nie ma podkategori
+
+const mainList = document.querySelectorAll('.main-list');
+
+const createEmptySubCategory = (index) => {
+  const emptyCategories = document.querySelectorAll('.main-list');
+  
+  for (let i = 0; i > emptyCategories.length; i++) {
+    console.log("tyle jest kategori");
+  } 
+
+
+  console.log(mainList.length);
+  console.log(index);
+
+
+  // for (let i = 0; i < mainList.length; i++) {
+  const emptySubCategory = document.createElement('h4');
+  mainList[index].appendChild(emptySubCategory);
+  emptySubCategory.className = "Empty-sub-category";
+  emptySubCategory.textContent = "Pusto, dodaj coś"
+    
+  // }
+}
+
+
+
+const deleteEmptySubCategory = () => {
+  const emptySubCategory = document.querySelectorAll('.Empty-sub-category');
+  console.log(emptySubCategory)
+  for (let i = 0; i < emptySubCategory.length; i++) {
+    emptySubCategory[i].remove();
+  }
+}
+
+
+// ------------------------------------------------------
+
 // tworzenie pod kategori DOM 
-const createSubCategoryFunction = (index, cos, 
-  amount) => { 
+const createSubCategoryFunction = (index, indexSubCategorie, amount) => { 
   // for (let i = 0; i < cos; i++) {
   //     console.log(cos.length + " to jest length"); 
   // }
 
-  console.log(amount);
+    // index to index kategori
+    // amount pokazuje ile jest subkategori w kategori
+
+    
+
+
   for (let i = 0; i < amount; i++) {
+    console.log("----------- w kategori o indeksie " + index + " jest " + amount + " subkategori ------------- do wklejenia w tą kategorie mam ideks " + indexSubCategorie + " który ma " + indexSubCategorie.length + " długość");
+
     const createSubCategory = document.createElement('h3');
     mainContainerOnSubCatergory[index].appendChild(createSubCategory);
     createSubCategory.id = "subCategory";
-    createSubCategory.textContent = entryTitleArray[i];
+    createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]];
+
   }
-}
+
+} 
 
 // ----------------------------------
 
@@ -397,6 +423,7 @@ const subCategoryFunction = () => {
   console.log(toOoMainTitle); // trzeba sprawdzić jaki index ma dana kategoria, żeby pózniej po indexie dodać do pod kategori tytuły
   let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
   let amount = 0;
+  deleteEmptySubCategory()
   for (let i = 0; i < mainList.length; i++) { // funkcja wywołuje się tyle razy ile jest kategori
     let subCategoryList = mainList[i].dataset.subcategory // nazwa  kategori 
     numberSubCategory++
@@ -404,37 +431,35 @@ const subCategoryFunction = () => {
     console.log(indexes[subCategoryList]); //to są indeksy poszczególnych wpisów
 
     if (!indexes[subCategoryList]) {
-      console.log('PUSTO, NIE MA NIC!')
+      console.log(numberSubCategory + ' TU JEST PUSTO, NIE MA NIC!')
+      createEmptySubCategory(numberSubCategory)
     }
     else {
       amount = indexes[subCategoryList].length;
     }
 
     
-    createSubCategoryFunction(numberSubCategory, [indexes[subCategoryList]], amount);
+    createSubCategoryFunction(numberSubCategory, indexes[subCategoryList], amount);
     amount = 0;
-     //1 argument to index do której kategori dodać, a drugi argument to są indeksy poszczególnych wpisów
+
+  for (let i = 0; i > amount; i++) {
+    console.log("tyle razy musi zrobić w jednej kategori");
   }
-  
-
-
-  //  1 ma zrobić pętle która wykona się tyle razy ile jest kategori
-  //  pózniej pętla musi zobaczyć ile jest w kategori długość indexów, tak aby 2 razy dodało tytuły a nie tylko jeden raz.
-
-
-  // 
-
+    
+    //1 argument to index do której kategori dodać, a drugi argument to są indeksy poszczególnych wpisów
+  }
 numberSubCategory = -1;
 }
 subCategoryFunction()
 
-// ----------------
+// ------------------------------------------------------------
 
 // licznik wpisów
 const numberEntry = document.querySelector('#number-entry') 
 const counterNumber = () => {
   numberEntry.textContent = "Aktualnych wpisów: " + entryTitleArray.length
 }
+counterNumber()
 
 
 // --------------!--------------------!---------------!---------------!-------------
