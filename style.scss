@@ -48,10 +48,15 @@ header {
             .main-list {
                 padding: 0px 0px 0px 30px;
                 h3 {
-                    color: #7B7B7B;
+                    color: #696969;
                     font-weight: 300;
                     padding: 0px 5px 0px 5px;
                     cursor: pointer;
+                }
+                h4 {
+                    color: #d1d1d1;
+                    cursor: default;
+                    margin-left: 20px;
                 }
             }
             .all {
@@ -359,11 +364,12 @@ main {
                 width: 100%;
                 align-items: center;
                 height: 50px;
-                justify-content: space-between;
+                justify-content: flex-end;
                 h2 {
                     border-left: 4px solid #1C8AF5;
                     padding-left: 10px;
                     margin-left: 10px;
+                    width: 100%;
                 }
                 .entry-top-right {
                     height: 40px;

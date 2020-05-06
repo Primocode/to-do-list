@@ -88,6 +88,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
   if (entryCategory == "Do zrobienia") {
     category.style.color = "#1C8AF5";
     entryTopH2.style.borderLeft = "4px solid #1C8AF5";
+    category.style.width = "112px";
   }
   else if (entryCategory == "Zrobione") {
     category.style.color = "#0A9C00";
@@ -135,6 +136,31 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
   entryBottom.appendChild(entryBottomTextP);
   entryBottomTextP.textContent = contents // TU JEST TEXT 
 
+  // Funkcja do zmiany na "Zrobione"
+  const changeToDone = (e) => {
+    verificationTitleIndex = entryTopH2.textContent
+    verificationContentIndex = entryBottomTextP.textContent
+    verificationCategoryIndex = category.textContent
+    verificationDateIndex = date.textContent
+    console.log(verificationContentIndex);
+    console.log(verificationTitleIndex);
+    console.log(verificationCategoryIndex);
+    console.log(verificationDateIndex);
+
+    const whatIndex = entryTitleArray.indexOf(verificationTitleIndex)
+    if (entryTitleArray[verificationTitleIndex] == entryContentsArray[verificationContentIndex]) {
+      if (entryCategoryArray[verificationCategoryIndex] == entryDateArray[verificationDateIndex]) {
+        entryCategoryArray[whatIndex] = "Zrobione";
+      }
+    }
+    counterNumber() // odświeża licznik wpisów
+    deletingAllEntries(); // usuwa wszystkie wpisy
+    CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
+    refreshCategories() // odświeża kategorie
+   }
+
+  doneIcon.addEventListener('click', changeToDone)
+
   // funkcja do usuwania poszczególnych wpisów
   const removeIndividualEntryFunction = (e) => {
     let removeDatasetValue = entry.dataset.value
@@ -173,20 +199,34 @@ const deletingAllEntries = () => {
 
 // --------------------------------------------
 
+const emptyMessage = document.querySelector(".empty-entry-message-active");
+
+const messageActive = () => {
+  const entryMessage = document.querySelectorAll('.entry');
+  console.log(entryMessage)
+  if (!entryMessage.length < 1) {
+    emptyMessage.className = "empty-entry-message"
+  } 
+  else {
+    emptyMessage.className = "empty-entry-message-active";
+  }
+}
 
 // tworzenie wszystkich wpisów 
 const allButtonCreatingAllEntries = document.querySelector('.all');
 
 const CreatingAllEntries = () => {
-  deletingAllEntries()
+  deletingAllEntries();
   for (let i = 0; i < entryTitleArray.length; i++) {
     creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i]);
   }
+  messageActive();
 }
 
 CreatingAllEntries()
 allButtonCreatingAllEntries.addEventListener('click', CreatingAllEntries);
 console.log("AUTOMATYCZNE TWORZENIE WPISÓW")
+
 
 // --------------------------------------
 
@@ -228,8 +268,6 @@ const addEntryButtonFunction = () => {
     counterNumber()
     refreshCategories();
   }
-
-  
 }
 
 addEntryButton.addEventListener('click', addEntryButtonFunction);
@@ -252,7 +290,6 @@ refresh.addEventListener('click', refreshFunction);
 
 const refreshCategories = () => {
   deletingAllSubCategories(); // usuwanie wszystkich kategori.
-  // mainCategoryFunction(); // tworzenie wszystkich kategori.
   subCategoryFunction(); // tworzenie nowych kategori
 }
 
@@ -260,16 +297,8 @@ const refreshCategories = () => {
 
 
 // wyświetlanie napisu o pustej tablicy 
-const emptyMessage = document.querySelector(".empty-entry-message-active");
 
-const messageActive = () => {
-  if (!entryTitleArray.length < 1) {
-    emptyMessage.className = "empty-entry-message"
-  } 
-  else {
-    emptyMessage.className = "empty-entry-message-active";
-  }
-}
+messageActive();
 
 // ----------------------------------------
 
@@ -296,41 +325,26 @@ const mainCategoryFunction = (e) => {
   deletingAllEntries();
   let nameCategory = e.target.dataset.category
   console.log(nameCategory + " to jest nazwa kategori")
-  // console.log(entryCategoryArray.indexOf(nameCategory) + "to jest index");
 
   let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
   console.log(indexes[nameCategory]) // wyświetla listę tylko z nameCategory
 
   if (!indexes[nameCategory]) {
     console.log('PUSTO, NIE MA NIC!')
+    messageActive();
   }
   else {
     for (let i = 0; i < indexes[nameCategory].length; i++) {
       creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]])
       console.log("ile razy pokazać wpis" + i)
+      messageActive();
       }
     console.log(indexes[nameCategory].length);
   }
-
-  
-    // --------------------------------------------
-
-    
-  // console.log(nameCategory);
-
-
-  // for (let number = 0; number < indexes[nameCategory].length; number++) {
-  //   const mainList = document.querySelectorAll('.main-list');
-  //   let subCategoryList = mainList[number].dataset.subcategory
-  //   console.log(subCategoryList);
-  // }
-
-
     // ----------------------------------------------
 }
 
 const mainTitle = document.querySelectorAll(".to-do-main-title").forEach(item => item.addEventListener('click', mainCategoryFunction))
-
 
 const mainContainerOnSubCatergory = document.querySelectorAll('.main-list');
 const toOoMainTitle = document.querySelectorAll('.to-do-main-title');
@@ -359,10 +373,8 @@ const createEmptySubCategory = (index) => {
     console.log("tyle jest kategori");
   } 
 
-
   console.log(mainList.length);
   console.log(index);
-
 
   // for (let i = 0; i < mainList.length; i++) {
   const emptySubCategory = document.createElement('h4');
@@ -404,6 +416,7 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     const createSubCategory = document.createElement('h3');
     mainContainerOnSubCatergory[index].appendChild(createSubCategory);
     createSubCategory.id = "subCategory";
+    createSubCategory.dataset.subCategory = entryTitleArray[indexSubCategorie[i]]
     createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]];
 
   }
@@ -460,6 +473,25 @@ const counterNumber = () => {
   numberEntry.textContent = "Aktualnych wpisów: " + entryTitleArray.length
 }
 counterNumber()
+
+
+
+// Subkategorie - po kliknięciu wyświetlanie poszczególnych
+
+const subCategoryClick = document.querySelector("#subCategory");
+
+const subCategoryClickFunction = () => {
+
+  const subCategoryValue = event.target.dataset.subCategory;
+  const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
+
+  console.log(indexSubCategoryValue)
+  deletingAllEntries();
+  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue]);
+}
+
+document.querySelectorAll("#subCategory").forEach(item => item.addEventListener('click', subCategoryClickFunction))
+
 
 
 // --------------!--------------------!---------------!---------------!-------------
