@@ -317,19 +317,19 @@ messageActive();
 
 //  TWORZENIE NOWEJ KATEGORI 
 
-// const toDoListCategory = document.querySelector('.individual-category');
+const toDoListCategory = document.querySelector('.to-do-list-category');
 
-// append = ''
+append = ''
 
-// const createNewCategory = () => {
-//   const cyclic = document.createElement('div');
-//   toDoListCategory.after(cyclic);
-//   cyclic.className = "cyclic";
-//   append += 
-//   '<div class="cyclic-container"><div class="cyclic-text main-title"><span class="far fa-circle"></span><h2>wartość</h2></div><div class="cyclic-list main-list"><h2>Jakaś wartość</h2></div></div>';
-//   cyclic.innerHTML = append
-// }
-// createNewCategory()
+const createNewCategory = () => {
+  const cyclic = document.createElement('div');
+  toDoListCategory.appendChild(cyclic);
+  cyclic.className = "cyclic";
+  append += 
+  '<div class="cyclic-container"><div class="cyclic-text main-title"><span class="far fa-circle"></span><h2>  wartość   </h2></div><div class="cyclic-list main-list"><h2>   Jakaś wartość   </h2></div></div>';
+  cyclic.innerHTML = append
+}
+createNewCategory()
 
 //  -------------------------------------
 
@@ -413,16 +413,6 @@ const deleteEmptySubCategory = () => {
 
 // tworzenie pod kategori DOM 
 const createSubCategoryFunction = (index, indexSubCategorie, amount) => { 
-  // for (let i = 0; i < cos; i++) {
-  //     console.log(cos.length + " to jest length"); 
-  // }
-
-    // index to index kategori
-    // amount pokazuje ile jest subkategori w kategori
-
-    
-
-
   for (let i = 0; i < amount; i++) {
     console.log("----------- w kategori o indeksie " + index + " jest " + amount + " subkategori ------------- do wklejenia w tą kategorie mam ideks " + indexSubCategorie + " który ma " + indexSubCategorie.length + " długość");
 
@@ -436,6 +426,8 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
   
   checkSubCategory()
 } 
+
+// ----------------------------------
 
 // Przechodzenie pomiędzy subkategoriami
 const subCategoryClickFunction = () => {
@@ -452,7 +444,6 @@ const checkSubCategory = () => {
 
 // ---------------------------------------------------
 
-// ----------------------------------
 
 let numberSubCategory = -1;
 // Pod kategorie
