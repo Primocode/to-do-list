@@ -17,6 +17,8 @@ const newEntry = document.querySelector('.add-new-entry')
 const boxToCreateEntries = document.querySelector('.add-new-talk-container')
 const exitButton = document.querySelector('.exit');
 const newEntryCircle = document.querySelector('.add')
+const createCategory = document.querySelector('.creating-category');
+const createCategoryExit = document.querySelector('.category-exit');
 
 const newEntryOpenBox = () => {
   boxToCreateEntries.classList.toggle('active')
@@ -31,10 +33,16 @@ const exitFunction = () => {
 exitButton.addEventListener('click', exitFunction);
 
 const openCreateCategory = () => {
-  console.log("otworzenie stworzenia nowej kategori")
+  createCategory.classList.toggle("creating-category-active")
 }
 
 newEntryCircle.addEventListener('click', openCreateCategory);
+
+const closeCreateCategory = () => {
+  createCategory.classList.toggle("creating-category-active")
+}
+
+createCategoryExit.addEventListener('click', closeCreateCategory);
 
 // ------------------------------------------------
 
@@ -426,8 +434,23 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
 
   }
   
-
+  checkSubCategory()
 } 
+
+// Przechodzenie pomiędzy subkategoriami
+const subCategoryClickFunction = () => {
+  const subCategoryValue = event.target.dataset.subCategory;
+  const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
+  console.log(subCategoryValue)
+  deletingAllEntries();
+  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue]);
+}
+
+const checkSubCategory = () => {
+  document.querySelectorAll("#subCategory").forEach(item => item.addEventListener('click', subCategoryClickFunction))
+}
+
+// ---------------------------------------------------
 
 // ----------------------------------
 
@@ -464,9 +487,10 @@ const subCategoryFunction = () => {
   for (let i = 0; i > amount; i++) {
     console.log("tyle razy musi zrobić w jednej kategori");
   }
-    
+
     //1 argument to index do której kategori dodać, a drugi argument to są indeksy poszczególnych wpisów
   }
+  
 numberSubCategory = -1;
 }
 subCategoryFunction()
@@ -495,15 +519,17 @@ counterNumber()
 
 // const subCategoryDOM = document.querySelectorAll("#subCategory")
 
-const subCategoryClickFunction = () => {
-  const subCategoryValue = event.target.dataset.subCategory;
-  const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
-  console.log(subCategoryValue)
-  deletingAllEntries();
-  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue]);
-}
 
-document.querySelectorAll("#subCategory").forEach(item => item.addEventListener('click', subCategoryClickFunction))
+
+
+
+
+// const subCategoryActive = (e) => {
+//   const subCategoriesItems = document.querySelectorAll('#subCategory');
+//   const dataSubCategoriesItems = e.target.dataset.subCategory;
+//   console.log(dataSubCategoriesItems);
+// }
+
 
 
 // subCategoryDOM.forEach(item => item.addEventListener('click', subCategoryClickFunction))
