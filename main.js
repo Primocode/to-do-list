@@ -47,10 +47,13 @@ createCategoryExit.addEventListener('click', closeCreateCategory);
 // ------------------------------------------------
 
 // Dodawanie wpisów do tablicy
-let entryTitleArray = ["Samochód", "rower", "kanapka" ];
+let entryTitleArray = ["Samochód", "rower", "kanapka"];
 let entryContentsArray = ["Samochód jest super", "trek 1,2", "ser szynka"];
 let entryCategoryArray = ["Ważne", "Ważne", "Do zrobienia"];
 let entryDateArray = ["", "", ""];
+
+let categoryArray = ["katb1"];
+let categoryColorArray = [];
 
 
 let deleteEntryTitleArray = [];
@@ -201,6 +204,35 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
 
 //  --------------------------------------------
 
+// Tworzenie automatycznie wszystkich kategori z listy
+
+const creatingAllCategory = () => {
+  for (let i = 0; i < categoryArray.length; i++) {
+    console.log(categoryArray[i]);
+    createNewCategory(categoryArray[i])
+  }
+}
+// Pobieranie wartości przy polu i dodawanie do listy
+
+const addNewCategory = document.querySelector('.category-add')
+
+const createNewCategoryFunction = () => {
+  const CreateNameCategoryValue = document.querySelector('.category-title').value;
+  console.log(CreateNameCategoryValue);
+  categoryArray.push(CreateNameCategoryValue);
+  console.log(categoryArray)
+  creatingAllCategory();
+  deletingAllSubCategories(); // usuwanie wszystkich kategori.
+  subCategoryFunction(); // tworzenie nowych kategori
+  closeCreateCategory(); // zamykanie okna po zrobieniu kategori;
+}
+
+addNewCategory.addEventListener('click', createNewCategoryFunction);
+
+
+
+// ---------------------------------------------------
+
 // Usuwanie wszystkich wpisów 
 const deletingAllEntries = () => {
   const addAllEntry = document.querySelectorAll('.entry')
@@ -286,6 +318,20 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 
 // -------------------------------------------
 
+// dodawanie nowego selecta po zrobieniu nowej kategori 
+
+const addNewSelectCategory = (selectValueText) => {
+  const selectValue = document.querySelector('#select');
+  console.log(selectValue);
+  const newSelect = document.createElement('option');
+  selectValue.appendChild(newSelect);
+  newSelect.className = "option"
+  newSelect.value = selectValueText;
+  newSelect.textContent = selectValueText;
+}
+
+// ---------------------------------------------
+
 // odświeżanie i tworzenie od nowa z listy
 const refresh = document.querySelector('.new-talk-button-refresh');
 
@@ -319,17 +365,36 @@ messageActive();
 
 const toDoListCategory = document.querySelector('.to-do-list-category');
 
-append = ''
-
-const createNewCategory = () => {
+const createNewCategory = (nameCategoryArg) => {
   const cyclic = document.createElement('div');
   toDoListCategory.appendChild(cyclic);
   cyclic.className = "cyclic";
-  append += 
-  '<div class="cyclic-container"><div class="cyclic-text main-title"><span class="far fa-circle"></span><h2>  wartość   </h2></div><div class="cyclic-list main-list"><h2>   Jakaś wartość   </h2></div></div>';
-  cyclic.innerHTML = append
+
+  const cyclicContainer = document.createElement('div');
+  cyclic.appendChild(cyclicContainer);
+  cyclicContainer.className = "cyclic-container notes-container-height";
+
+  const cyclicText = document.createElement('div');
+  cyclicContainer.appendChild(cyclicText);
+  cyclicText.className = "cyclic-test main-title";
+  cyclicText.dataset.subcategory = nameCategoryArg;
+
+  const cyclicSpan = document.createElement('span');
+  cyclicText.appendChild(cyclicSpan);
+  cyclicSpan.className = "far fa-circle";
+
+  const cyclicH2 = document.createElement('h2');
+  cyclicText.appendChild(cyclicH2);
+  cyclicH2.className = "to-do-main-title";
+  cyclicH2.textContent = nameCategoryArg // nazwa kategori
+
+  const cyclicList = document.createElement('div');
+  cyclicContainer.appendChild(cyclicList);
+  cyclicList.className = "cyclic-list main list";
+  cyclicList.dataset.subcategory = nameCategoryArg
+  
+  addNewSelectCategory(nameCategoryArg);
 }
-createNewCategory()
 
 //  -------------------------------------
 
@@ -375,7 +440,7 @@ deletingAllSubCategories();
 
 // ----------------------------------
 
-// Tworzenie napisu w kategori jeżeli nie ma podkategori
+
 
 const mainList = document.querySelectorAll('.main-list');
 
@@ -398,8 +463,6 @@ const createEmptySubCategory = (index) => {
   // }
 }
 
-
-
 const deleteEmptySubCategory = () => {
   const emptySubCategory = document.querySelectorAll('.Empty-sub-category');
   console.log(emptySubCategory)
@@ -411,7 +474,7 @@ const deleteEmptySubCategory = () => {
 
 // ------------------------------------------------------
 
-// tworzenie pod kategori DOM 
+// tworzenie subkategori DOM 
 const createSubCategoryFunction = (index, indexSubCategorie, amount) => { 
   for (let i = 0; i < amount; i++) {
     console.log("----------- w kategori o indeksie " + index + " jest " + amount + " subkategori ------------- do wklejenia w tą kategorie mam ideks " + indexSubCategorie + " który ma " + indexSubCategorie.length + " długość");
@@ -527,8 +590,6 @@ counterNumber()
 
 
 // po tym jak się odświeżą podkategorie, niech pobierze subCategoryDOM od nowa.
-
-
 
 
 
