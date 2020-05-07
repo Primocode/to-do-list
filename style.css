@@ -20,10 +20,22 @@ header nav {
   border-right: 1px solid #CBCBCB;
   position: fixed;
   background-color: white;
+  overflow: auto;
+}
+
+header nav nav::-webkit-scrollbar {
+  background-color: red;
+  color: red;
 }
 
 header nav .date {
-  margin-top: 15px;
+  position: fixed;
+  width: 285px;
+  padding: 10px 0px 10px 0px;
+  background-color: white;
+  border-bottom: 1px solid #CBCBCB;
+  -webkit-box-shadow: 0px 2px 4px 0px #eeeeee;
+  box-shadow: 0px 2px 4px 0px #eeeeee;
 }
 
 header nav .date #time {
@@ -40,7 +52,11 @@ header nav .date #day {
 
 header nav .to-do-list-category {
   height: 100%;
-  margin: 20px;
+  margin: 80px 20px 80px 20px;
+}
+
+header nav .to-do-list-category .notes-container-height {
+  margin-bottom: 40px;
 }
 
 header nav .to-do-list-category .to-do-main-title {
@@ -98,10 +114,6 @@ header nav .to-do-list-category .all h3 {
   text-align: center;
 }
 
-header nav .to-do .to-do-container {
-  height: 150px;
-}
-
 header nav .to-do .to-do-container span {
   color: #1C8AF5;
   padding-left: 10px;
@@ -114,10 +126,6 @@ header nav .to-do .to-do-container h2 {
 
 header nav .to-do .to-do-container h3:hover {
   border-left: 5px solid #1C8AF5;
-}
-
-header .done .done-container {
-  height: 150px;
 }
 
 header .done .done-container span {
@@ -134,10 +142,6 @@ header .done .done-container h3:hover {
   border-left: 5px solid #0A9C00;
 }
 
-header .important .important-container {
-  height: 150px;
-}
-
 header .important .important-container span {
   color: #D23030;
   padding-left: 10px;
@@ -152,10 +156,6 @@ header .important .important-container h3:hover {
   border-left: 5px solid #D23030;
 }
 
-header .notes .notes-container {
-  height: 150px;
-}
-
 header .notes .notes-container span {
   color: #1C8AF5;
   padding-left: 10px;
@@ -168,10 +168,6 @@ header .notes .notes-container h2 {
 
 header .notes .notes-container h3:hover {
   border-left: 5px solid #1C8AF5;
-}
-
-header .deleted .deleted-container {
-  height: 150px;
 }
 
 header .deleted .deleted-container span {
@@ -195,6 +191,14 @@ header .add-button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 285px;
+  padding: 10px 0px 10px 0px;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  -webkit-box-shadow: -28px 22px 7px 26px #eeeeee;
+  box-shadow: -28px 22px 7px 26px #eeeeee;
+  border-top: 1px solid #CBCBCB;
 }
 
 header .add-button .add {

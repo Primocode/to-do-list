@@ -30,7 +30,11 @@ const exitFunction = () => {
 
 exitButton.addEventListener('click', exitFunction);
 
-newEntryCircle.addEventListener('click', newEntryOpenBox);
+const openCreateCategory = () => {
+  console.log("otworzenie stworzenia nowej kategori")
+}
+
+newEntryCircle.addEventListener('click', openCreateCategory);
 
 // ------------------------------------------------
 
@@ -291,6 +295,7 @@ refresh.addEventListener('click', refreshFunction);
 const refreshCategories = () => {
   deletingAllSubCategories(); // usuwanie wszystkich kategori.
   subCategoryFunction(); // tworzenie nowych kategori
+
 }
 
 // ------------
@@ -420,6 +425,7 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]];
 
   }
+  
 
 } 
 
@@ -470,6 +476,7 @@ subCategoryFunction()
 // licznik wpisów
 const numberEntry = document.querySelector('#number-entry') 
 const counterNumber = () => {
+  
   numberEntry.textContent = "Aktualnych wpisów: " + entryTitleArray.length
 }
 counterNumber()
@@ -478,19 +485,35 @@ counterNumber()
 
 // Subkategorie - po kliknięciu wyświetlanie poszczególnych
 
-const subCategoryClick = document.querySelector("#subCategory");
+// const subCategoryClickShow = document.querySelectorAll("#subCategory");
+
+// const subCategoryClickShowFunction = () => {
+//   console.log("kliknięto")
+// }
+
+// subCategoryClickShow.addEventListener('click', subCategoryClickShowFunction);
+
+// const subCategoryDOM = document.querySelectorAll("#subCategory")
 
 const subCategoryClickFunction = () => {
-
   const subCategoryValue = event.target.dataset.subCategory;
   const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
-
-  console.log(indexSubCategoryValue)
+  console.log(subCategoryValue)
   deletingAllEntries();
   creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue]);
 }
 
 document.querySelectorAll("#subCategory").forEach(item => item.addEventListener('click', subCategoryClickFunction))
+
+
+// subCategoryDOM.forEach(item => item.addEventListener('click', subCategoryClickFunction))
+
+
+// po tym jak się odświeżą podkategorie, niech pobierze subCategoryDOM od nowa.
+
+
+
+
 
 
 
