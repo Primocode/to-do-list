@@ -51,8 +51,7 @@ header nav .date #day {
 }
 
 header nav .to-do-list-category {
-  height: 100%;
-  margin: 80px 20px 80px 20px;
+  margin: 80px 20px 100px 20px;
 }
 
 header nav .to-do-list-category .notes-container-height {
