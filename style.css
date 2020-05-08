@@ -191,6 +191,10 @@ header .deleted .deleted-container h3:hover {
   border-left: 5px solid #D23030;
 }
 
+header .cyclic .cyclic-list h3:hover {
+  border-left: 5px solid #D23030;
+}
+
 header .creating-category {
   display: none;
 }
