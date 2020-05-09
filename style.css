@@ -696,6 +696,36 @@ main .top-new-talk .active .add-new-button-container .add-new {
   height: 50%;
 }
 
+.main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .info-entry {
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  font-size: 18px;
+  background-color: white;
+  color: #969696;
+  height: 50%;
+}
+
+.main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .info-entry span {
+  width: 100%;
+  height: 100%;
+}
+
+.main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .info-entry .information {
+  display: none;
+}
+
+.main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .info-entry .information-active {
+  width: 150px;
+  height: 30px;
+  position: relative;
+  right: 68px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 3px;
+  background-color: rgba(22, 22, 22, 0.753);
+}
+
 .main-content-all .main-content-entry .entry .entry-bottom {
   width: 100%;
   font-size: 15px;

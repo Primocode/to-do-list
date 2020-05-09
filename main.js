@@ -47,10 +47,17 @@ createCategoryExit.addEventListener('click', closeCreateCategory);
 // ------------------------------------------------
 
 // Dodawanie wpisów do tablicy
-let entryTitleArray = ["Samochód", "rower", "kanapka"];
-let entryContentsArray = ["Samochód jest super", "trek 1,2", "ser szynka"];
-let entryCategoryArray = ["Ważne", "Ważne", "Do zrobienia"];
-let entryDateArray = ["", "", ""];
+// let entryTitleArray = ["Samochód", "rower", "kanapka"];
+// let entryContentsArray = ["Samochód jest super", "trek 1,2", "ser szynka"];
+// let entryCategoryArray = ["Ważne", "Ważne", "Do zrobienia"];
+// let entryDateArray = ["", "", ""];
+// let entryCurrentTime = ["15,05,05", "14,55,55", "15;55,55"];
+
+let entryTitleArray = [];
+let entryContentsArray = [];
+let entryCategoryArray = [];
+let entryDateArray = [];
+let entryCurrentTime = [];
 
 let categoryArray = [];
 let categoryColorArray = [];
@@ -62,6 +69,7 @@ let deleteEntryTitleArray = [];
 let deleteEntryContentsArray = [];
 let deleteEntryCategoryArray = [];
 let deleteEntryDateArray = [];
+let deleteEntryCurrentTime = [];
 
 // ----------------------------------------------
 
@@ -70,7 +78,7 @@ number = 0;
 let numberDeleted = 0;
 const mainEntry = document.querySelector('.main-content-entry');
 
-const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry) => {
+const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry, hour) => {
   number++
   const entry = document.createElement('div');
   mainEntry.appendChild(entry)
@@ -153,6 +161,21 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   doneEntry.appendChild(doneIcon);
   doneIcon.className = "far fa-check-circle";
 
+  // Icon informacji
+
+  const info = document.createElement('button');
+  entryTopRightButtons.appendChild(info);
+  info.className = "info-entry";
+
+  const infoIcon = document.createElement('span');
+  info.appendChild(infoIcon);
+  infoIcon.className = "fas fa-info-circle";
+
+  const infoBox = document.createElement('div');
+  info.appendChild(infoBox);
+  infoBox.className = "information";
+  infoBox.textContent = "Godzina utworzenia wpisu " + hour //TUTAJ GODZINA UTWORZENIA WPISU
+
   const entryBottom = document.createElement('div');
   entry.appendChild(entryBottom);
   entryBottom.className = "entry-bottom";
@@ -160,6 +183,18 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const entryBottomTextP = document.createElement('p');
   entryBottom.appendChild(entryBottomTextP);
   entryBottomTextP.textContent = contents // TU JEST TEXT 
+
+  const openInfo = () => {
+    infoBox.classList = "information-active";
+  }
+
+  info.addEventListener('mouseover', openInfo);
+
+  const closeInfo = () => {
+    infoBox.classList.toggle('information')
+  }
+
+  info.addEventListener('mouseout', closeInfo);
 
   // PANEL DLA USUNIĘTYCH
   if (deleteEntry == "Usunięte") {
@@ -268,11 +303,13 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     deleteEntryContentsArray.push(contents);
     deleteEntryCategoryArray.push("Usunięte");
     deleteEntryDateArray.push(entryDateValue);
+    deleteEntryCurrentTime.push(hour);
 
     entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
     entryContentsArray.splice(entryContentsArray.indexOf(contents), 1);
     entryCategoryArray.splice(entryCategoryArray.indexOf(entryCategory), 1);
     entryDateArray.splice(entryDateArray.indexOf(entryDateValue), 1);
+    entryCurrentTime.splice(entryCurrentTime.indexOf(hour), 1);
 
     entry.remove(removeDatasetValue);
     messageActive(); //zamyka komunikat
@@ -325,7 +362,7 @@ const allButtonCreatingAllEntries = document.querySelector('.all');
 const CreatingAllEntries = () => {
   deletingAllEntries();
   for (let i = 0; i < entryTitleArray.length; i++) {
-    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i]);
+    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], "nic", entryCurrentTime[i]);
   }
   messageActive();
 }
@@ -367,6 +404,9 @@ const addEntryButtonFunction = () => {
   const entryTitle = document.querySelector('.entry-title').value // pobieranie tytułu
   const EntryCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
   const entryDate = document.querySelector('.entry-date').value;
+  const currentDate = new Date();
+  const currentTime = currentDate.toLocaleTimeString();
+  
   if (entryContents.length < 1) {
     mess.textContent = "Treść nie może zostać pusta";
   }
@@ -375,11 +415,12 @@ const addEntryButtonFunction = () => {
   }
   else {
     deletingAllEntries(); 
-    creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate)
+    creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime)
     entryContentsArray.push(entryContents);
     entryTitleArray.push(entryTitle);
     entryCategoryArray.push(EntryCategory);
     entryDateArray.push(entryDate);
+    entryCurrentTime.push(currentTime)
     newEntryOpenBox()
     messageActive();
     CreatingAllEntries()
@@ -507,7 +548,7 @@ const mainCategoryFunction = () => {
   }
   else {
     for (let i = 0; i < indexes[nameCategory].length; i++) {
-      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]])
+      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], "nothing", entryCurrentTime[indexes[nameCategory][i]])
       console.log("ile razy pokazać wpis" + i)
       messageActive();
       }
@@ -601,7 +642,7 @@ const subCategoryClickFunction = () => {
   const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
   console.log(subCategoryValue)
   deletingAllEntries();
-  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue]);
+  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue]);
 
 }
 
@@ -727,7 +768,7 @@ const deletedTextFunction = () => {
   messageActive();
   const messageActiveDelete = document.querySelector('.empty-entry-message-active');
   for (let i = 0; i < deleteEntryTitleArray.length; i++) {
-    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte")
+    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i]);
   }
   console.log(deleteEntryCategoryArray.length)
   if (deleteEntryTitleArray.length >= 1) {
