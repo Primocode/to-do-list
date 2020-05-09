@@ -55,6 +55,8 @@ let entryDateArray = ["", "", ""];
 let categoryArray = [];
 let categoryColorArray = [];
 
+let category = ["Do zrobienia", "Ważne", "Notatki"]
+
 
 let deleteEntryTitleArray = [];
 let deleteEntryContentsArray = [];
@@ -68,7 +70,7 @@ number = 0;
 
 const mainEntry = document.querySelector('.main-content-entry');
 
-const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
+const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry) => {
   number++
   const entry = document.createElement('div');
   mainEntry.appendChild(entry)
@@ -117,6 +119,10 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
     category.style.color = "#D23030";
     entryTopH2.style.borderLeft = "4px solid #D23030";
   }
+  else if (entryCategory == "Usunięte") {
+    category.style.color = "#D23030"
+    entryTopH2.style.borderLeft = "4px solid #D23030";
+  }
   else if (entryCategory == entryCategory) { // TO JEST WPIS OD DODATKOWEJ KATEGORI
     category.style.color = "yellow";
     entryTopH2.style.borderLeft = "4px solid yellow";
@@ -155,6 +161,56 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
   entryBottom.appendChild(entryBottomTextP);
   entryBottomTextP.textContent = contents // TU JEST TEXT 
 
+  // PANEL DLA USUNIĘTYCH
+
+  if (deleteEntry == "Usunięte") {
+    entry.style.marginBottom = "25px";
+
+    const topPanel = document.createElement('div');
+    entry.prepend(topPanel);
+    topPanel.className = "top-panel";
+
+    const topPanelContainer = document.createElement('div');
+    topPanel.appendChild(topPanelContainer);
+    topPanelContainer.className = "top-panel-container";
+
+    const topPanelText = document.createElement('h4');
+    topPanelContainer.appendChild(topPanelText);
+    topPanelText.className = "top-panel-container-text";
+    topPanelText.textContent = "Przywróć do"
+
+    const selectRestore = document.createElement('select');
+    topPanelContainer.appendChild(selectRestore);
+    selectRestore.id = "select-restore";
+
+    const buttonConfrim = document.createElement('button');
+    topPanelContainer.appendChild(buttonConfrim);
+    buttonConfrim.className = "button-confirm";
+    buttonConfrim.textContent = "Zapisz"
+
+    const selectOption = document.createElement('option')
+    selectRestore.appendChild(selectOption);
+    selectOption.className = "deleted-option";
+    selectOption.textContent = "Do zrobienia";
+
+    const selectOption1 = document.createElement('option')
+    selectRestore.appendChild(selectOption1);
+    selectOption1.className = "deleted-option";
+    selectOption1.textContent = "Ważne";
+
+    const selectOption2 = document.createElement('option')
+    selectRestore.appendChild(selectOption2);
+    selectOption2.className = "deleted-option";
+    selectOption2.textContent = "Notatki";
+
+    removeEntryButton.remove();
+    removeIcon.remove();
+
+    doneEntry.remove();
+    doneIcon.remove();
+  }
+
+
   // Funkcja do zmiany wpisów na na "Zrobione"
   const changeToDone = (e) => {
     verificationTitleIndex = entryTopH2.textContent
@@ -186,7 +242,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
 
     deleteEntryTitleArray.push(title);
     deleteEntryContentsArray.push(contents);
-    deleteEntryCategoryArray.push(entryCategory);
+    deleteEntryCategoryArray.push("Usunięte");
     deleteEntryDateArray.push(entryDateValue);
 
     entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
@@ -200,6 +256,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
     deletingAllEntries(); // usuwa wszystkie wpisy
     CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
     refreshCategories() // odświeża kategorie
+    deletedElementsCounter();
   }
   // -----------------------------------------
   
@@ -254,7 +311,7 @@ console.log("AUTOMATYCZNE TWORZENIE WPISÓW")
 
 // --------------------------------------
 
-// Komunikat
+// Komunikat wpisów
 const mess = document.querySelector('.mess')
 
 function error() {
@@ -262,6 +319,17 @@ function error() {
 }
 
 let minute = setInterval(error, 4000);
+
+// -------------------------------------
+
+// Komunikat kategori
+const messCategory = document.querySelector('.error-category')
+
+function errorCategory() {
+  messCategory.textContent = "";
+}
+
+let minuteCategory = setInterval(errorCategory, 4000);
 
 // -------------------------------------
 
@@ -508,6 +576,7 @@ const subCategoryClickFunction = () => {
   console.log(subCategoryValue)
   deletingAllEntries();
   creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue]);
+
 }
 
 const checkSubCategory = () => {
@@ -543,6 +612,7 @@ const subCategoryFunction = () => {
       amount = indexes[subCategoryList].length;
     }
 
+    
     
     createSubCategoryFunction(numberSubCategory, indexes[subCategoryList], amount);
     amount = 0;
@@ -591,26 +661,63 @@ const creatingAllCategory = () => {
 // Pobieranie wartości przy polu i dodawanie do listy
 
 const addNewCategory = document.querySelector('.category-add')
+const categoryError = document.querySelector('.error-category');
 
 const createNewCategoryFunction = () => {
   const CreateNameCategoryValue = document.querySelector('.category-title').value;
-  console.log(CreateNameCategoryValue);
-  categoryArray.push(CreateNameCategoryValue);
-  console.log(categoryArray)
+  if (CreateNameCategoryValue.length >= 1) {
+    console.log(CreateNameCategoryValue);
+    categoryArray.push(CreateNameCategoryValue);
+    console.log(categoryArray)
+  
+    deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
+    creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
+    closeCreateCategory(); // zamykanie okna po zrobieniu kategori;
+    mainTitleReload(); // refresh
+  }
+  else {
+    messCategory.textContent = "Nazwa kategori nie może być pusta"
+  }
 
-  deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
-  // createEmptySubCategory() // TO JEST FUNKCJA POKAZUJĄCA NAPIS PUSTE POTRZEBUJE ARGUMENTU INDEKSU GDZIE MA POKAZAĆ
-  creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
-
-  // deletingAllSubCategories(); // usuwanie wszystkich kategori.
-  // subCategoryFunction(); // tworzenie nowych kategori
-
-  // mainTitleReload(); // reload tak aby można było przejść do nowej kategori
-  closeCreateCategory(); // zamykanie okna po zrobieniu kategori;
-  mainTitleReload(); // refresh
 }
 
 addNewCategory.addEventListener('click', createNewCategoryFunction);
+
+// licznik usuniętych elementów 
+const deletedElements = document.querySelector('.deleted-list-h4');
+
+const deletedElementsCounter = () => {
+  deletedElements.textContent = " Usuniętych elementów " + deleteEntryContentsArray.length;
+}
+
+// ----------------------------------------------------------
+
+// Kategoria "Usunięte"
+
+const deletedText = document.querySelector('.deleted-text');
+const deleteShowButton = document.querySelector('.deleted-list-h3-see');
+const deletedTextFunction = () => {
+  deletingAllEntries();
+  messageActive();
+  const messageActiveDelete = document.querySelector('.empty-entry-message-active');
+  for (let i = 0; i < deleteEntryTitleArray.length; i++) {
+    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte")
+  }
+  console.log(deleteEntryCategoryArray.length)
+  if (deleteEntryTitleArray.length >= 1) {
+    console.log("jest coś")
+    messageActiveDelete.className = "empty-entry-message"
+   
+  } 
+  else {
+    console.log("nie ma nic")
+    messageActiveDelete.className = "empty-entry-message-active";
+  }
+}
+
+deletedText.addEventListener('click', deletedTextFunction);
+deleteShowButton.addEventListener('click', deletedTextFunction);
+// ---------------------------------------------------------------------------
 
 
 const reloadScript = () => {

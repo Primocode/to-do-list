@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista zadań</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -61,12 +61,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="deleted">
+                <!-- <div class="deleted">
                     <div class="deleted-container notes-container-height">
                         <div class="deleted-text main-title" >
                             <span class="far fa-circle"></span><h2 class="to-do-main-title" data-category="Usunięte">Usunięte</h2>
                         </div>
                         <div class="deleted-list main-list" data-subCategory="Usunięte">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="deleted">
+                    <div class="deleted-container notes-container-height">
+                        <div class="deleted-text" >
+                            <span class="far fa-circle"></span><h2 class="deleted-title">Usunięte</h2>
+                        </div>
+                        <div class="deleted-list">
+                            <h4 class="deleted-list-h4">Usuniętych elementów 0</h4>
+                            <h3 class="deleted-list-h3-see">Zobacz usunięte elementy</h3>
                         </div>
                     </div>
                 </div>
@@ -86,6 +97,7 @@
                     <div class="category-circle"></div>
                 </div>
                 <button class="change-category-color">Wylosuj inne kolory</button>
+                <p class="error-category"></p>
                 <div class="category-buttons-container">
                     <button class="category-exit">Anuluj</button>
                     <button class="category-add">Dodaj kategorie</button>

@@ -177,6 +177,44 @@ header .notes .notes-container h3:hover {
   border-left: 5px solid #1C8AF5;
 }
 
+header .deleted .deleted-container .deleted-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+header .deleted .deleted-container .deleted-text .deleted-title {
+  padding: 10px 0px 10px 0px;
+  width: 100%;
+}
+
+header .deleted .deleted-container .deleted-text:hover {
+  background-color: #fbfbfb;
+}
+
+header .deleted .deleted-container .deleted-list {
+  padding: 0px 0px 0px 30px;
+}
+
+header .deleted .deleted-container .deleted-list .deleted-list-h4 {
+  color: #d1d1d1;
+  cursor: default;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+header .deleted .deleted-container .deleted-list .deleted-list-h3-see {
+  color: #696969;
+  font-weight: 300;
+  padding: 0px 5px 0px 5px;
+  cursor: pointer;
+  width: 162px;
+}
+
 header .deleted .deleted-container span {
   color: #D23030;
   padding-left: 10px;
@@ -266,6 +304,13 @@ header .creating-category-active .change-category-color {
   padding: 5px 10px 5px 10px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+header .creating-category-active .error-category {
+  color: #D23030;
+  font-weight: 900;
+  font-size: 14px;
+  text-align: center;
 }
 
 header .creating-category-active .category-buttons-container {
@@ -546,6 +591,49 @@ main .top-new-talk .active .add-new-button-container .add-new {
   margin: 0px 10px 10px 15px;
   width: 500px;
   border: 1px solid #CBCBCB;
+}
+
+.main-content-all .main-content-entry .entry .top-panel {
+  width: 100%;
+  border-bottom: 1px solid #CBCBCB;
+}
+
+.main-content-all .main-content-entry .entry .top-panel .top-panel-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 0px 5px 0px;
+}
+
+.main-content-all .main-content-entry .entry .top-panel .top-panel-container h4 {
+  color: #1C8AF5;
+}
+
+.main-content-all .main-content-entry .entry .top-panel .top-panel-container #select-restore {
+  width: 200px;
+  height: 25px;
+  border: none;
+  color: #4e4e4e;
+  font-size: 16px;
+  color: #1C8AF5;
+  margin: 0px 20px 0px 20px;
+  border: 1px solid #CBCBCB;
+}
+
+.main-content-all .main-content-entry .entry .top-panel .top-panel-container .button-confirm {
+  padding: 4px 10px 4px 10px;
+  background-color: #1C8AF5;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .main-content-all .main-content-entry .entry .entry-top {
