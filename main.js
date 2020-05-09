@@ -109,13 +109,17 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue) => {
     category.style.color = "#0A9C00";
     entryTopH2.style.borderLeft = "4px solid #0A9C00";
   }
+  else if (entryCategory == "Notatki") {
+    category.style.color = "#1C8AF5";
+    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
+  }
   else if (entryCategory == "Ważne") {
     category.style.color = "#D23030";
     entryTopH2.style.borderLeft = "4px solid #D23030";
   }
-  else {
-    category.style.color = "#1C8AF5";
-    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
+  else if (entryCategory == entryCategory) { // TO JEST WPIS OD DODATKOWEJ KATEGORI
+    category.style.color = "yellow";
+    entryTopH2.style.borderLeft = "4px solid yellow";
   }
 
   const entryTopRightButtons = document.createElement('div');
@@ -297,23 +301,25 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 // usuwanie wszystkich selectów przed dodawaniem
 
 const removeAllSelectCategory = () => {
-  const selectValue = document.querySelectorAll('#select');
-  console.log(selectValue);
+  const selectValue = document.querySelectorAll('#select > option');
+  for (let i = 3; i < selectValue.length; i++) {
+    // selectValue[i].remove();
+    selectValue[i].remove();
+  }
 }
 
 // dodawanie nowego selecta po zrobieniu nowej kategori 
 
-const addNewSelectCategory = (selectValueText) => {
+const addNewSelectCategory = (whatToAdd) => {
   const selectValue = document.querySelector('#select');
-  console.log(selectValue);
-  const newSelect = document.createElement('option');
 
-  for (let i = 0; i < categoryArray.length; i++) {
-    selectValue.appendChild(newSelect);
-    newSelect.className = "option"
-    newSelect.value = categoryArray[i]
-    newSelect.textContent = categoryArray[i]
-  }
+  console.log(categoryArray);
+
+  const newSelect = document.createElement('option');
+  selectValue.appendChild(newSelect);
+  newSelect.className = "option"
+  newSelect.value = whatToAdd;
+  newSelect.textContent = whatToAdd;
 }
 
 // ---------------------------------------------
@@ -579,7 +585,6 @@ const deleteAllCategories = () => {
 
 const creatingAllCategory = () => {
   for (let i = 0; i < categoryArray.length; i++) {
-    console.log(categoryArray[i]);
     createNewCategory(categoryArray[i])
   }
 }
