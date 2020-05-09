@@ -709,6 +709,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 .main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .info-entry span {
   width: 100%;
   height: 100%;
+  padding-top: 4px;
 }
 
 .main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .info-entry .information {

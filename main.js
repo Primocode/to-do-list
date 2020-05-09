@@ -272,21 +272,44 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
   // Funkcja do zmiany wpisów na na "Zrobione"
   const changeToDone = (e) => {
+    // verificationTitleIndex = entryTopH2.textContent
+    // verificationContentIndex = entryBottomTextP.textContent
+    // verificationCategoryIndex = category.textContent
+    // verificationDateIndex = date.textContent
+    // verificationCurrentDate = infoBox.textContent;
+    // console.log(verificationContentIndex);
+    // console.log(verificationTitleIndex);
+    // console.log(verificationCategoryIndex);
+    // console.log(verificationDateIndex);
+    // console.log(verificationCurrentDate);
+
+    // const whatIndex = entryCurrentTime.indexOf(verificationCurrentDate) 
+    // if (entryTitleArray[verificationTitleIndex] == entryCurrentTime[verificationCurrentDate]) {
+    //   if (entryCategoryArray[verificationCategoryIndex] == entryContentsArray[verificationContentIndex]) {
+    //     entryCategoryArray[whatIndex] = "Zrobione";
+    //   }
+    // }
+
     verificationTitleIndex = entryTopH2.textContent
     verificationContentIndex = entryBottomTextP.textContent
     verificationCategoryIndex = category.textContent
     verificationDateIndex = date.textContent
+    verificationCurrentDate = infoBox.textContent;
     console.log(verificationContentIndex);
     console.log(verificationTitleIndex);
     console.log(verificationCategoryIndex);
     console.log(verificationDateIndex);
+    console.log(verificationCurrentDate);
 
-    const whatIndex = entryTitleArray.indexOf(verificationTitleIndex)
-    if (entryTitleArray[verificationTitleIndex] == entryContentsArray[verificationContentIndex]) {
-      if (entryCategoryArray[verificationCategoryIndex] == entryDateArray[verificationDateIndex]) {
+    const whatIndex = entryCurrentTime.indexOf(hour) 
+
+    console.log(whatIndex);
+    if (entryTitleArray[verificationTitleIndex] == entryCurrentTime[verificationCurrentDate]) {
+      if (entryCategoryArray[verificationCategoryIndex] == entryContentsArray[verificationContentIndex]) {
         entryCategoryArray[whatIndex] = "Zrobione";
       }
     }
+
     counterNumber() // odświeża licznik wpisów
     deletingAllEntries(); // usuwa wszystkie wpisy
     CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
@@ -456,17 +479,6 @@ const addNewSelectCategory = (whatToAdd) => {
   newSelect.value = whatToAdd;
   newSelect.textContent = whatToAdd;
 }
-
-// ---------------------------------------------
-
-// odświeżanie i tworzenie od nowa z listy
-const refresh = document.querySelector('.new-talk-button-refresh');
-
-const refreshFunction = () => {
-  refreshCategories();
-}
-
-refresh.addEventListener('click', refreshFunction);
 
 // ----------------------------------------
 
