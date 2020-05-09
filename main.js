@@ -67,7 +67,7 @@ let deleteEntryDateArray = [];
 
 // Tworzenie nowych wpisów
 number = 0;
-
+let numberDeleted = 0;
 const mainEntry = document.querySelector('.main-content-entry');
 
 const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry) => {
@@ -162,8 +162,8 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   entryBottomTextP.textContent = contents // TU JEST TEXT 
 
   // PANEL DLA USUNIĘTYCH
-
   if (deleteEntry == "Usunięte") {
+    numberDeleted++
     entry.style.marginBottom = "25px";
 
     const topPanel = document.createElement('div');
@@ -182,11 +182,13 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     const selectRestore = document.createElement('select');
     topPanelContainer.appendChild(selectRestore);
     selectRestore.id = "select-restore";
+    selectRestore.dataset.value = numberDeleted;
 
     const buttonConfrim = document.createElement('button');
     topPanelContainer.appendChild(buttonConfrim);
     buttonConfrim.className = "button-confirm";
     buttonConfrim.textContent = "Zapisz"
+    buttonConfrim.dataset.value = numberDeleted;
 
     const selectOption = document.createElement('option')
     selectRestore.appendChild(selectOption);
@@ -208,6 +210,28 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
     doneEntry.remove();
     doneIcon.remove();
+
+    // Przywracanie usuniętych wpisów 
+
+
+    const restoreButton = document.querySelector('.button-confirm');
+
+    const restoreDeletedEntries = (e) => {
+      const selectRestoreOption = document.querySelector('#select-restore')
+
+      let selectRestoreValue = selectRestore.value // nazwa zaznaczonej kategori
+      console.log(selectRestoreValue);
+
+
+      // deleteEntryTitleArray
+      // deleteEntryContentsArray
+      // deleteEntryCategoryArray
+      // deleteEntryDateArray
+    }
+
+    buttonConfrim.addEventListener('click', restoreDeletedEntries);
+  
+  // ----------------------------------------------------------------------------
   }
 
 
@@ -261,6 +285,8 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   // -----------------------------------------
   
   removeEntryButton.addEventListener('click', removeIndividualEntryFunction);
+
+
 }
 
 //  --------------------------------------------
