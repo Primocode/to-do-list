@@ -252,19 +252,50 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     const restoreButton = document.querySelector('.button-confirm');
 
     const restoreDeletedEntries = (e) => {
+      const entryAllDeleted = document.querySelectorAll('.entry');
+      for (let i = 0; i < entryAllDeleted.length; i++) {
+        entryAllDeleted[i].remove();
+      }
+
       const selectRestoreOption = document.querySelector('#select-restore')
+      const selectHour = document.querySelector('.information-active information');
 
       let selectRestoreValue = selectRestore.value // nazwa zaznaczonej kategori
       console.log(selectRestoreValue);
+      console.log(hour);
 
+      // let selectHourValue = selectHour.textContent;
+      // console.log(selectHourValue);
 
-      // deleteEntryTitleArray
-      // deleteEntryContentsArray
-      // deleteEntryCategoryArray
-      // deleteEntryDateArray
+      let indexDelete = deleteEntryCurrentTime.indexOf(hour);
+      console.log(indexDelete);
+
+        entryTitleArray.push(deleteEntryTitleArray[indexDelete]);
+        entryContentsArray.push(deleteEntryContentsArray[indexDelete]);
+        entryCategoryArray.push(selectRestoreValue);
+        entryDateArray.push(deleteEntryDateArray[indexDelete]);
+        entryCurrentTime.push(deleteEntryCurrentTime[indexDelete]);
+
+      deleteEntryTitleArray.splice(indexDelete, 1);
+      deleteEntryContentsArray.splice(indexDelete, 1);
+      deleteEntryCategoryArray.splice(indexDelete, 1);
+      deleteEntryDateArray.splice(indexDelete, 1);
+      deleteEntryCurrentTime.splice(indexDelete, 1);
+      // CreatingAllEntries() // Tworzenie wszystkich wpisów
+      messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
+      // mainTitleReload(); // RELOADOWANIE PRZECHODZENIA DO POSZCZEGÓLNYCH KATEGORI
+      deletingAllSubCategories(); // usuwanie wszystkich podkategori
+      subCategoryFunction() // tworzenie od nowa wszystkich podkategori
+      mainTitleReload()
+
+      for (let i = 0; i < deleteEntryCurrentTime.length; i++) {
+        creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i]);
+      }
     }
-
+    messageActive();
+    counterNumber() // licznik wpisów
     buttonConfrim.addEventListener('click', restoreDeletedEntries);
+    // --------------------------------------------------------------------------
   
   // ----------------------------------------------------------------------------
   }
@@ -337,8 +368,8 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     entry.remove(removeDatasetValue);
     messageActive(); //zamyka komunikat
     counterNumber() // odświeża licznik wpisów
-    deletingAllEntries(); // usuwa wszystkie wpisy
-    CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
+    // deletingAllEntries(); // usuwa wszystkie wpisy
+    // CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
     refreshCategories() // odświeża kategorie
     deletedElementsCounter();
   }
