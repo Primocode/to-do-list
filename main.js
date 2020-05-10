@@ -568,6 +568,10 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   cyclicH2.dataset.subcategory = nameCategoryArg;
   cyclicH2.style.color = colorCategory
 
+  const cyclicDelete = document.createElement('span');
+  cyclicText.appendChild(cyclicDelete);
+  cyclicDelete.className = "far fa-trash-alt cyclicDelete";
+
   const cyclicList = document.createElement('div');
   cyclicContainer.appendChild(cyclicList);
   cyclicList.className = "cyclic-list main-list";
@@ -578,6 +582,82 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   emptyCategory.className = "Empty-sub-category";
   emptyCategory.textContent = "Pusto, dodaj coś"
 
+
+  // usuwanie poszczególnych kategori
+  const deletingACategory = () => {
+    console.log(cyclicH2.dataset.subcategory);
+
+    const deleteBoxLength = document.querySelectorAll('.deletingCategory');
+    console.log(deleteBoxLength);
+
+    for (let i = 0; i < deleteBoxLength.length; i++) {
+      deleteBoxLength[i].remove();
+    }
+
+    const deleteBox = document.createElement('div');
+    cyclicList.prepend(deleteBox);
+    deleteBox.className = "deletingCategory";
+    deleteBox.textContent = `Czy napewno chcesz usunąć kategorie "${nameCategoryArg}"? Wszystkie wpisy w niej zostaną usunięte.`
+
+    const deleteContainer = document.createElement('div');
+    deleteBox.appendChild(deleteContainer);
+    deleteContainer.className = "delete-container";
+
+    const deleteCancelButton = document.createElement('button');
+    deleteContainer.appendChild(deleteCancelButton);
+    deleteCancelButton.className = "delete-cancel-button";
+    deleteCancelButton.textContent = "Anuluj"
+
+    const cancelDelete = () => {
+      const deleteBox = document.querySelector('.deletingCategory');
+      deleteBox.remove();
+    }
+
+    deleteCancelButton.addEventListener('click', cancelDelete)
+
+    const deleteConfirmButton = document.createElement('button');
+    deleteContainer.appendChild(deleteConfirmButton);
+    deleteConfirmButton.className = "delete-confirm-button";
+    deleteConfirmButton.textContent = "Usuń"
+
+    const confirmDelete = () => {
+      console.log("usunięto");
+      let indexDelete = categoryArray.indexOf(nameCategoryArg) // usuwanie samej kategori 
+      categoryArray.splice(indexDelete, 1); 
+
+      let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+
+      console.log(indexes[nameCategoryArg]);
+
+      deleteEntryTitleArray.push(entryTitleArray[indexes[nameCategoryArg]])
+      deleteEntryContentsArray.push(entryContentsArray[indexes[nameCategoryArg]])
+      deleteEntryCategoryArray.push("Usunięte");
+      deleteEntryDateArray.push(entryDateArray[indexes[nameCategoryArg]])
+      deleteEntryCurrentTime.push(entryCurrentTime[indexes[nameCategoryArg]])
+
+      entryTitleArray.splice(indexes[nameCategoryArg], 1)
+      entryContentsArray.splice(indexes[nameCategoryArg], 1)
+      entryCategoryArray.splice(indexes[nameCategoryArg], 1)
+      entryDateArray.splice(indexes[nameCategoryArg], 1)
+      entryCurrentTime.splice(indexes[nameCategoryArg], 1)
+
+      deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
+      creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
+      deletingAllEntries(); // usuwanie wszystkich wpisów
+      CreatingAllEntries() // Tworzenie wszystkich wpisów
+      deletingAllSubCategories(); // usuwanie wszystkich podkategori
+      subCategoryFunction() // tworzenie od nowa wszystkich podkategori
+      addNewSelectCategory(); // odświeżenie kategori w "Nowy wpis"
+      mainTitleReload(); // refresh
+      cancelDelete();
+    }
+
+    deleteConfirmButton.addEventListener('click', confirmDelete)
+
+  }
+  
+  cyclicDelete.addEventListener('click', deletingACategory)
+  // -------------------------------------------------------------
 }
 
 //  -------------------------------------
@@ -827,6 +907,11 @@ const createNewCategoryFunction = () => {
 
 addNewCategory.addEventListener('click', createNewCategoryFunction);
 
+
+// USUWANIE WYBRANEJ KATEGORI WRAZ Z WPISAMI
+
+
+// -------------------------------------------------------------------------
 
 
 // licznik usuniętych elementów 
