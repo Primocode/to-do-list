@@ -78,7 +78,7 @@ number = 0;
 let numberDeleted = 0;
 const mainEntry = document.querySelector('.main-content-entry');
 
-const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry, hour, colorsCategory) => {
+const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry, hour) => {
   number++
   const entry = document.createElement('div');
   mainEntry.appendChild(entry)
@@ -134,10 +134,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     category.style.color = "#D23030"
     entryTopH2.style.borderLeft = "4px solid #D23030";
   }
-  // else if (entryCategory == entryCategory) { // Jeżeli kategoria jest równa kategori
-  //   category.style.color = colorsCategory
-  //   entryTopH2.style.borderLeft = `4px solid ${colorsCategory}`;
-  // }
   else {
     category.style.color = categoryColorArray[whatIndexColors]
     entryTopH2.style.borderLeft = `4px solid ${categoryColorArray[whatIndexColors]}`;
@@ -246,6 +242,13 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     selectRestore.appendChild(selectOption2);
     selectOption2.className = "deleted-option";
     selectOption2.textContent = "Notatki";
+
+    for (let i = 0; i < categoryArray.length; i++) {
+      const selectOptionCategory = document.createElement('option');
+      selectRestore.appendChild(selectOptionCategory);
+      selectOptionCategory.className = "deleted-option";
+      selectOptionCategory.textContent = categoryArray[i]
+    }
 
     removeEntryButton.remove();
     removeIcon.remove();
@@ -409,7 +412,7 @@ const allButtonCreatingAllEntries = document.querySelector('.all');
 const CreatingAllEntries = () => {
   deletingAllEntries();
   for (let i = 0; i < entryTitleArray.length; i++) {
-    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], "nic", entryCurrentTime[i], categoryColorArray[i]);
+    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], "nic", entryCurrentTime[i]);
   }
   messageActive();
 }
@@ -464,7 +467,7 @@ const addEntryButtonFunction = () => {
   // }
   else {
     deletingAllEntries(); 
-    creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime, categoryColorArray)
+    creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime)
     entryContentsArray.push(entryContents);
     entryTitleArray.push(entryTitle);
     entryCategoryArray.push(EntryCategory);
@@ -482,7 +485,7 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 
 // -------------------------------------------
 
-// usuwanie wszystkich selectów przed dodawaniem
+// usuwanie wszystkich selectów przy dodawaniu nowego wpisu
 
 const removeAllSelectCategory = () => {
   const selectValue = document.querySelectorAll('#select > option');
@@ -492,7 +495,7 @@ const removeAllSelectCategory = () => {
   }
 }
 
-// dodawanie nowego selecta po zrobieniu nowej kategori 
+// dodawanie nowego selecta przy tworzeniu nowego wpisu po zrobieniu nowej kategori 
 
 const addNewSelectCategory = () => {
   const selectValue = document.querySelector('#select');
@@ -506,11 +509,7 @@ const addNewSelectCategory = () => {
     newSelect.value = categoryArray[i]
     newSelect.textContent = categoryArray[i]
   }
-
 }
-
-// ----------------------------------------
-
 
 // odświeżanie kategori
 
@@ -589,7 +588,7 @@ const mainCategoryFunction = () => {
   }
   else {
     for (let i = 0; i < indexes[nameCategory].length; i++) {
-      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], "nothing", entryCurrentTime[indexes[nameCategory][i]], categoryColorArray[indexes[nameCategory][i]])
+      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], "nothing", entryCurrentTime[indexes[nameCategory][i]])
       console.log("ile razy pokazać wpis" + i)
       messageActive();
       }
@@ -683,7 +682,7 @@ const subCategoryClickFunction = () => {
   const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
   console.log(subCategoryValue)
   deletingAllEntries();
-  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue], categoryColorArray[indexSubCategoryValue]);
+  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue]);
 
 }
 
@@ -809,7 +808,6 @@ const createNewCategoryFunction = () => {
   }
   // console.log(createCategoryColor.style.color);
   addNewSelectCategory();
-
 }
 
 addNewCategory.addEventListener('click', createNewCategoryFunction);
@@ -834,7 +832,7 @@ const deletedTextFunction = () => {
   messageActive();
   const messageActiveDelete = document.querySelector('.empty-entry-message-active');
   for (let i = 0; i < deleteEntryTitleArray.length; i++) {
-    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], categoryColorArray[i]);
+    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i]);
   }
   console.log(deleteEntryCategoryArray.length)
   if (deleteEntryTitleArray.length >= 1) {
@@ -846,11 +844,13 @@ const deletedTextFunction = () => {
     console.log("nie ma nic")
     messageActiveDelete.className = "empty-entry-message-active";
   }
+  // addNewSelectCategoryDeleteReload();
 }
 
 deletedText.addEventListener('click', deletedTextFunction);
 deleteShowButton.addEventListener('click', deletedTextFunction);
 // ---------------------------------------------------------------------------
+
 
 
 const reloadScript = () => {
@@ -865,6 +865,13 @@ const reloadScript = () => {
 reloadScript()
 
 // 0-gas08gas907gas07f0as-f7asfj0syfu0myh589aeyhkeafdhffdfsdshfjdhfdhfdhfdhf
+
+
+
+// const selectRestoreReload = () => {
+//   const selectRestoreLoad = document.querySelector('#select-restore');
+//   console.log(selectRestoreLoad)  
+// }
 
 
 
