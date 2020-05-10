@@ -78,7 +78,7 @@ number = 0;
 let numberDeleted = 0;
 const mainEntry = document.querySelector('.main-content-entry');
 
-const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry, hour) => {
+const creationNewEntry = (contents, title, entryCategory, entryDateValue, deleteEntry, hour, colorsCategory) => {
   number++
   const entry = document.createElement('div');
   mainEntry.appendChild(entry)
@@ -110,6 +110,9 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   category.className = "category";
   category.textContent = entryCategory // -- TEXT CONTENT KATEGORI WPISU
 
+  const whatIndexColors = categoryArray.indexOf(entryCategory);
+  console.log(whatIndexColors);
+
   if (entryCategory == "Do zrobienia") {
     category.style.color = "#1C8AF5";
     entryTopH2.style.borderLeft = "4px solid #1C8AF5";
@@ -131,9 +134,13 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     category.style.color = "#D23030"
     entryTopH2.style.borderLeft = "4px solid #D23030";
   }
-  else if (entryCategory == entryCategory) { // TO JEST WPIS OD DODATKOWEJ KATEGORI
-    category.style.color = "yellow";
-    entryTopH2.style.borderLeft = "4px solid yellow";
+  // else if (entryCategory == entryCategory) { // Jeżeli kategoria jest równa kategori
+  //   category.style.color = colorsCategory
+  //   entryTopH2.style.borderLeft = `4px solid ${colorsCategory}`;
+  // }
+  else {
+    category.style.color = categoryColorArray[whatIndexColors]
+    entryTopH2.style.borderLeft = `4px solid ${categoryColorArray[whatIndexColors]}`;
   }
 
   const entryTopRightButtons = document.createElement('div');
@@ -402,7 +409,7 @@ const allButtonCreatingAllEntries = document.querySelector('.all');
 const CreatingAllEntries = () => {
   deletingAllEntries();
   for (let i = 0; i < entryTitleArray.length; i++) {
-    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], "nic", entryCurrentTime[i]);
+    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], "nic", entryCurrentTime[i], categoryColorArray[i]);
   }
   messageActive();
 }
@@ -457,7 +464,7 @@ const addEntryButtonFunction = () => {
   // }
   else {
     deletingAllEntries(); 
-    creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime)
+    creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime, categoryColorArray)
     entryContentsArray.push(entryContents);
     entryTitleArray.push(entryTitle);
     entryCategoryArray.push(EntryCategory);
@@ -487,16 +494,19 @@ const removeAllSelectCategory = () => {
 
 // dodawanie nowego selecta po zrobieniu nowej kategori 
 
-const addNewSelectCategory = (whatToAdd) => {
+const addNewSelectCategory = () => {
   const selectValue = document.querySelector('#select');
-
+  removeAllSelectCategory();
   console.log(categoryArray);
 
-  const newSelect = document.createElement('option');
-  selectValue.appendChild(newSelect);
-  newSelect.className = "option"
-  newSelect.value = whatToAdd;
-  newSelect.textContent = whatToAdd;
+  for (let i = 0; i < categoryArray.length; i++) {
+    const newSelect = document.createElement('option');
+    selectValue.appendChild(newSelect);
+    newSelect.className = "option"
+    newSelect.value = categoryArray[i]
+    newSelect.textContent = categoryArray[i]
+  }
+
 }
 
 // ----------------------------------------
@@ -522,7 +532,7 @@ const refreshCategories = () => {
 
 const toDoListCategory = document.querySelector('.to-do-list-category');
 
-const createNewCategory = (nameCategoryArg) => {
+const createNewCategory = (nameCategoryArg, colorCategory) => {
   const cyclic = document.createElement('div');
   toDoListCategory.appendChild(cyclic);
   cyclic.className = "cyclic";
@@ -544,6 +554,7 @@ const createNewCategory = (nameCategoryArg) => {
   cyclicH2.className = "to-do-main-title";
   cyclicH2.textContent = nameCategoryArg // nazwa kategori
   cyclicH2.dataset.subcategory = nameCategoryArg;
+  cyclicH2.style.color = colorCategory
 
   const cyclicList = document.createElement('div');
   cyclicContainer.appendChild(cyclicList);
@@ -554,8 +565,7 @@ const createNewCategory = (nameCategoryArg) => {
   cyclicList.appendChild(emptyCategory);
   emptyCategory.className = "Empty-sub-category";
   emptyCategory.textContent = "Pusto, dodaj coś"
-  
-  addNewSelectCategory(nameCategoryArg);
+
 }
 
 //  -------------------------------------
@@ -579,7 +589,7 @@ const mainCategoryFunction = () => {
   }
   else {
     for (let i = 0; i < indexes[nameCategory].length; i++) {
-      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], "nothing", entryCurrentTime[indexes[nameCategory][i]])
+      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], "nothing", entryCurrentTime[indexes[nameCategory][i]], categoryColorArray[indexes[nameCategory][i]])
       console.log("ile razy pokazać wpis" + i)
       messageActive();
       }
@@ -673,7 +683,7 @@ const subCategoryClickFunction = () => {
   const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
   console.log(subCategoryValue)
   deletingAllEntries();
-  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue]);
+  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue], categoryColorArray[indexSubCategoryValue]);
 
 }
 
@@ -753,19 +763,40 @@ const deleteAllCategories = () => {
 
 const creatingAllCategory = () => {
   for (let i = 0; i < categoryArray.length; i++) {
-    createNewCategory(categoryArray[i])
+    createNewCategory(categoryArray[i], categoryColorArray[i]);
   }
 }
-// Pobieranie wartości przy polu i dodawanie do listy
+
+// Wybór koloru
+
+const categoryColorsFunction = () => {
+  let categoryColor = event.target.dataset.color;
+  const CreateNameCategoryValue = document.querySelector('.category-title');
+  CreateNameCategoryValue.style.color = categoryColor;
+  console.log(categoryColor);
+}
+
+document.querySelectorAll(".category-circle").forEach(item => item.addEventListener('click', categoryColorsFunction))
+
+// Pobieranie wartości przy polu i dodawanie do listy |kategorie|
 
 const addNewCategory = document.querySelector('.category-add')
 const categoryError = document.querySelector('.error-category');
 
 const createNewCategoryFunction = () => {
-  const CreateNameCategoryValue = document.querySelector('.category-title').value;
-  if (CreateNameCategoryValue.length >= 1) {
+  const CreateNameCategoryValue = document.querySelector('.category-title').value
+  const createCategoryColor = document.querySelector('.category-title');
+  if (createCategoryColor.style.color == "black") {
+    messCategory.textContent = "Musisz wybrać kolor kategori"
+    // console.log("JEST BLACK");
+  }
+  else if (categoryArray.includes(CreateNameCategoryValue)) {
+    messCategory.textContent = "Taka kategoria już istnieje";
+  }
+  else if (CreateNameCategoryValue.length >= 1) {
     console.log(CreateNameCategoryValue);
     categoryArray.push(CreateNameCategoryValue);
+    categoryColorArray.push(createCategoryColor.style.color);
     console.log(categoryArray)
   
     deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
@@ -776,10 +807,14 @@ const createNewCategoryFunction = () => {
   else {
     messCategory.textContent = "Nazwa kategori nie może być pusta"
   }
+  // console.log(createCategoryColor.style.color);
+  addNewSelectCategory();
 
 }
 
 addNewCategory.addEventListener('click', createNewCategoryFunction);
+
+
 
 // licznik usuniętych elementów 
 const deletedElements = document.querySelector('.deleted-list-h4');
@@ -799,7 +834,7 @@ const deletedTextFunction = () => {
   messageActive();
   const messageActiveDelete = document.querySelector('.empty-entry-message-active');
   for (let i = 0; i < deleteEntryTitleArray.length; i++) {
-    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i]);
+    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], categoryColorArray[i]);
   }
   console.log(deleteEntryCategoryArray.length)
   if (deleteEntryTitleArray.length >= 1) {
