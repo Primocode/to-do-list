@@ -340,6 +340,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     deletingAllEntries(); // usuwa wszystkie wpisy
     CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
     refreshCategories() // odświeża kategorie
+
    }
 
   doneIcon.addEventListener('click', changeToDone)
@@ -450,12 +451,12 @@ let minuteCategory = setInterval(errorCategory, 4000);
 const addEntryButton = document.querySelector('.add-new');
 
 const addEntryButtonFunction = () => {
+  
   const entryContents = document.querySelector('.text-area').value // pobieranie treści
   const entryTitle = document.querySelector('.entry-title').value // pobieranie tytułu
   const EntryCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
   const entryDate = document.querySelector('.entry-date').value;
   const currentTime = new Date();
-  
   if (entryContents.length < 1) {
     mess.textContent = "Treść nie może zostać pusta";
   }
@@ -478,7 +479,9 @@ const addEntryButtonFunction = () => {
     CreatingAllEntries()
     counterNumber()
     refreshCategories();
+    mainTitleSelectionFunction();
   }
+  addEntryButton.style.background = "#1C8AF5";
 }
 
 addEntryButton.addEventListener('click', addEntryButtonFunction);
@@ -550,7 +553,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
 
   const cyclicH2 = document.createElement('h2');
   cyclicText.appendChild(cyclicH2);
-  cyclicH2.className = "to-do-main-title";
+  cyclicH2.className = "to-do-main-title selection";
   cyclicH2.textContent = nameCategoryArg // nazwa kategori
   cyclicH2.dataset.subcategory = nameCategoryArg;
   cyclicH2.style.color = colorCategory
@@ -666,6 +669,7 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     const createSubCategory = document.createElement('h3');
     mainContainerOnSubCatergory[index].appendChild(createSubCategory);
     createSubCategory.id = "subCategory";
+    createSubCategory.className = "selection";
     createSubCategory.dataset.subCategory = entryTitleArray[indexSubCategorie[i]]
     createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]];
 
@@ -764,6 +768,7 @@ const creatingAllCategory = () => {
   for (let i = 0; i < categoryArray.length; i++) {
     createNewCategory(categoryArray[i], categoryColorArray[i]);
   }
+  mainTitleSelectionFunction();
 }
 
 // Wybór koloru
@@ -787,7 +792,6 @@ const createNewCategoryFunction = () => {
   const createCategoryColor = document.querySelector('.category-title');
   if (createCategoryColor.style.color == "black") {
     messCategory.textContent = "Musisz wybrać kolor kategori"
-    // console.log("JEST BLACK");
   }
   else if (categoryArray.includes(CreateNameCategoryValue)) {
     messCategory.textContent = "Taka kategoria już istnieje";
@@ -808,6 +812,7 @@ const createNewCategoryFunction = () => {
   }
   // console.log(createCategoryColor.style.color);
   addNewSelectCategory();
+  addNewCategory.style.background = "#1C8AF5";
 }
 
 addNewCategory.addEventListener('click', createNewCategoryFunction);
@@ -851,8 +856,31 @@ deletedText.addEventListener('click', deletedTextFunction);
 deleteShowButton.addEventListener('click', deletedTextFunction);
 // ---------------------------------------------------------------------------
 
+// Zaznaczenie kategori
 
 
+const mainTitleSelectionFunction = () => {
+  reloadMainTitleSelection();
+  const howMuchSelection = document.querySelectorAll('.selection');
+  console.log(howMuchSelection)
+  for (let i = 0; i < howMuchSelection.length; i ++) {
+    howMuchSelection[i].style.background = "none";
+  }
+  event.target.style.background = "#fbfbfb";
+}
+
+const reloadMainTitleSelection = () => {
+  const mainTitleSelection = document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction))
+}
+reloadMainTitleSelection();
+
+
+
+
+// ----------------------------------------------------------------------------
+
+
+// odświeżanie
 const reloadScript = () => {
   CreatingAllEntries() // Tworzenie wszystkich wpisów
   messageActive(); // aktywacja komunikatu o wypełnieniu subkategori

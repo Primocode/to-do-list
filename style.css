@@ -75,7 +75,7 @@ header nav .to-do-list-category .main-title {
 }
 
 header nav .to-do-list-category .main-title h2 {
-  margin-left: 10px;
+  padding-left: 10px;
 }
 
 header nav .to-do-list-category .main-title span {
@@ -189,7 +189,7 @@ header .deleted .deleted-container .deleted-text {
 }
 
 header .deleted .deleted-container .deleted-text .deleted-title {
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 10px;
   width: 100%;
 }
 
@@ -231,7 +231,7 @@ header .deleted .deleted-container h3:hover {
 }
 
 header .cyclic .cyclic-list h3:hover {
-  border-left: 5px solid #D23030;
+  border-left: 5px solid #7c7c7c;
 }
 
 header .creating-category {
