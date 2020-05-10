@@ -36,6 +36,7 @@ header nav .date {
   border-bottom: 1px solid #CBCBCB;
   -webkit-box-shadow: 0px 2px 4px 0px #eeeeee;
   box-shadow: 0px 2px 4px 0px #eeeeee;
+  border-right: 1px solid #CBCBCB;
 }
 
 header nav .date #time {
@@ -363,6 +364,7 @@ header .add-button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-right: 1px solid #CBCBCB;
 }
 
 header .add-button .add {
@@ -718,9 +720,9 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .main-content-all .main-content-entry .entry .entry-top .entry-top-right-buttons .info-entry .information-active {
   width: 150px;
-  height: 30px;
+  height: auto;
   position: relative;
-  right: 68px;
+  right: 88px;
   text-align: center;
   font-size: 12px;
   border-radius: 3px;

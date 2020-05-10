@@ -270,11 +270,11 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       let indexDelete = deleteEntryCurrentTime.indexOf(hour);
       console.log(indexDelete);
 
-        entryTitleArray.push(deleteEntryTitleArray[indexDelete]);
-        entryContentsArray.push(deleteEntryContentsArray[indexDelete]);
-        entryCategoryArray.push(selectRestoreValue);
-        entryDateArray.push(deleteEntryDateArray[indexDelete]);
-        entryCurrentTime.push(deleteEntryCurrentTime[indexDelete]);
+      entryTitleArray.push(deleteEntryTitleArray[indexDelete]);
+      entryContentsArray.push(deleteEntryContentsArray[indexDelete]);
+      entryCategoryArray.push(selectRestoreValue);
+      entryDateArray.push(deleteEntryDateArray[indexDelete]);
+      entryCurrentTime.push(deleteEntryCurrentTime[indexDelete]);
 
       deleteEntryTitleArray.splice(indexDelete, 1);
       deleteEntryContentsArray.splice(indexDelete, 1);
@@ -291,6 +291,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       for (let i = 0; i < deleteEntryCurrentTime.length; i++) {
         creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i]);
       }
+      deletedElementsCounter();
     }
     messageActive();
     counterNumber() // licznik wpisów
@@ -321,25 +322,9 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     //   }
     // }
 
-    verificationTitleIndex = entryTopH2.textContent
-    verificationContentIndex = entryBottomTextP.textContent
-    verificationCategoryIndex = category.textContent
-    verificationDateIndex = date.textContent
-    verificationCurrentDate = infoBox.textContent;
-    console.log(verificationContentIndex);
-    console.log(verificationTitleIndex);
-    console.log(verificationCategoryIndex);
-    console.log(verificationDateIndex);
-    console.log(verificationCurrentDate);
-
     const whatIndex = entryCurrentTime.indexOf(hour) 
 
-    console.log(whatIndex);
-    if (entryTitleArray[verificationTitleIndex] == entryCurrentTime[verificationCurrentDate]) {
-      if (entryCategoryArray[verificationCategoryIndex] == entryContentsArray[verificationContentIndex]) {
-        entryCategoryArray[whatIndex] = "Zrobione";
-      }
-    }
+    entryCategoryArray[whatIndex] = "Zrobione";
 
     counterNumber() // odświeża licznik wpisów
     deletingAllEntries(); // usuwa wszystkie wpisy
@@ -371,6 +356,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     // deletingAllEntries(); // usuwa wszystkie wpisy
     // CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
     refreshCategories() // odświeża kategorie
+
     deletedElementsCounter();
   }
   // -----------------------------------------
@@ -458,8 +444,7 @@ const addEntryButtonFunction = () => {
   const entryTitle = document.querySelector('.entry-title').value // pobieranie tytułu
   const EntryCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
   const entryDate = document.querySelector('.entry-date').value;
-  const currentDate = new Date();
-  const currentTime = currentDate.toLocaleTimeString();
+  const currentTime = new Date();
   
   if (entryContents.length < 1) {
     mess.textContent = "Treść nie może zostać pusta";
@@ -467,6 +452,9 @@ const addEntryButtonFunction = () => {
   else if (entryTitle.length < 1) {
     mess.textContent = "Tytuł nie może być pusty";
   }
+  // else if (entryCurrentTime.indexOf(currentTime)) {
+  //   mess.textContent = "Błąd - spróbuj ponownie"
+  // }
   else {
     deletingAllEntries(); 
     creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime)
