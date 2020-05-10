@@ -44,32 +44,43 @@ const closeCreateCategory = () => {
 
 createCategoryExit.addEventListener('click', closeCreateCategory);
 
-// ------------------------------------------------
+// -----------------------------------------------------------------
 
-// Dodawanie wpisów do tablicy
-// let entryTitleArray = ["Samochód", "rower", "kanapka"];
-// let entryContentsArray = ["Samochód jest super", "trek 1,2", "ser szynka"];
-// let entryCategoryArray = ["Ważne", "Ważne", "Do zrobienia"];
-// let entryDateArray = ["", "", ""];
-// let entryCurrentTime = ["15,05,05", "14,55,55", "15;55,55"];
+// let entryTitleArray = [];
+// let entryContentsArray = [];
+// let entryCategoryArray = [];
+// let entryDateArray = [];
+// let entryCurrentTime = [];
 
-let entryTitleArray = [];
-let entryContentsArray = [];
-let entryCategoryArray = [];
-let entryDateArray = [];
-let entryCurrentTime = [];
+// let categoryArray = [];
+// let categoryColorArray = [];
 
-let categoryArray = [];
-let categoryColorArray = [];
+// // let category = ["Do zrobienia", "Ważne", "Notatki"]
 
-let category = ["Do zrobienia", "Ważne", "Notatki"]
+// let deleteEntryTitleArray = [];
+// let deleteEntryContentsArray = [];
+// let deleteEntryCategoryArray = [];
+// let deleteEntryDateArray = [];
+// let deleteEntryCurrentTime = [];
 
+// -------------------------------------------------------------------
 
-let deleteEntryTitleArray = [];
-let deleteEntryContentsArray = [];
-let deleteEntryCategoryArray = [];
-let deleteEntryDateArray = [];
-let deleteEntryCurrentTime = [];
+let entryTitleArray = ["Nauka reacta", "Odrabiać lekcję", "E-lekcje", "Kat b1", "Daihatsu cuore ", "Zrobić kanapkę"];
+let entryContentsArray = ["Wykupić kurs u Samuraja.", "Trzeba odrabiać lekcję", "E-lekcję..", "kategoria b1", "b1", "Z chlebkiem"];
+let entryCategoryArray = ["Ważne", "Prawo Jazdy", "Do zrobienia", "Ważne", "Samochód", "Zrobione"];
+let entryDateArray = ["", "", "", "", "", ""];
+let entryCurrentTime = ["Sun May 10 2020 20:10:36 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:10:49 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:11:22 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:03 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:17 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:53 GMT+0200 (czas środkowoeuropejski letni)"];
+
+let categoryArray = ["Szkoła", "Prawo Jazdy", "Samochód"];
+let categoryColorArray = ["rgb(0, 188, 213)", "rgb(233, 30, 99)", "rgb(33, 150, 243)"];
+
+// let category = ["Do zrobienia", "Ważne", "Notatki"]
+
+let deleteEntryTitleArray = ["problem z spacjami", "problem z spacjami1"];
+let deleteEntryContentsArray = ["Z chlebkiem", "jakiś błąd"];
+let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
+let deleteEntryDateArray = ["", ""];
+let deleteEntryCurrentTime = ["Sun May 10 2020 20:13:52 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:14:02 GMT+0200 (czas środkowoeuropejski letni)"];
 
 // ----------------------------------------------
 
@@ -463,9 +474,9 @@ const addEntryButtonFunction = () => {
   else if (entryTitle.length < 1) {
     mess.textContent = "Tytuł nie może być pusty";
   }
-  // else if (entryCurrentTime.indexOf(currentTime)) {
-  //   mess.textContent = "Błąd - spróbuj ponownie"
-  // }
+  else if (entryTitleArray.includes(entryTitle)) {
+    mess.textContent = "Taki tytuł już istnieje";
+  }
   else {
     deletingAllEntries(); 
     creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime)
@@ -479,7 +490,6 @@ const addEntryButtonFunction = () => {
     CreatingAllEntries()
     counterNumber()
     refreshCategories();
-    mainTitleSelectionFunction();
   }
   addEntryButton.style.background = "#1C8AF5";
 }
@@ -580,6 +590,7 @@ const mainCategoryFunction = () => {
   let nameCategory = event.target.textContent;
   
   console.log(nameCategory + " to jest nazwa kategori")
+  mainTitleSelectionFunction();
   console.log(event.target.dataset.category)
 
   let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{})
@@ -682,12 +693,12 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
 
 // Przechodzenie pomiędzy subkategoriami
 const subCategoryClickFunction = () => {
+  const emptyMessageCom = document.querySelector('.empty-entry-message-active');
   const subCategoryValue = event.target.dataset.subCategory;
   const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
   console.log(subCategoryValue)
   deletingAllEntries();
   creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue]);
-
 }
 
 const checkSubCategory = () => {
@@ -768,7 +779,6 @@ const creatingAllCategory = () => {
   for (let i = 0; i < categoryArray.length; i++) {
     createNewCategory(categoryArray[i], categoryColorArray[i]);
   }
-  mainTitleSelectionFunction();
 }
 
 // Wybór koloru
@@ -866,7 +876,8 @@ const mainTitleSelectionFunction = () => {
   for (let i = 0; i < howMuchSelection.length; i ++) {
     howMuchSelection[i].style.background = "none";
   }
-  event.target.style.background = "#fbfbfb";
+  let eventTarget = event.target
+  eventTarget.style.background = "#fbfbfb";
 }
 
 const reloadMainTitleSelection = () => {
@@ -885,9 +896,11 @@ const reloadScript = () => {
   CreatingAllEntries() // Tworzenie wszystkich wpisów
   messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
   // mainTitleReload(); // RELOADOWANIE PRZECHODZENIA DO POSZCZEGÓLNYCH KATEGORI
+  creatingAllCategory();
   deletingAllSubCategories(); // usuwanie wszystkich podkategori
   subCategoryFunction() // tworzenie od nowa wszystkich podkategori
   mainTitleReload()
+  addNewSelectCategory();
   counterNumber() // licznik wpisów
 }
 reloadScript()
