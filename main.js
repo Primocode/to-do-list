@@ -456,6 +456,9 @@ const addEntryButtonFunction = () => {
   else if (entryTitleArray.includes(entryTitle)) {
     mess.textContent = "Taki tytuł już istnieje";
   }
+  else if (deleteEntryTitleArray.includes(entryTitle)) {
+    mess.textContent = "Taki tytuł został wcześniej usunięty";
+  }
   else {
     deletingAllEntries(); 
     creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime)
@@ -598,26 +601,26 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
 
       console.log(indexes[nameCategoryArg]);
 
-      console.log("Usunąć trzeba indeksy " + indexes[nameCategoryArg] + " Więc jest to " + entryTitleArray[indexes[nameCategoryArg]]);
 
-        if (indexes[nameCategoryArg] > 0) {
-          deleteEntryTitleArray.push(entryTitleArray[indexes[nameCategoryArg]])
-          deleteEntryContentsArray.push(entryContentsArray[indexes[nameCategoryArg]])
+      if (indexes[nameCategoryArg]) {
+        for (let i = 0; i < indexes[nameCategoryArg].length; i++) {
+          let indexToDelete = entryCategoryArray.indexOf(nameCategoryArg)
+  
+          deleteEntryTitleArray.push(entryTitleArray[indexToDelete]);
+          deleteEntryContentsArray.push(entryContentsArray[indexToDelete]);
           deleteEntryCategoryArray.push("Usunięte");
-          deleteEntryDateArray.push(entryDateArray[indexes[nameCategoryArg]])
-          deleteEntryCurrentTime.push(entryCurrentTime[indexes[nameCategoryArg]])
+          deleteEntryDateArray.push(entryDateArray[indexToDelete]);
+          deleteEntryCurrentTime.push(entryCurrentTime[indexToDelete]);
+  
+          entryTitleArray.splice(indexToDelete, 1);
+          entryContentsArray.splice(indexToDelete, 1);
+          entryCategoryArray.splice(indexToDelete, 1);
+          entryDateArray.splice(indexToDelete, 1);
+          entryCurrentTime.splice(indexToDelete, 1);
         }
+      }
 
-        // for (let i = 0; i < indexes[nameCategoryArg]; i++) {
-          if (indexes[nameCategoryArg] > 0) {
-            console.log(" --------------------------------------------- -Usunę " + indexes[nameCategoryArg]);
-            entryTitleArray.splice(indexes[nameCategoryArg], 1)
-            entryContentsArray.splice(indexes[nameCategoryArg], 1)
-            entryCategoryArray.splice(indexes[nameCategoryArg], 1)
-            entryDateArray.splice(indexes[nameCategoryArg], 1)
-            entryCurrentTime.splice(indexes[nameCategoryArg], 1)
-          }
-    // }
+
       deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
       creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
       deletingAllEntries(); // usuwanie wszystkich wpisów
@@ -626,11 +629,11 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
       subCategoryFunction() // tworzenie od nowa wszystkich podkategori
       addNewSelectCategory(); // odświeżenie kategori w "Nowy wpis"
       mainTitleReload(); // refresh
+      counterNumber() // licznik wpisów
+      deletedElementsCounter(); // licznik usuniętych wpisów
       cancelDelete();
     }
-
     deleteConfirmButton.addEventListener('click', confirmDelete)
-
   }
   
   cyclicDelete.addEventListener('click', deletingACategory)
