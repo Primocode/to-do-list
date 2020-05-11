@@ -557,7 +557,12 @@ main {
         .entry {
             margin: 0px 10px 10px 15px;
             width: 500px;
-            border: 1px solid #CBCBCB;
+            // border: 1px solid #CBCBCB;
+            border: 1px solid rgb(255, 255, 255);
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+            box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+            background-color: white;
             .top-panel {
                 width: 100%;
                 border-bottom: 1px solid #CBCBCB;
@@ -655,7 +660,7 @@ main {
                             width: 150px;
                             height: auto;
                             position: relative;
-                            right: 88px;
+                            right: 119px;
                             text-align: center;
                             font-size: 12px;
                             border-radius: 3px;

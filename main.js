@@ -65,22 +65,39 @@ createCategoryExit.addEventListener('click', closeCreateCategory);
 
 // -------------------------------------------------------------------
 
-let entryTitleArray = ["Nauka reacta", "Odrabiać lekcję", "E-lekcje", "Kat b1", "Daihatsu cuore ", "Zrobić kanapkę"];
-let entryContentsArray = ["Wykupić kurs u Samuraja.", "Trzeba odrabiać lekcję", "E-lekcję..", "kategoria b1", "b1", "Z chlebkiem"];
-let entryCategoryArray = ["Ważne", "Prawo Jazdy", "Do zrobienia", "Ważne", "Samochód", "Zrobione"];
-let entryDateArray = ["", "", "", "", "", ""];
-let entryCurrentTime = ["Sun May 10 2020 20:10:36 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:10:49 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:11:22 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:03 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:17 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:53 GMT+0200 (czas środkowoeuropejski letni)"];
+// let entryTitleArray = ["Nauka reacta", "Odrabiać lekcję", "E-lekcje", "Kat b1", "Daihatsu cuore ", "Zrobić kanapkę", "Prawko"];
+// let entryContentsArray = ["Wykupić kurs u Samuraja.", "Trzeba odrabiać lekcję", "E-lekcję..", "kategoria b1", "b1", "Z chlebkiem", "Kat b1"];
+// let entryCategoryArray = ["Ważne", "Prawo Jazdy", "Do zrobienia", "Ważne", "Samochód", "Zrobione", "Prawo Jazdy"];
+// let entryDateArray = ["", "", "", "", "", "",""];
+// let entryCurrentTime = ["Sun May 10 2020 20:10:36 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:10:49 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:11:22 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:03 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:17 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:53 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:15:36 GMT+0200 (czas środkowoeuropejski letni)"];
 
-let categoryArray = ["Szkoła", "Prawo Jazdy", "Samochód"];
-let categoryColorArray = ["rgb(0, 188, 213)", "rgb(233, 30, 99)", "rgb(33, 150, 243)"];
+// let categoryArray = ["Szkoła", "Prawo Jazdy", "Samochód"];
+// let categoryColorArray = ["rgb(0, 188, 213)", "rgb(233, 30, 99)", "rgb(33, 150, 243)"];
+
+// // let category = ["Do zrobienia", "Ważne", "Notatki"]
+
+// let deleteEntryTitleArray = ["problem z spacjami", "problem z spacjami1"];
+// let deleteEntryContentsArray = ["Z chlebkiem", "jakiś błąd"];
+// let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
+// let deleteEntryDateArray = ["", ""];
+// let deleteEntryCurrentTime = ["Sun May 10 2020 20:13:52 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:14:02 GMT+0200 (czas środkowoeuropejski letni)"];
+
+let entryTitleArray = ["Kanapka", "Matematyka", "Notatka (Biologia)", "Nauka Reacta", "Nauka Angielskiego", "Zrobienie prawka", "Zrobienie samochodu", "Zdanie b1", "Rower Trek 1,2", "Pojeżdzić", "Kupić kask"];
+let entryContentsArray = ["Kanapka w kategorii (Do zrobienia)", "Matematyka w kategorii (Ważne)", "Notatka (Biologia) w kategorii (Notatki)", "Nauka Reacta w kategorii (Do zrobienia)", "Nauka Angielskiego w kategorii (Do zrobienia)", "Zrobienie prawka w kategorii (Prawo jazdy)", "Zrobienie samochodu w kategorii (Prawo jazdy)", "Zdanie b1 w kategorii (Prawo jazdy)", "Rower Trek 1,2 w kategorii (Rower)", "Pojeżdzić w kategorii (Rower)", "Kupić kask w kategorii (Ważne)"];
+let entryCategoryArray = ["Do zrobienia", "Ważne", "Notatki", "Do zrobienia", "Do zrobienia", "Prawo jazdy", "Prawo jazdy", "Prawo jazdy", "Rower", "Rower", "Ważne"];
+let entryDateArray = ["", "", "", "", "", "", "", "", "", "", ""];
+let entryCurrentTime = ["Mon May 11 2020 17:17:19 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:17:38 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:00 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:30 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:55 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:19:32 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:19:46 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:03 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:27 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:35 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:50 GMT+0200 (czas środkowoeuropejski letni)"];
+
+let categoryArray = ["Prawo jazdy", "Rower", "Pusta kategoria"];
+let categoryColorArray = ["rgb(255, 87, 34)", "rgb(156, 39, 176)", "rgb(76, 175, 80)"];
 
 // let category = ["Do zrobienia", "Ważne", "Notatki"]
 
-let deleteEntryTitleArray = ["problem z spacjami", "problem z spacjami1"];
-let deleteEntryContentsArray = ["Z chlebkiem", "jakiś błąd"];
+let deleteEntryTitleArray = ["Granie w gry ", "Sprzedaż skrzynek"];
+let deleteEntryContentsArray = ["Granie w gry w kategori (Usunięte) pierwotnie kategoria (Do zrobienia)", "Sprzedaż skrzynek w kategori (Usunięte) pierwotnie kategoria (Rower)"];
 let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
 let deleteEntryDateArray = ["", ""];
-let deleteEntryCurrentTime = ["Sun May 10 2020 20:13:52 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:14:02 GMT+0200 (czas środkowoeuropejski letni)"];
+let deleteEntryCurrentTime = ["Mon May 11 2020 17:22:00 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:22:28 GMT+0200 (czas środkowoeuropejski letni)"];
 
 // ----------------------------------------------
 
@@ -322,27 +339,8 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   // ----------------------------------------------------------------------------
   }
 
-
   // Funkcja do zmiany wpisów na na "Zrobione"
   const changeToDone = (e) => {
-    // verificationTitleIndex = entryTopH2.textContent
-    // verificationContentIndex = entryBottomTextP.textContent
-    // verificationCategoryIndex = category.textContent
-    // verificationDateIndex = date.textContent
-    // verificationCurrentDate = infoBox.textContent;
-    // console.log(verificationContentIndex);
-    // console.log(verificationTitleIndex);
-    // console.log(verificationCategoryIndex);
-    // console.log(verificationDateIndex);
-    // console.log(verificationCurrentDate);
-
-    // const whatIndex = entryCurrentTime.indexOf(verificationCurrentDate) 
-    // if (entryTitleArray[verificationTitleIndex] == entryCurrentTime[verificationCurrentDate]) {
-    //   if (entryCategoryArray[verificationCategoryIndex] == entryContentsArray[verificationContentIndex]) {
-    //     entryCategoryArray[whatIndex] = "Zrobione";
-    //   }
-    // }
-
     const whatIndex = entryCurrentTime.indexOf(hour) 
 
     entryCategoryArray[whatIndex] = "Zrobione";
@@ -360,26 +358,32 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const removeIndividualEntryFunction = (e) => {
     let removeDatasetValue = entry.dataset.value
 
-    deleteEntryTitleArray.push(title);
-    deleteEntryContentsArray.push(contents);
-    deleteEntryCategoryArray.push("Usunięte");
-    deleteEntryDateArray.push(entryDateValue);
-    deleteEntryCurrentTime.push(hour);
 
-    entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
-    entryContentsArray.splice(entryContentsArray.indexOf(contents), 1);
-    entryCategoryArray.splice(entryCategoryArray.indexOf(entryCategory), 1);
-    entryDateArray.splice(entryDateArray.indexOf(entryDateValue), 1);
-    entryCurrentTime.splice(entryCurrentTime.indexOf(hour), 1);
 
-    entry.remove(removeDatasetValue);
-    messageActive(); //zamyka komunikat
-    counterNumber() // odświeża licznik wpisów
-    // deletingAllEntries(); // usuwa wszystkie wpisy
-    // CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
-    refreshCategories() // odświeża kategorie
+    if (entryTitleArray.indexOf(title) >= 0) {
+      console.log(entryTitleArray.indexOf(title))
+      deleteEntryTitleArray.push(title);
+      deleteEntryContentsArray.push(contents);
+      deleteEntryCategoryArray.push("Usunięte");
+      deleteEntryDateArray.push(entryDateValue);
+      deleteEntryCurrentTime.push(hour);
 
-    deletedElementsCounter();
+      
+      entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
+      entryContentsArray.splice(entryContentsArray.indexOf(contents), 1);
+      entryCategoryArray.splice(entryCategoryArray.indexOf(entryCategory), 1);
+      entryDateArray.splice(entryDateArray.indexOf(entryDateValue), 1);
+      entryCurrentTime.splice(entryCurrentTime.indexOf(hour), 1);
+
+      entry.remove(removeDatasetValue);
+      messageActive(); //zamyka komunikat
+      counterNumber() // odświeża licznik wpisów
+      // deletingAllEntries(); // usuwa wszystkie wpisy
+      // CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
+      refreshCategories() // odświeża kategorie
+
+      deletedElementsCounter();
+    }
   }
   // -----------------------------------------
   
@@ -462,7 +466,6 @@ let minuteCategory = setInterval(errorCategory, 4000);
 const addEntryButton = document.querySelector('.add-new');
 
 const addEntryButtonFunction = () => {
-  
   const entryContents = document.querySelector('.text-area').value // pobieranie treści
   const entryTitle = document.querySelector('.entry-title').value // pobieranie tytułu
   const EntryCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
@@ -610,7 +613,9 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
 
     const cancelDelete = () => {
       const deleteBox = document.querySelector('.deletingCategory');
-      deleteBox.remove();
+      if (deleteBox) {
+        deleteBox.remove();
+      }
     }
 
     deleteCancelButton.addEventListener('click', cancelDelete)
@@ -624,22 +629,32 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
       console.log("usunięto");
       let indexDelete = categoryArray.indexOf(nameCategoryArg) // usuwanie samej kategori 
       categoryArray.splice(indexDelete, 1); 
+      categoryColorArray.splice(indexDelete, 1);
 
       let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
 
       console.log(indexes[nameCategoryArg]);
 
-      deleteEntryTitleArray.push(entryTitleArray[indexes[nameCategoryArg]])
-      deleteEntryContentsArray.push(entryContentsArray[indexes[nameCategoryArg]])
-      deleteEntryCategoryArray.push("Usunięte");
-      deleteEntryDateArray.push(entryDateArray[indexes[nameCategoryArg]])
-      deleteEntryCurrentTime.push(entryCurrentTime[indexes[nameCategoryArg]])
+      console.log("Usunąć trzeba indeksy " + indexes[nameCategoryArg] + " Więc jest to " + entryTitleArray[indexes[nameCategoryArg]]);
 
-      entryTitleArray.splice(indexes[nameCategoryArg], 1)
-      entryContentsArray.splice(indexes[nameCategoryArg], 1)
-      entryCategoryArray.splice(indexes[nameCategoryArg], 1)
-      entryDateArray.splice(indexes[nameCategoryArg], 1)
-      entryCurrentTime.splice(indexes[nameCategoryArg], 1)
+        if (indexes[nameCategoryArg] > 0) {
+          deleteEntryTitleArray.push(entryTitleArray[indexes[nameCategoryArg]])
+          deleteEntryContentsArray.push(entryContentsArray[indexes[nameCategoryArg]])
+          deleteEntryCategoryArray.push("Usunięte");
+          deleteEntryDateArray.push(entryDateArray[indexes[nameCategoryArg]])
+          deleteEntryCurrentTime.push(entryCurrentTime[indexes[nameCategoryArg]])
+        }
+
+        // for (let i = 0; i < indexes[nameCategoryArg]; i++) {
+          if (indexes[nameCategoryArg] > 0) {
+            console.log(" --------------------------------------------- -Usunę " + indexes[nameCategoryArg]);
+            entryTitleArray.splice(indexes[nameCategoryArg], 1)
+            entryContentsArray.splice(indexes[nameCategoryArg], 1)
+            entryCategoryArray.splice(indexes[nameCategoryArg], 1)
+            entryDateArray.splice(indexes[nameCategoryArg], 1)
+            entryCurrentTime.splice(indexes[nameCategoryArg], 1)
+          }
+    // }
 
       deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
       creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
@@ -777,8 +792,10 @@ const subCategoryClickFunction = () => {
   const subCategoryValue = event.target.dataset.subCategory;
   const indexSubCategoryValue = entryTitleArray.indexOf(subCategoryValue)
   console.log(subCategoryValue)
+  mainTitleSelectionFunction();
   deletingAllEntries();
   creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue]);
+  messageActive();
 }
 
 const checkSubCategory = () => {
@@ -894,7 +911,10 @@ const createNewCategoryFunction = () => {
   
     deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
     creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
-    closeCreateCategory(); // zamykanie okna po zrobieniu kategori;
+    deletingAllSubCategories(); // usuwanie wszystkich podkategori
+    subCategoryFunction() // tworzenie od nowa wszystkich podkategori
+    addNewSelectCategory(); // odświeżenie kategori w "Nowy wpis"
+    closeCreateCategory(); // zamykanie okna 
     mainTitleReload(); // refresh
   }
   else {
@@ -957,15 +977,17 @@ deleteShowButton.addEventListener('click', deletedTextFunction);
 const mainTitleSelectionFunction = () => {
   reloadMainTitleSelection();
   const howMuchSelection = document.querySelectorAll('.selection');
-  console.log(howMuchSelection)
+  // console.log(howMuchSelection[0]);
   for (let i = 0; i < howMuchSelection.length; i ++) {
     howMuchSelection[i].style.background = "none";
   }
   let eventTarget = event.target
-  eventTarget.style.background = "#fbfbfb";
+  eventTarget.style.background = "rgb(243, 243, 243)";
 }
 
 const reloadMainTitleSelection = () => {
+  const howMuchSelection = document.querySelectorAll('.selection');
+  howMuchSelection[0].style.background = "rgb(243, 243, 243)";
   const mainTitleSelection = document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction))
 }
 reloadMainTitleSelection();
@@ -987,6 +1009,8 @@ const reloadScript = () => {
   mainTitleReload()
   addNewSelectCategory();
   counterNumber() // licznik wpisów
+  deletedElementsCounter(); // licznik usuniętych wpisów
+  reloadMainTitleSelection();
 }
 reloadScript()
 
