@@ -91,8 +91,6 @@ let entryCurrentTime = ["Mon May 11 2020 17:17:19 GMT+0200 (czas środkowoeurope
 let categoryArray = ["Prawo jazdy", "Rower", "Pusta kategoria"];
 let categoryColorArray = ["rgb(255, 87, 34)", "rgb(156, 39, 176)", "rgb(76, 175, 80)"];
 
-// let category = ["Do zrobienia", "Ważne", "Notatki"]
-
 let deleteEntryTitleArray = ["Granie w gry ", "Sprzedaż skrzynek"];
 let deleteEntryContentsArray = ["Granie w gry w kategori (Usunięte) pierwotnie kategoria (Do zrobienia)", "Sprzedaż skrzynek w kategori (Usunięte) pierwotnie kategoria (Rower)"];
 let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
@@ -187,13 +185,11 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   doneEntry.className = "done-entry";
 
   // ICON DODAWANIA DO ZROBIONYCH
-
   const doneIcon = document.createElement('span');
   doneEntry.appendChild(doneIcon);
   doneIcon.className = "far fa-check-circle";
 
   // Icon informacji
-
   const info = document.createElement('button');
   entryTopRightButtons.appendChild(info);
   info.className = "info-entry";
@@ -286,7 +282,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
     // Przywracanie usuniętych wpisów 
 
-
     const restoreButton = document.querySelector('.button-confirm');
 
     const restoreDeletedEntries = (e) => {
@@ -301,9 +296,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       let selectRestoreValue = selectRestore.value // nazwa zaznaczonej kategori
       console.log(selectRestoreValue);
       console.log(hour);
-
-      // let selectHourValue = selectHour.textContent;
-      // console.log(selectHourValue);
 
       let indexDelete = deleteEntryCurrentTime.indexOf(hour);
       console.log(indexDelete);
@@ -335,21 +327,17 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     counterNumber() // licznik wpisów
     buttonConfrim.addEventListener('click', restoreDeletedEntries);
     // --------------------------------------------------------------------------
-  
-  // ----------------------------------------------------------------------------
   }
 
   // Funkcja do zmiany wpisów na na "Zrobione"
   const changeToDone = (e) => {
     const whatIndex = entryCurrentTime.indexOf(hour) 
-
     entryCategoryArray[whatIndex] = "Zrobione";
 
     counterNumber() // odświeża licznik wpisów
     deletingAllEntries(); // usuwa wszystkie wpisy
     CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
     refreshCategories() // odświeża kategorie
-
    }
 
   doneIcon.addEventListener('click', changeToDone)
@@ -358,7 +346,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const removeIndividualEntryFunction = (e) => {
     let removeDatasetValue = entry.dataset.value
 
-
+    let deleteByIndex = entryTitleArray.indexOf(title);
 
     if (entryTitleArray.indexOf(title) >= 0) {
       console.log(entryTitleArray.indexOf(title))
@@ -368,12 +356,11 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       deleteEntryDateArray.push(entryDateValue);
       deleteEntryCurrentTime.push(hour);
 
-      
-      entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
-      entryContentsArray.splice(entryContentsArray.indexOf(contents), 1);
-      entryCategoryArray.splice(entryCategoryArray.indexOf(entryCategory), 1);
-      entryDateArray.splice(entryDateArray.indexOf(entryDateValue), 1);
-      entryCurrentTime.splice(entryCurrentTime.indexOf(hour), 1);
+      entryTitleArray.splice(deleteByIndex, 1);
+      entryContentsArray.splice(deleteByIndex, 1);
+      entryCategoryArray.splice(deleteByIndex, 1);
+      entryDateArray.splice(deleteByIndex, 1);
+      entryCurrentTime.splice(deleteByIndex, 1);
 
       entry.remove(removeDatasetValue);
       messageActive(); //zamyka komunikat
@@ -383,15 +370,12 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       refreshCategories() // odświeża kategorie
 
       deletedElementsCounter();
+
     }
   }
   // -----------------------------------------
-  
   removeEntryButton.addEventListener('click', removeIndividualEntryFunction);
-
-
 }
-
 //  --------------------------------------------
 
 
@@ -402,13 +386,11 @@ const deletingAllEntries = () => {
     addAllEntry[i].remove();
   }
 }
-
 // --------------------------------------------
 
 const emptyMessage = document.querySelector(".empty-entry-message-active");
 
 // Funkcja aktywacji wiadomości, pokazuje czy kategoria jest pusta 
-
 const messageActive = () => {
   const entryMessage = document.querySelectorAll('.entry');
   console.log(entryMessage)
@@ -419,7 +401,6 @@ const messageActive = () => {
     emptyMessage.className = "empty-entry-message-active";
   }
 }
-
 // ---------------------------------------------------------------------
 
 // tworzenie wszystkich wpisów 
@@ -432,12 +413,8 @@ const CreatingAllEntries = () => {
   }
   messageActive();
 }
-
-// CreatingAllEntries()
 allButtonCreatingAllEntries.addEventListener('click', CreatingAllEntries);
 console.log("AUTOMATYCZNE TWORZENIE WPISÓW")
-
-
 // --------------------------------------
 
 // Komunikat wpisów
@@ -459,7 +436,6 @@ function errorCategory() {
 }
 
 let minuteCategory = setInterval(errorCategory, 4000);
-
 // -------------------------------------
 
 // Przycisk do dodawania nowych wpisów 
@@ -498,11 +474,9 @@ const addEntryButtonFunction = () => {
 }
 
 addEntryButton.addEventListener('click', addEntryButtonFunction);
-
 // -------------------------------------------
 
 // usuwanie wszystkich selectów przy dodawaniu nowego wpisu
-
 const removeAllSelectCategory = () => {
   const selectValue = document.querySelectorAll('#select > option');
   for (let i = 3; i < selectValue.length; i++) {
@@ -512,7 +486,6 @@ const removeAllSelectCategory = () => {
 }
 
 // dodawanie nowego selecta przy tworzeniu nowego wpisu po zrobieniu nowej kategori 
-
 const addNewSelectCategory = () => {
   const selectValue = document.querySelector('#select');
   removeAllSelectCategory();
@@ -528,23 +501,13 @@ const addNewSelectCategory = () => {
 }
 
 // odświeżanie kategori
-
 const refreshCategories = () => {
   deletingAllSubCategories(); // usuwanie wszystkich kategori.
   subCategoryFunction(); // tworzenie nowych kategori
 }
-
-// ------------
-
-
-// wyświetlanie napisu o pustej tablicy 
-
-// messageActive();
-
 // ----------------------------------------
 
 //  TWORZENIE NOWEJ KATEGORI 
-
 const toDoListCategory = document.querySelector('.to-do-list-category');
 
 const createNewCategory = (nameCategoryArg, colorCategory) => {
@@ -655,7 +618,6 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
             entryCurrentTime.splice(indexes[nameCategoryArg], 1)
           }
     // }
-
       deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
       creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
       deletingAllEntries(); // usuwanie wszystkich wpisów
@@ -674,7 +636,6 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   cyclicDelete.addEventListener('click', deletingACategory)
   // -------------------------------------------------------------
 }
-
 //  -------------------------------------
 
 // Tworzenie i dodawanie do kategorii
@@ -712,7 +673,6 @@ const mainTitleReload = () => {
 mainTitleReload(); // RELOADOWANIE PRZECHODZENIA DO POSZCZEGÓLNYCH KATEGORI
 
 const toOoMainTitle = document.querySelectorAll('.to-do-main-title');
-
 // -----------------------------------
 
 //usuwanie wszystkich podkategori
@@ -722,7 +682,6 @@ const deletingAllSubCategories = () => {
     allMainListSubCategory[i].remove(); // działa
   }
 }
-// deletingAllSubCategories();
 
 // ----------------------------------
 
@@ -762,8 +721,6 @@ const deleteEmptySubCategory = () => {
     emptySubCategory[i].remove();
   }
 }
-
-
 // ------------------------------------------------------
 
 // tworzenie subkategori DOM 
@@ -778,12 +735,9 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     createSubCategory.className = "selection";
     createSubCategory.dataset.subCategory = entryTitleArray[indexSubCategorie[i]]
     createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]];
-
   }
-  
   checkSubCategory()
 } 
-
 // ----------------------------------
 
 // Przechodzenie pomiędzy subkategoriami
@@ -801,18 +755,14 @@ const subCategoryClickFunction = () => {
 const checkSubCategory = () => {
   document.querySelectorAll("#subCategory").forEach(item => item.addEventListener('click', subCategoryClickFunction))
 }
-
 // ---------------------------------------------------
 
 
-let numberSubCategory = -1;
 // Pod kategorie
+let numberSubCategory = -1;
 const subCategoryFunction = () => {   
   const mainList = document.querySelectorAll('.main-list');
   console.log(mainList)
-  // console.log(mainList.dataset.subcategory);
-
-
   console.log(toOoMainTitle); // trzeba sprawdzić jaki index ma dana kategoria, żeby pózniej po indexie dodać do pod kategori tytuły
   let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
   let amount = 0;
@@ -831,21 +781,15 @@ const subCategoryFunction = () => {
       amount = indexes[subCategoryList].length;
     }
 
-    
-    
     createSubCategoryFunction(numberSubCategory, indexes[subCategoryList], amount);
     amount = 0;
 
-  for (let i = 0; i > amount; i++) {
-    console.log("tyle razy musi zrobić w jednej kategori");
+    for (let i = 0; i > amount; i++) {
+      console.log("tyle razy musi zrobić w jednej kategori");
+    }
   }
-
-    //1 argument to index do której kategori dodać, a drugi argument to są indeksy poszczególnych wpisów
-  }
-  
 numberSubCategory = -1;
 }
-// subCategoryFunction()
 
 // ------------------------------------------------------------
 
@@ -855,12 +799,9 @@ const counterNumber = () => {
   
   numberEntry.textContent = "Aktualnych wpisów: " + entryTitleArray.length
 }
-// counterNumber()
-
 // ----------------------------------------------------------
 
 // FUNKCJA DO USUWANIA WSZYSTKICH KATEGORI DODANYCH PRZEZ UŻYTKOWNIKA
-
 const deleteAllCategories = () => {
   const howMuchUserCategories = document.querySelectorAll('.cyclic');
   for (let i = 0; i < howMuchUserCategories.length; i++) {
@@ -871,7 +812,6 @@ const deleteAllCategories = () => {
 // ------------------------------------------
 
 // Tworzenie automatycznie wszystkich kategori z listy
-
 const creatingAllCategory = () => {
   for (let i = 0; i < categoryArray.length; i++) {
     createNewCategory(categoryArray[i], categoryColorArray[i]);
@@ -879,7 +819,6 @@ const creatingAllCategory = () => {
 }
 
 // Wybór koloru
-
 const categoryColorsFunction = () => {
   let categoryColor = event.target.dataset.color;
   const CreateNameCategoryValue = document.querySelector('.category-title');
@@ -890,7 +829,6 @@ const categoryColorsFunction = () => {
 document.querySelectorAll(".category-circle").forEach(item => item.addEventListener('click', categoryColorsFunction))
 
 // Pobieranie wartości przy polu i dodawanie do listy |kategorie|
-
 const addNewCategory = document.querySelector('.category-add')
 const categoryError = document.querySelector('.error-category');
 
@@ -920,19 +858,11 @@ const createNewCategoryFunction = () => {
   else {
     messCategory.textContent = "Nazwa kategori nie może być pusta"
   }
-  // console.log(createCategoryColor.style.color);
   addNewSelectCategory();
   addNewCategory.style.background = "#1C8AF5";
 }
 
 addNewCategory.addEventListener('click', createNewCategoryFunction);
-
-
-// USUWANIE WYBRANEJ KATEGORI WRAZ Z WPISAMI
-
-
-// -------------------------------------------------------------------------
-
 
 // licznik usuniętych elementów 
 const deletedElements = document.querySelector('.deleted-list-h4');
@@ -944,7 +874,6 @@ const deletedElementsCounter = () => {
 // ----------------------------------------------------------
 
 // Kategoria "Usunięte"
-
 const deletedText = document.querySelector('.deleted-text');
 const deleteShowButton = document.querySelector('.deleted-list-h3-see');
 const deletedTextFunction = () => {
@@ -964,7 +893,6 @@ const deletedTextFunction = () => {
     console.log("nie ma nic")
     messageActiveDelete.className = "empty-entry-message-active";
   }
-  // addNewSelectCategoryDeleteReload();
 }
 
 deletedText.addEventListener('click', deletedTextFunction);
@@ -972,8 +900,6 @@ deleteShowButton.addEventListener('click', deletedTextFunction);
 // ---------------------------------------------------------------------------
 
 // Zaznaczenie kategori
-
-
 const mainTitleSelectionFunction = () => {
   reloadMainTitleSelection();
   const howMuchSelection = document.querySelectorAll('.selection');
@@ -991,12 +917,7 @@ const reloadMainTitleSelection = () => {
   const mainTitleSelection = document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction))
 }
 reloadMainTitleSelection();
-
-
-
-
 // ----------------------------------------------------------------------------
-
 
 // odświeżanie
 const reloadScript = () => {
@@ -1013,22 +934,7 @@ const reloadScript = () => {
   reloadMainTitleSelection();
 }
 reloadScript()
-
-// 0-gas08gas907gas07f0as-f7asfj0syfu0myh589aeyhkeafdhffdfsdshfjdhfdhfdhfdhf
-
-
-
-// const selectRestoreReload = () => {
-//   const selectRestoreLoad = document.querySelector('#select-restore');
-//   console.log(selectRestoreLoad)  
-// }
-
-
-
-
-
-// ---------------------------------------------------
-// --------------!--------------------!---------------!---------------!-------------
+// ------------------------------------------------------------------------------
 
 
 
