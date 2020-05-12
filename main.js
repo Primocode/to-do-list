@@ -46,22 +46,22 @@ createCategoryExit.addEventListener('click', closeCreateCategory);
 
 // -----------------------------------------------------------------
 
-// let entryTitleArray = [];
-// let entryContentsArray = [];
-// let entryCategoryArray = [];
-// let entryDateArray = [];
-// let entryCurrentTime = [];
+let entryTitleArray = [];
+let entryContentsArray = [];
+let entryCategoryArray = [];
+let entryDateArray = [];
+let entryCurrentTime = [];
 
-// let categoryArray = [];
-// let categoryColorArray = [];
+let categoryArray = [];
+let categoryColorArray = [];
 
-// // let category = ["Do zrobienia", "Ważne", "Notatki"]
+// let category = ["Do zrobienia", "Ważne", "Notatki"]
 
-// let deleteEntryTitleArray = [];
-// let deleteEntryContentsArray = [];
-// let deleteEntryCategoryArray = [];
-// let deleteEntryDateArray = [];
-// let deleteEntryCurrentTime = [];
+let deleteEntryTitleArray = [];
+let deleteEntryContentsArray = [];
+let deleteEntryCategoryArray = [];
+let deleteEntryDateArray = [];
+let deleteEntryCurrentTime = [];
 
 // -------------------------------------------------------------------
 
@@ -82,20 +82,24 @@ createCategoryExit.addEventListener('click', closeCreateCategory);
 // let deleteEntryDateArray = ["", ""];
 // let deleteEntryCurrentTime = ["Sun May 10 2020 20:13:52 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:14:02 GMT+0200 (czas środkowoeuropejski letni)"];
 
-let entryTitleArray = ["Kanapka", "Matematyka", "Notatka (Biologia)", "Nauka Reacta", "Nauka Angielskiego", "Zrobienie prawka", "Zrobienie samochodu", "Zdanie b1", "Rower Trek 1,2", "Pojeżdzić", "Kupić kask"];
-let entryContentsArray = ["Kanapka w kategorii (Do zrobienia)", "Matematyka w kategorii (Ważne)", "Notatka (Biologia) w kategorii (Notatki)", "Nauka Reacta w kategorii (Do zrobienia)", "Nauka Angielskiego w kategorii (Do zrobienia)", "Zrobienie prawka w kategorii (Prawo jazdy)", "Zrobienie samochodu w kategorii (Prawo jazdy)", "Zdanie b1 w kategorii (Prawo jazdy)", "Rower Trek 1,2 w kategorii (Rower)", "Pojeżdzić w kategorii (Rower)", "Kupić kask w kategorii (Ważne)"];
-let entryCategoryArray = ["Do zrobienia", "Ważne", "Notatki", "Do zrobienia", "Do zrobienia", "Prawo jazdy", "Prawo jazdy", "Prawo jazdy", "Rower", "Rower", "Ważne"];
-let entryDateArray = ["", "", "", "", "", "", "", "", "", "", ""];
-let entryCurrentTime = ["Mon May 11 2020 17:17:19 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:17:38 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:00 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:30 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:55 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:19:32 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:19:46 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:03 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:27 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:35 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:50 GMT+0200 (czas środkowoeuropejski letni)"];
 
-let categoryArray = ["Prawo jazdy", "Rower", "Pusta kategoria"];
-let categoryColorArray = ["rgb(255, 87, 34)", "rgb(156, 39, 176)", "rgb(76, 175, 80)"];
 
-let deleteEntryTitleArray = ["Granie w gry ", "Sprzedaż skrzynek"];
-let deleteEntryContentsArray = ["Granie w gry w kategori (Usunięte) pierwotnie kategoria (Do zrobienia)", "Sprzedaż skrzynek w kategori (Usunięte) pierwotnie kategoria (Rower)"];
-let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
-let deleteEntryDateArray = ["", ""];
-let deleteEntryCurrentTime = ["Mon May 11 2020 17:22:00 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:22:28 GMT+0200 (czas środkowoeuropejski letni)"];
+
+
+// let entryTitleArray = ["Kanapka", "Matematyka", "Notatka (Biologia)", "Nauka Reacta", "Nauka Angielskiego", "Zrobienie prawka", "Zrobienie samochodu", "Zdanie b1", "Rower Trek 1,2", "Pojeżdzić", "Kupić kask"];
+// let entryContentsArray = ["Kanapka w kategorii (Do zrobienia)", "Matematyka w kategorii (Ważne)", "Notatka (Biologia) w kategorii (Notatki)", "Nauka Reacta w kategorii (Do zrobienia)", "Nauka Angielskiego w kategorii (Do zrobienia)", "Zrobienie prawka w kategorii (Prawo jazdy)", "Zrobienie samochodu w kategorii (Prawo jazdy)", "Zdanie b1 w kategorii (Prawo jazdy)", "Rower Trek 1,2 w kategorii (Rower)", "Pojeżdzić w kategorii (Rower)", "Kupić kask w kategorii (Ważne)"];
+// let entryCategoryArray = ["Do zrobienia", "Ważne", "Notatki", "Do zrobienia", "Do zrobienia", "Prawo jazdy", "Prawo jazdy", "Prawo jazdy", "Rower", "Rower", "Ważne"];
+// let entryDateArray = ["", "", "", "", "", "", "", "", "", "", ""];
+// let entryCurrentTime = ["Mon May 11 2020 17:17:19 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:17:38 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:00 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:30 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:18:55 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:19:32 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:19:46 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:03 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:27 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:35 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:20:50 GMT+0200 (czas środkowoeuropejski letni)"];
+
+// let categoryArray = ["Prawo jazdy", "Rower", "Pusta kategoria"];
+// let categoryColorArray = ["rgb(255, 87, 34)", "rgb(156, 39, 176)", "rgb(76, 175, 80)"];
+
+// let deleteEntryTitleArray = ["Granie w gry ", "Sprzedaż skrzynek"];
+// let deleteEntryContentsArray = ["Granie w gry w kategori (Usunięte) pierwotnie kategoria (Do zrobienia)", "Sprzedaż skrzynek w kategori (Usunięte) pierwotnie kategoria (Rower)"];
+// let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
+// let deleteEntryDateArray = ["", ""];
+// let deleteEntryCurrentTime = ["Mon May 11 2020 17:22:00 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 11 2020 17:22:28 GMT+0200 (czas środkowoeuropejski letni)"];
 
 // ----------------------------------------------
 
@@ -457,7 +461,6 @@ const addEntryButtonFunction = () => {
     mess.textContent = "Taki tytuł został wcześniej usunięty";
   }
   else {
-    deletingAllEntries(); 
     creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime)
     entryContentsArray.push(entryContents);
     entryTitleArray.push(entryTitle);
@@ -466,9 +469,14 @@ const addEntryButtonFunction = () => {
     entryCurrentTime.push(currentTime)
     newEntryOpenBox()
     messageActive();
-    CreatingAllEntries()
+    deletingAllSubCategories(); // usuwanie wszystkich podkategori
+    subCategoryFunction() // tworzenie od nowa wszystkich podkategori
     counterNumber()
+    deletingAllEntries(); // usuwanie wszystkich wpisów
+    CreatingAllEntries() // Tworzenie wszystkich wpisów
     refreshCategories();
+    mainTitleSelectionFunction();
+    reloadMainTitleSelection(); // Przejście do listy (Wszystkie);
   }
   addEntryButton.style.background = "#1C8AF5";
 }
@@ -531,7 +539,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   cyclicText.appendChild(cyclicH2);
   cyclicH2.className = "to-do-main-title selection";
   cyclicH2.textContent = nameCategoryArg // nazwa kategori
-  cyclicH2.dataset.subcategory = nameCategoryArg;
+  cyclicH2.dataset.category = nameCategoryArg;
   cyclicH2.style.color = colorCategory
 
   const cyclicDelete = document.createElement('span');
@@ -722,6 +730,7 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     createSubCategory.className = "selection";
     createSubCategory.dataset.subCategory = entryTitleArray[indexSubCategorie[i]]
     createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]];
+    createSubCategory.dataset.category = entryCategoryArray[indexSubCategorie[i]];
   }
   checkSubCategory()
 } 
@@ -886,6 +895,7 @@ deleteShowButton.addEventListener('click', deletedTextFunction);
 // ---------------------------------------------------------------------------
 
 // Zaznaczenie kategori
+const whatCategory = document.querySelector('.top-header-title');
 const mainTitleSelectionFunction = () => {
   reloadMainTitleSelection();
   const howMuchSelection = document.querySelectorAll('.selection');
@@ -895,17 +905,27 @@ const mainTitleSelectionFunction = () => {
   }
   let eventTarget = event.target
   eventTarget.style.background = "rgb(243, 243, 243)";
+  whatCategory.textContent = "Wszystko";
+  console.log(event.target.textContent);
+  whatCategory.textContent = event.target.dataset.category;
+
 }
 
 const reloadMainTitleSelection = () => {
+  const whatCategory = document.querySelector('.top-header-title');
   const howMuchSelection = document.querySelectorAll('.selection');
   for (let i = 0; i < howMuchSelection.length; i ++) {
     howMuchSelection[i].style.background = "none";
   }
   howMuchSelection[0].style.background = "rgb(243, 243, 243)";
+
+  whatCategory.textContent = "Wszystko"
+
   const mainTitleSelection = document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction))
 }
 reloadMainTitleSelection();
+
+
 // ----------------------------------------------------------------------------
 
 // Funkcja do godziny 

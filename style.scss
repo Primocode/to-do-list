@@ -389,7 +389,7 @@ main {
         border-bottom: 1px solid #CBCBCB;
         h1 {
             font-size: 26px;
-            color: #414141;
+            color: #1C8AF5;
             padding: 15px 0px 15px 15px;
         }
     }
@@ -572,10 +572,12 @@ main {
             margin: 0px 10px 10px 15px;
             width: 500px;
             // border: 1px solid #CBCBCB;
-            border: 1px solid rgb(255, 255, 255);
-            -webkit-box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
-            -moz-box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
-            box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+            // border: 1px solid rgb(255, 255, 255);
+            border: 1px solid #D5D5D5;
+            // -webkit-box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+            // -moz-box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+            // box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+            border-radius: 6px;
             background-color: white;
             .top-panel {
                 width: 100%;
@@ -718,4 +720,105 @@ main {
 .overflow-entry::-webkit-scrollbar-thumb {
 	border-radius: 10px;
     background-color: rgb(155, 155, 155);
+}
+
+// !!!!!!!!!!!!!--------------------!!!!!!!!!!!!!
+
+.pudelko {
+    max-width: 700px;
+    border-radius: 4px;
+    margin: 15px;
+    border: 1px solid rgb(209, 209, 209);
+    .pudelko-text {
+        margin: 10px 10px 0px 10px;;
+        border-left: 4px solid #1C8AF5;
+        padding-left: 8px;
+        color: rgb(41, 41, 41);
+        font-size: 17px;
+    }
+    .pudelko-right {
+        text-align: right;
+        margin-right: 10px;
+        .pudelko-category {
+            color: #1C8AF5;
+        }
+        .pudelko-date {
+            font-size: 12px;
+            color: rgb(59, 59, 59);
+        }
+        span {
+            cursor: pointer;
+            font-size: 25px;
+            color: rgb(82, 82, 82);
+            // background-color: rgb(201, 201, 201);
+            // border-radius: 50%;
+            // padding: 8px;
+        }
+    }
+    .pudelko-center {
+        margin: 5px 10px 0px 10px;
+        p {
+            color: grey;
+            font-size: 15px;
+        }
+    }
+    .pudelko-bottom-icons {
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 3px 0px 3px 0px;
+        .pudelko-left-box {
+            flex-wrap: wrap;
+            display: flex;
+            align-items: flex-end;
+            .pudelko-text-category {
+                color: #1C8AF5;
+                margin-left: 10px;
+                font-size: 16px;
+            }
+            .pudelko-text-date {
+                font-size: 14px;
+                color: grey;
+                font-weight: 300;
+                margin-left: 10px;
+            }
+        }
+        .pudelko-right-box {
+            .span-icon {
+                border: none;
+                // background-color: grey;
+                cursor: pointer;
+                border-radius: 50%;
+                padding: 5px;
+                margin: 0px 5px 0px 5px;
+            }
+            span {
+                font-size: 16px;
+                // color: rgb(78, 78, 78);
+                background-color: rgb(245, 245, 245);
+                width: 16px;
+                height: 16px;
+            }
+            .pudelko-done {
+                color: #0A9C00;
+            }
+            .pudelko-delete {
+                color: #D23030;
+            }
+            .pudelko-info {
+                color: #1C8AF5;
+            }
+            .pudelko-star {
+                color: rgb(139, 139, 139);
+                background-color: rgba(255, 255, 255, 0);
+                span {
+                    background-color: rgba(255, 255, 255, 0);
+                }
+            }
+        }
+
+    }
+
 }

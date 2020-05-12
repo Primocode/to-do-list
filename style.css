@@ -427,7 +427,7 @@ main .top-header {
 
 main .top-header h1 {
   font-size: 26px;
-  color: #414141;
+  color: #1C8AF5;
   padding: 15px 0px 15px 15px;
 }
 
@@ -697,9 +697,8 @@ main .top-new-talk .active .add-new-button-container .add-new {
 .main-content-all .main-content-entry .entry {
   margin: 0px 10px 10px 15px;
   width: 500px;
-  border: 1px solid white;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
-  box-shadow: 0px 0px 5px 0px rgba(187, 187, 187, 0.75);
+  border: 1px solid #D5D5D5;
+  border-radius: 6px;
   background-color: white;
 }
 
@@ -867,5 +866,125 @@ main .top-new-talk .active .add-new-button-container .add-new {
 .overflow-entry::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #9b9b9b;
+}
+
+.pudelko {
+  max-width: 700px;
+  border-radius: 4px;
+  margin: 15px;
+  border: 1px solid #d1d1d1;
+}
+
+.pudelko .pudelko-text {
+  margin: 10px 10px 0px 10px;
+  border-left: 4px solid #1C8AF5;
+  padding-left: 8px;
+  color: #292929;
+  font-size: 17px;
+}
+
+.pudelko .pudelko-right {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.pudelko .pudelko-right .pudelko-category {
+  color: #1C8AF5;
+}
+
+.pudelko .pudelko-right .pudelko-date {
+  font-size: 12px;
+  color: #3b3b3b;
+}
+
+.pudelko .pudelko-right span {
+  cursor: pointer;
+  font-size: 25px;
+  color: #525252;
+}
+
+.pudelko .pudelko-center {
+  margin: 5px 10px 0px 10px;
+}
+
+.pudelko .pudelko-center p {
+  color: grey;
+  font-size: 15px;
+}
+
+.pudelko .pudelko-bottom-icons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 3px 0px 3px 0px;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-left-box {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-left-box .pudelko-text-category {
+  color: #1C8AF5;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-left-box .pudelko-text-date {
+  font-size: 14px;
+  color: grey;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-right-box .span-icon {
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 0px 5px 0px 5px;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-right-box span {
+  font-size: 16px;
+  background-color: whitesmoke;
+  width: 16px;
+  height: 16px;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-right-box .pudelko-done {
+  color: #0A9C00;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-right-box .pudelko-delete {
+  color: #D23030;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-right-box .pudelko-info {
+  color: #1C8AF5;
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-right-box .pudelko-star {
+  color: #8b8b8b;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.pudelko .pudelko-bottom-icons .pudelko-right-box .pudelko-star span {
+  background-color: rgba(255, 255, 255, 0);
 }
 /*# sourceMappingURL=style.css.map */
