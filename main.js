@@ -46,41 +46,41 @@ createCategoryExit.addEventListener('click', closeCreateCategory);
 
 // -----------------------------------------------------------------
 
-let entryTitleArray = [];
-let entryContentsArray = [];
-let entryCategoryArray = [];
-let entryDateArray = [];
-let entryCurrentTime = [];
+// let entryTitleArray = ["Testowy tytuł"];
+// let entryContentsArray = ["Jakis testowy tekst który służy do wypełnienia pola puldeko-center, tak by go wystylować. Tekst powinien miec kilka linijek, tak by dopasować po"];
+// let entryCategoryArray = ["Do zrobienia"];
+// let entryDateArray = ["04/05/2020"];
+// let entryCurrentTime = ["04/05/2020"];
 
-let categoryArray = [];
-let categoryColorArray = [];
-
-// let category = ["Do zrobienia", "Ważne", "Notatki"]
-
-let deleteEntryTitleArray = [];
-let deleteEntryContentsArray = [];
-let deleteEntryCategoryArray = [];
-let deleteEntryDateArray = [];
-let deleteEntryCurrentTime = [];
-
-// -------------------------------------------------------------------
-
-// let entryTitleArray = ["Nauka reacta", "Odrabiać lekcję", "E-lekcje", "Kat b1", "Daihatsu cuore ", "Zrobić kanapkę", "Prawko"];
-// let entryContentsArray = ["Wykupić kurs u Samuraja.", "Trzeba odrabiać lekcję", "E-lekcję..", "kategoria b1", "b1", "Z chlebkiem", "Kat b1"];
-// let entryCategoryArray = ["Ważne", "Prawo Jazdy", "Do zrobienia", "Ważne", "Samochód", "Zrobione", "Prawo Jazdy"];
-// let entryDateArray = ["", "", "", "", "", "",""];
-// let entryCurrentTime = ["Sun May 10 2020 20:10:36 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:10:49 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:11:22 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:03 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:17 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:53 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:15:36 GMT+0200 (czas środkowoeuropejski letni)"];
-
-// let categoryArray = ["Szkoła", "Prawo Jazdy", "Samochód"];
-// let categoryColorArray = ["rgb(0, 188, 213)", "rgb(233, 30, 99)", "rgb(33, 150, 243)"];
+// let categoryArray = [];
+// let categoryColorArray = [];
 
 // // let category = ["Do zrobienia", "Ważne", "Notatki"]
 
-// let deleteEntryTitleArray = ["problem z spacjami", "problem z spacjami1"];
-// let deleteEntryContentsArray = ["Z chlebkiem", "jakiś błąd"];
-// let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
-// let deleteEntryDateArray = ["", ""];
-// let deleteEntryCurrentTime = ["Sun May 10 2020 20:13:52 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:14:02 GMT+0200 (czas środkowoeuropejski letni)"];
+// let deleteEntryTitleArray = [];
+// let deleteEntryContentsArray = [];
+// let deleteEntryCategoryArray = [];
+// let deleteEntryDateArray = [];
+// let deleteEntryCurrentTime = [];
+
+// -------------------------------------------------------------------
+
+let entryTitleArray = ["Nauka reacta", "Odrabiać lekcję", "E-lekcje", "Kat b1", "Daihatsu cuore ", "Zrobić kanapkę", "Prawko"];
+let entryContentsArray = ["Wykupić kurs u Samuraja.", "Trzeba odrabiać lekcję", "E-lekcję..", "kategoria b1", "b1", "Z chlebkiem", "Kat b1"];
+let entryCategoryArray = ["Ważne", "Prawo Jazdy", "Do zrobienia", "Ważne", "Samochód", "Zrobione", "Prawo Jazdy"];
+let entryDateArray = ["", "", "", "", "", "",""];
+let entryCurrentTime = ["Sun May 10 2020 20:10:36 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:10:49 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:11:22 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:03 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:17 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:12:53 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:15:36 GMT+0200 (czas środkowoeuropejski letni)"];
+
+let categoryArray = ["Szkoła", "Prawo Jazdy", "Samochód"];
+let categoryColorArray = ["rgb(0, 188, 213)", "rgb(233, 30, 99)", "rgb(33, 150, 243)"];
+
+// let category = ["Do zrobienia", "Ważne", "Notatki"]
+
+let deleteEntryTitleArray = ["problem z spacjami", "problem z spacjami1"];
+let deleteEntryContentsArray = ["Z chlebkiem", "jakiś błąd"];
+let deleteEntryCategoryArray = ["Usunięte", "Usunięte"];
+let deleteEntryDateArray = ["", ""];
+let deleteEntryCurrentTime = ["Sun May 10 2020 20:13:52 GMT+0200 (czas środkowoeuropejski letni)", "Sun May 10 2020 20:14:02 GMT+0200 (czas środkowoeuropejski letni)"];
 
 
 
@@ -124,88 +124,43 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   entryTop.appendChild(entryTopH2);
   entryTopH2.textContent = title; // - TEXT CONTENT TYTUŁU WPISU
 
-  const EntryTopRight = document.createElement('div');
-  entryTop.appendChild(EntryTopRight);
-  EntryTopRight.className = "entry-top-right";
-
-  // DATA WPISU !! DATA WPISU
-  const date = document.createElement('div');
-  EntryTopRight.appendChild(date);
-  date.className = "date";
-  date.textContent = entryDateValue // -- TEXT CONTENT DATY WPISU
-
-  // KATEGORIA WPISU!! KATEGORIA WPISU!!
-  const category = document.createElement('div');
-  EntryTopRight.appendChild(category);
-  category.className = "category";
-  category.textContent = entryCategory // -- TEXT CONTENT KATEGORI WPISU
-
-  const whatIndexColors = categoryArray.indexOf(entryCategory);
-  console.log(whatIndexColors);
-
-  if (entryCategory == "Do zrobienia") {
-    category.style.color = "#1C8AF5";
-    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
-    category.style.width = "112px";
-  }
-  else if (entryCategory == "Zrobione") {
-    category.style.color = "#0A9C00";
-    entryTopH2.style.borderLeft = "4px solid #0A9C00";
-  }
-  else if (entryCategory == "Notatki") {
-    category.style.color = "#1C8AF5";
-    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
-  }
-  else if (entryCategory == "Ważne") {
-    category.style.color = "#D23030";
-    entryTopH2.style.borderLeft = "4px solid #D23030";
-  }
-  else if (entryCategory == "Usunięte") {
-    category.style.color = "#D23030"
-    entryTopH2.style.borderLeft = "4px solid #D23030";
-  }
-  else {
-    category.style.color = categoryColorArray[whatIndexColors]
-    entryTopH2.style.borderLeft = `4px solid ${categoryColorArray[whatIndexColors]}`;
-  }
-
   const entryTopRightButtons = document.createElement('div');
   entryTop.appendChild(entryTopRightButtons);
   entryTopRightButtons.className = "entry-top-right-buttons";
 
-  // USUWANIE ELEMENTU!
-  const removeEntryButton = document.createElement('button');
-  entryTopRightButtons.appendChild(removeEntryButton);
-  removeEntryButton.className = "remove-entry"; 
+  // // USUWANIE ELEMENTU!
+  // const removeEntryButton = document.createElement('button');
+  // entryTopRightButtons.appendChild(removeEntryButton);
+  // removeEntryButton.className = "remove-entry"; 
 
-  const removeIcon = document.createElement('span');
-  removeEntryButton.appendChild(removeIcon);
-  removeIcon.className = "far fa-trash-alt";
-  removeIcon.dataset.key = "88"
+  // const removeIcon = document.createElement('span');
+  // removeEntryButton.appendChild(removeIcon);
+  // removeIcon.className = "far fa-trash-alt";
+  // removeIcon.dataset.key = "88"
 
-  // dodawanie do zrobionych
-  const doneEntry = document.createElement('button');
-  entryTopRightButtons.appendChild(doneEntry);
-  doneEntry.className = "done-entry";
+  // // dodawanie do zrobionych
+  // const doneEntry = document.createElement('button');
+  // entryTopRightButtons.appendChild(doneEntry);
+  // doneEntry.className = "done-entry";
 
-  // ICON DODAWANIA DO ZROBIONYCH
-  const doneIcon = document.createElement('span');
-  doneEntry.appendChild(doneIcon);
-  doneIcon.className = "far fa-check-circle";
+  // // ICON DODAWANIA DO ZROBIONYCH
+  // const doneIcon = document.createElement('span');
+  // doneEntry.appendChild(doneIcon);
+  // doneIcon.className = "far fa-check-circle";
 
   // Icon informacji
-  const info = document.createElement('button');
-  entryTopRightButtons.appendChild(info);
-  info.className = "info-entry";
+  // const info = document.createElement('button');
+  // entryTopRightButtons.appendChild(info);
+  // info.className = "info-entry";
 
-  const infoIcon = document.createElement('span');
-  info.appendChild(infoIcon);
-  infoIcon.className = "fas fa-info-circle";
+  // const infoIcon = document.createElement('span');
+  // info.appendChild(infoIcon);
+  // infoIcon.className = "fas fa-info-circle";
 
-  const infoBox = document.createElement('div');
-  info.appendChild(infoBox);
-  infoBox.className = "information";
-  infoBox.textContent = "Godzina utworzenia wpisu " + hour //TUTAJ GODZINA UTWORZENIA WPISU
+  // const infoBox = document.createElement('div');
+  // info.appendChild(infoBox);
+  // infoBox.className = "information";
+  // infoBox.textContent = "Godzina utworzenia wpisu " + hour //TUTAJ GODZINA UTWORZENIA WPISU
 
   const entryBottom = document.createElement('div');
   entry.appendChild(entryBottom);
@@ -214,6 +169,101 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const entryBottomTextP = document.createElement('p');
   entryBottom.appendChild(entryBottomTextP);
   entryBottomTextP.textContent = contents // TU JEST TEXT 
+
+  // DÓŁ WPISU
+  const entryBottomContainer = document.createElement('div');
+  entry.appendChild(entryBottomContainer);
+  entryBottomContainer.className = "entry-bottom-container";
+
+  const entryLeftBox = document.createElement('div');
+  entryBottomContainer.appendChild(entryLeftBox);
+  entryLeftBox.className = "entry-bottom-left"
+
+  // KATEGORIA
+  const entryLeftCategory = document.createElement('h3');
+  entryLeftBox.appendChild(entryLeftCategory);
+  entryLeftCategory.className = "entry-left-category";
+  entryLeftCategory.textContent = entryCategory; // KATEGORIA
+
+  //--------------------------------------------------------------
+
+  // DATA 
+  const entryLeftDate = document.createElement('h4');
+  entryLeftBox.appendChild(entryLeftDate);
+  entryLeftDate.className = "entry-left-date";
+  entryLeftDate.textContent = entryDateValue; // DATA PODANA PRZEZ UŻYTKOWNIKA
+
+  // ------------------------------------------------------------
+
+  const entryBottomRight = document.createElement('div');
+  entryBottomContainer.appendChild(entryBottomRight);
+  entryBottomRight.className = "entry-bottom-right";
+
+  //INFORMACJE 
+  const info = document.createElement('button');
+  entryBottomRight.appendChild(info);
+  info.className = "info-entry";
+
+  const infoIcon = document.createElement('span');
+  info.appendChild(infoIcon);
+  infoIcon.className = "fas fa-info";
+
+  const infoBox = document.createElement('div');
+  info.appendChild(infoBox);
+  infoBox.className = "information";
+  infoBox.textContent = "Godzina utworzenia wpisu " + hour //TUTAJ GODZINA UTWORZENIA WPISU
+
+  // USUWANIE ELEMENTU!
+  const removeEntryButton = document.createElement('button');
+  entryBottomRight.appendChild(removeEntryButton);
+  removeEntryButton.className = "remove-entry"; 
+
+  const removeIcon = document.createElement('span');
+  removeEntryButton.appendChild(removeIcon);
+  removeIcon.className = "fas fa-trash";
+  removeIcon.dataset.key = "88"
+
+      // dodawanie do zrobionych
+  const doneEntry = document.createElement('button');
+  entryBottomRight.appendChild(doneEntry);
+  doneEntry.className = "done-entry";
+
+  // ICON DODAWANIA DO ZROBIONYCH
+  const doneIcon = document.createElement('span');
+  doneEntry.appendChild(doneIcon);
+  doneIcon.className = "fas fa-check";
+
+
+
+  const whatIndexColors = categoryArray.indexOf(entryCategory);
+  console.log(whatIndexColors);
+
+  if (entryCategory == "Do zrobienia") {
+    entryLeftCategory.style.color = "#1C8AF5";
+    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
+  }
+  else if (entryCategory == "Zrobione") {
+    entryLeftCategory.style.color = "#0A9C00";
+    entryTopH2.style.borderLeft = "4px solid #0A9C00";
+  }
+  else if (entryCategory == "Notatki") {
+    entryLeftCategory.style.color = "#1C8AF5";
+    entryTopH2.style.borderLeft = "4px solid #1C8AF5";
+  }
+  else if (entryCategory == "Ważne") {
+    entryLeftCategory.style.color = "#D23030";
+    entryTopH2.style.borderLeft = "4px solid #D23030";
+  }
+  else if (entryCategory == "Usunięte") {
+    entryLeftCategory.style.color = "#D23030"
+    entryTopH2.style.borderLeft = "4px solid #D23030";
+  }
+  else {
+    entryLeftCategory.style.color = categoryColorArray[whatIndexColors]
+    entryTopH2.style.borderLeft = `4px solid ${categoryColorArray[whatIndexColors]}`;
+  }
+
+  // ------------------------------------------------------------
 
   const openInfo = () => {
     infoBox.classList = "information-active";
@@ -908,7 +958,10 @@ const mainTitleSelectionFunction = () => {
   whatCategory.textContent = "Wszystko";
   console.log(event.target.textContent);
   whatCategory.textContent = event.target.dataset.category;
-
+  
+  if (whatCategory.textContent == "") {
+    whatCategory.textContent = "Wszystko";
+  }
 }
 
 const reloadMainTitleSelection = () => {
@@ -974,6 +1027,3 @@ const reloadScript = () => {
 }
 reloadScript()
 // ------------------------------------------------------------------------------
-
-
-
