@@ -273,15 +273,12 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       selectOptionCategory.className = "deleted-option";
       selectOptionCategory.textContent = categoryArray[i]
     }
-
     removeEntryButton.remove();
     removeIcon.remove();
-
     doneEntry.remove();
     doneIcon.remove();
 
     // Przywracanie usuniętych wpisów 
-
     const restoreButton = document.querySelector('.button-confirm');
 
     const restoreDeletedEntries = (e) => {
@@ -425,7 +422,6 @@ function error() {
 }
 
 let minute = setInterval(error, 4000);
-
 // -------------------------------------
 
 // Komunikat kategori
@@ -483,7 +479,6 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 const removeAllSelectCategory = () => {
   const selectValue = document.querySelectorAll('#select > option');
   for (let i = 3; i < selectValue.length; i++) {
-    // selectValue[i].remove();
     selectValue[i].remove();
   }
 }
@@ -551,7 +546,6 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   emptyCategory.className = "Empty-sub-category";
   emptyCategory.textContent = "Pusto, dodaj coś"
 
-
   // usuwanie poszczególnych kategori
   const deletingACategory = () => {
     console.log(cyclicH2.dataset.subcategory);
@@ -601,7 +595,6 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
 
       console.log(indexes[nameCategoryArg]);
 
-
       if (indexes[nameCategoryArg]) {
         for (let i = 0; i < indexes[nameCategoryArg].length; i++) {
           let indexToDelete = entryCategoryArray.indexOf(nameCategoryArg)
@@ -619,7 +612,6 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
           entryCurrentTime.splice(indexToDelete, 1);
         }
       }
-
 
       deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
       creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
@@ -685,35 +677,24 @@ const deletingAllSubCategories = () => {
     allMainListSubCategory[i].remove(); // działa
   }
 }
-
 // ----------------------------------
 
 // dodawanie napisu pustych kategori
-
-// const mainList = document.querySelectorAll('.main-list');
-
 const createEmptySubCategory = (index) => {
   const emptyCategories = document.querySelectorAll('.main-list');
   
   for (let i = 0; i > emptyCategories.length; i++) {
     console.log("tyle jest kategori");
   } 
-
-
   console.log(emptyCategories);
-
-  
   console.log(emptyCategories.length);
   console.log(index);
   console.log(emptyCategories[index])
 
-  // for (let i = 0; i < mainList.length; i++) {
   const emptySubCategory = document.createElement('h4');
   emptyCategories[index].appendChild(emptySubCategory);
   emptySubCategory.className = "Empty-sub-category";
   emptySubCategory.textContent = "Pusto, dodaj coś"
-    
-  // }
 }
 
 //usuwanie pustego napisu
@@ -759,7 +740,6 @@ const checkSubCategory = () => {
   document.querySelectorAll("#subCategory").forEach(item => item.addEventListener('click', subCategoryClickFunction))
 }
 // ---------------------------------------------------
-
 
 // Pod kategorie
 let numberSubCategory = -1;
@@ -921,6 +901,36 @@ const reloadMainTitleSelection = () => {
 }
 reloadMainTitleSelection();
 // ----------------------------------------------------------------------------
+
+// Funkcja do godziny 
+
+const entryHour = document.querySelector('.entry-hour');
+let numberHour = 0;
+
+const entryHourBlockFunction = () => {
+  let entryHourValue = document.querySelector('.entry-hour').value;
+  console.log(entryHourValue + " to jest wartość")
+  numberHour++
+  console.log(numberHour);
+  if (event.keyCode == 8) {
+    console.log("kliknięcto backspace")
+    entryHour.value = "";
+    numberHour = 0;
+  }
+  if (numberHour == 3) {
+    console.log('Więcej niż 2')
+    entryHour.value = entryHourValue + ":";
+  }
+  else if (numberHour == 5) {
+    entryHour.value = "";
+    numberHour = 1;
+  }
+}
+
+entryHour.addEventListener('keydown', entryHourBlockFunction);
+
+
+//---------------------------------------------------------------------- 
 
 // odświeżanie
 const reloadScript = () => {

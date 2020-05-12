@@ -11,6 +11,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="icon.png">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    
 </head>
 <body>
     <header>
@@ -85,7 +87,7 @@
                 <!-- <div class="individual-category"></div> -->
             </div>
             <div class="creating-category">
-                <h4 class="category-text-h4">Nazwa kategorii</h4>
+                <h4 class="category-text-h4">Nazwa listy</h4>
                 <input class="category-title" type="text" style="color: black">
                 <h4 class="category-text-h4">Wybierz kolor</h4>
                 <div class="category-circle-container">
@@ -115,7 +117,7 @@
                 <button class="add">
                     +
                 </button>
-                <p>Nowa kategoria</p>
+                <p>Nowa lista</p>
             </div>
         </nav>
     </header>
@@ -125,7 +127,7 @@
         </div>
         <div class="top-new-talk">
             <div class="new-talk">
-                <button class="new-talk-button add-new-entry">Nowy wpis</button>
+                <button class="new-talk-button add-new-entry">+ Dodaj zadanie</button>
             </div>
             <div class="add-new-talk-container">
                 <div class="add-new-talk-main-container">
@@ -142,8 +144,9 @@
                           </select>
                     </div>
                     <div class="date">
-                        <h4 class="title">Data</h4>
-                        <input type="text" class="entry-date" placeholder="dzień/miesiąc/rok">
+                        <h4 class="title">Do kiedy</h4>
+                        <input type="text" class="entry-date" id="datepicker" placeholder="02/10/2025">
+                        <input type="text" class="entry-hour" placeholder="13:11">
                     </div>
                 </div>
                 <div class="add-new-talk-field">
@@ -154,7 +157,7 @@
                 <div class="add-new-button-container">
                     <div class="mess"></div>
                     <button class="exit">Anuluj</button>
-                    <button class="add-new">Dodaj wpis</button>
+                    <button class="add-new">Dodaj zadanie</button>
                 </div>
             </div>
         </div>
@@ -167,6 +170,16 @@
         </div>
     </main>
     
+
     <script src="main.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $( function() {
+              $( "#datepicker" ).datepicker();
+          } );
+  
+  </script>
 </body>
 </html>

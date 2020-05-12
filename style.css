@@ -434,9 +434,12 @@ main .top-header h1 {
   padding: 15px 0px 15px 15px;
 }
 
+main .top-new-talk .new-talk span {
+  font-size: 25px;
+}
+
 main .top-new-talk .new-talk .new-talk-button {
-  height: 35px;
-  width: 115px;
+  padding: 8px 8px 8px 8px;
   background-color: #1C8AF5;
   color: white;
   font-size: 18px;
@@ -526,7 +529,7 @@ main .top-new-talk .active .add-new-talk-main-container .date {
   font-size: 18px;
 }
 
-main .top-new-talk .active .add-new-talk-main-container .date input {
+main .top-new-talk .active .add-new-talk-main-container .date .entry-date {
   width: 100px;
   height: 25px;
   border: none;
@@ -534,25 +537,41 @@ main .top-new-talk .active .add-new-talk-main-container .date input {
   box-shadow: 0px 0px 5px 1px #d1d1d1;
   color: #4e4e4e;
   font-size: 16px;
+  text-align: center;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input::-webkit-input-placeholder {
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
+  color: #b9b9b9;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input:-ms-input-placeholder {
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
+  color: #b9b9b9;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input::-ms-input-placeholder {
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
+  color: #b9b9b9;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input::placeholder {
-  font-size: 12px;
+  font-size: 14px;
+  text-align: center;
+  color: #b9b9b9;
+}
+
+main .top-new-talk .active .add-new-talk-main-container .date .entry-hour {
+  width: 44px;
+  height: 25px;
+  border: none;
+  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
+  box-shadow: 0px 0px 5px 1px #d1d1d1;
+  color: #4e4e4e;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -778,6 +797,10 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .main-content-all .main-content-entry .entry .entry-bottom p {
   margin: 0px 10px 10px 10px;
+}
+
+.ui-widget-header {
+  background: #1C8AF5;
 }
 
 #overflow::-webkit-scrollbar {
