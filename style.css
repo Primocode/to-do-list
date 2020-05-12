@@ -56,7 +56,7 @@ header nav .to-do-list-category {
 }
 
 header nav .to-do-list-category .notes-container-height {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 header nav .to-do-list-category .to-do-main-title {
@@ -76,6 +76,7 @@ header nav .to-do-list-category .main-title {
 
 header nav .to-do-list-category .main-title h2 {
   padding-left: 10px;
+  font-size: 22px;
 }
 
 header nav .to-do-list-category .main-title span {
@@ -105,8 +106,9 @@ header nav .to-do-list-category .main-list {
 header nav .to-do-list-category .main-list h3 {
   color: #696969;
   font-weight: 300;
-  padding: 0px 5px 0px 5px;
+  padding: 1px 5px 1px 15px;
   cursor: pointer;
+  font-size: 17px;
 }
 
 header nav .to-do-list-category .main-list h4 {
@@ -176,7 +178,6 @@ header nav .to-do .to-do-container span {
 
 header nav .to-do .to-do-container h2 {
   color: #1C8AF5;
-  margin-left: 10px;
 }
 
 header nav .to-do .to-do-container h3:hover {
@@ -190,7 +191,6 @@ header .done .done-container span {
 
 header .done .done-container h2 {
   color: #0A9C00;
-  margin-left: 10px;
 }
 
 header .done .done-container h3:hover {
@@ -204,7 +204,6 @@ header .important .important-container span {
 
 header .important .important-container h2 {
   color: #D23030;
-  margin-left: 10px;
 }
 
 header .important .important-container h3:hover {
@@ -218,7 +217,6 @@ header .notes .notes-container span {
 
 header .notes .notes-container h2 {
   color: #1C8AF5;
-  margin-left: 10px;
 }
 
 header .notes .notes-container h3:hover {
@@ -261,6 +259,7 @@ header .deleted .deleted-container .deleted-list .deleted-list-h3-see {
   padding: 0px 5px 0px 5px;
   cursor: pointer;
   width: 162px;
+  font-size: 17px;
 }
 
 header .deleted .deleted-container span {
@@ -270,7 +269,6 @@ header .deleted .deleted-container span {
 
 header .deleted .deleted-container h2 {
   color: #D23030;
-  margin-left: 10px;
 }
 
 header .deleted .deleted-container h3:hover {
@@ -320,8 +318,7 @@ header .creating-category-active .category-title {
   border: none;
   font-weight: 900;
   font-size: 17px;
-  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-  box-shadow: 0px 0px 5px 1px #d1d1d1;
+  border: 1px solid #D5D5D5;
 }
 
 header .creating-category-active .category-circle-container {
@@ -457,24 +454,21 @@ main .top-new-talk .add-new-talk-container {
 
 main .top-new-talk .active {
   display: block;
-  width: 600px;
+  width: 300px;
   margin: 10px;
-  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-  box-shadow: 0px 0px 5px 1px #d1d1d1;
-}
-
-main .top-new-talk .active .title {
-  padding: 5px 0px 5px 0px;
-  font-weight: 300;
+  -webkit-box-shadow: 0px 0px 5px 1px #dedede;
+  box-shadow: 0px 0px 5px 1px #dedede;
+  border-radius: 6px;
 }
 
 main .top-new-talk .active .add-new-talk-main-container {
   margin: 10px 10px 0px 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  padding-top: 5px;
+}
+
+main .top-new-talk .active .add-new-talk-main-container h3 {
+  border-left: 4px solid #1c8af5;
+  padding: 5px 0px 5px 5px;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container {
@@ -482,14 +476,39 @@ main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-conta
   font-size: 18px;
 }
 
-main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container input {
-  width: 200px;
-  height: 25px;
-  border: none;
-  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-  box-shadow: 0px 0px 5px 1px #d1d1d1;
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container .entry-title {
+  width: 100%;
+  border: 1px solid #D5D5D5;
   color: #4e4e4e;
-  font-size: 16px;
+  font-size: 17px;
+  resize: none;
+  padding: 5px 0px 5px 0px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 4px;
+}
+
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container .entry-title::-webkit-input-placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
+}
+
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container .entry-title:-ms-input-placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
+}
+
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container .entry-title::-ms-input-placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
+}
+
+main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container .entry-title::placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select {
@@ -498,14 +517,16 @@ main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select {
 }
 
 main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select {
-  width: 200px;
-  height: 25px;
+  width: 100%;
+  height: 31px;
   border: none;
-  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-  box-shadow: 0px 0px 5px 1px #d1d1d1;
+  border: 1px solid #D5D5D5;
   color: #4e4e4e;
   font-size: 16px;
   color: #1C8AF5;
+  padding-left: 5px;
+  margin: 0px 0px 5px 0px;
+  border-radius: 4px;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select .to-do {
@@ -527,67 +548,101 @@ main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select sel
 main .top-new-talk .active .add-new-talk-main-container .date {
   text-aligN: center;
   font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date .entry-date {
-  width: 100px;
-  height: 25px;
+  width: 68%;
+  height: 31px;
   border: none;
-  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-  box-shadow: 0px 0px 5px 1px #d1d1d1;
+  border: 1px solid #D5D5D5;
   color: #4e4e4e;
   font-size: 16px;
   text-align: center;
+  border-radius: 4px;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input::-webkit-input-placeholder {
-  font-size: 14px;
-  text-align: center;
-  color: #b9b9b9;
+  font-size: 15px;
+  color: #4e4e4e;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input:-ms-input-placeholder {
-  font-size: 14px;
-  text-align: center;
-  color: #b9b9b9;
+  font-size: 15px;
+  color: #4e4e4e;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input::-ms-input-placeholder {
-  font-size: 14px;
-  text-align: center;
-  color: #b9b9b9;
+  font-size: 15px;
+  color: #4e4e4e;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date input::placeholder {
-  font-size: 14px;
-  text-align: center;
-  color: #b9b9b9;
+  font-size: 15px;
+  color: #4e4e4e;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .date .entry-hour {
-  width: 44px;
-  height: 25px;
+  width: 28%;
+  height: 31px;
   border: none;
-  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-  box-shadow: 0px 0px 5px 1px #d1d1d1;
+  border: 1px solid #D5D5D5;
   color: #4e4e4e;
   font-size: 16px;
   text-align: center;
+  border-radius: 4px;
 }
 
 main .top-new-talk .active .add-new-talk-field {
   text-align: center;
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 0px 10px;
 }
 
-main .top-new-talk .active .add-new-talk-field textarea {
+main .top-new-talk .active .add-new-talk-field .text-area {
   min-height: 70px;
-  border: none;
-  -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-  box-shadow: 0px 0px 5px 1px #d1d1d1;
+  border: 1px solid #D5D5D5;
   width: 100%;
-  border: none;
   resize: none;
+  padding: 5px 0px 5px 0px;
+  margin: 5px 0px 5px 0px;
+  color: #4e4e4e;
+  font-size: 17px;
+  border-radius: 4px;
+}
+
+main .top-new-talk .active .add-new-talk-field .mess {
+  color: #D23030;
+  margin: 0px 0px 10px 0px;
+  font-weight: 900;
+}
+
+main .top-new-talk .active .add-new-talk-field .text-area::-webkit-input-placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
+}
+
+main .top-new-talk .active .add-new-talk-field .text-area:-ms-input-placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
+}
+
+main .top-new-talk .active .add-new-talk-field .text-area::-ms-input-placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
+}
+
+main .top-new-talk .active .add-new-talk-field .text-area::placeholder {
+  padding-left: 9px;
+  font-size: 17px;
+  color: #4e4e4e;
 }
 
 main .top-new-talk .active .add-new-button-container {
@@ -602,18 +657,11 @@ main .top-new-talk .active .add-new-button-container {
           align-items: center;
 }
 
-main .top-new-talk .active .add-new-button-container .mess {
-  color: #D23030;
-  margin-right: 10px;
-  font-weight: 900;
-}
-
 main .top-new-talk .active .add-new-button-container .exit {
-  width: 80px;
+  padding: 4px 9px 4px 9px;
   border: none;
   font-size: 15px;
   border-radius: 6px;
-  height: 28px;
   background-color: #1C8AF5;
   color: white;
   cursor: pointer;
@@ -621,11 +669,10 @@ main .top-new-talk .active .add-new-button-container .exit {
 }
 
 main .top-new-talk .active .add-new-button-container .add-new {
-  width: 100px;
+  padding: 4px 9px 4px 9px;
   border: none;
   font-size: 15px;
   border-radius: 6px;
-  height: 28px;
   background-color: #1C8AF5;
   color: white;
   cursor: pointer;
@@ -811,5 +858,14 @@ main .top-new-talk .active .add-new-button-container .add-new {
 #overflow::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #e4e4e4;
+}
+
+.overflow-entry::-webkit-scrollbar {
+  width: 12px;
+}
+
+.overflow-entry::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #9b9b9b;
 }
 /*# sourceMappingURL=style.css.map */

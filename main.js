@@ -335,6 +335,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     deletingAllEntries(); // usuwa wszystkie wpisy
     CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
     refreshCategories() // odświeża kategorie
+    reloadMainTitleSelection(); // Przejście do listy (Wszystkie);
    }
 
   doneIcon.addEventListener('click', changeToDone)
@@ -524,6 +525,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   const cyclicSpan = document.createElement('span');
   cyclicText.appendChild(cyclicSpan);
   cyclicSpan.className = "far fa-circle";
+  cyclicSpan.style.color = colorCategory;
 
   const cyclicH2 = document.createElement('h2');
   cyclicText.appendChild(cyclicH2);
@@ -560,7 +562,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
     const deleteBox = document.createElement('div');
     cyclicList.prepend(deleteBox);
     deleteBox.className = "deletingCategory";
-    deleteBox.textContent = `Czy napewno chcesz usunąć kategorie "${nameCategoryArg}"? Wszystkie wpisy w niej zostaną usunięte.`
+    deleteBox.textContent = `Czy napewno chcesz usunąć listę o nazwie "${nameCategoryArg}"? Cała zawartość tej listy zostanie usunięta.`
 
     const deleteContainer = document.createElement('div');
     deleteBox.appendChild(deleteContainer);
@@ -623,6 +625,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
       mainTitleReload(); // refresh
       counterNumber() // licznik wpisów
       deletedElementsCounter(); // licznik usuniętych wpisów
+      reloadMainTitleSelection(); // Aktywacja przycisku (Wszystkie)
       cancelDelete();
     }
     deleteConfirmButton.addEventListener('click', confirmDelete)
@@ -896,6 +899,9 @@ const mainTitleSelectionFunction = () => {
 
 const reloadMainTitleSelection = () => {
   const howMuchSelection = document.querySelectorAll('.selection');
+  for (let i = 0; i < howMuchSelection.length; i ++) {
+    howMuchSelection[i].style.background = "none";
+  }
   howMuchSelection[0].style.background = "rgb(243, 243, 243)";
   const mainTitleSelection = document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction))
 }

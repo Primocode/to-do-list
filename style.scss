@@ -44,7 +44,7 @@ header {
         .to-do-list-category {
             margin: 80px 20px 100px 20px;
             .notes-container-height {
-                margin-bottom: 40px;
+                margin-bottom: 20px;
             }
             .to-do-main-title {
                 padding: 10px 0px 10px 0px;
@@ -56,6 +56,7 @@ header {
                 cursor: pointer;
                 h2 {
                     padding-left: 10px;
+                    font-size: 22px;
                 }
                 span {
                     padding-left: 10px;
@@ -81,8 +82,9 @@ header {
                 h3 {
                     color: #696969;
                     font-weight: 300;
-                    padding: 0px 5px 0px 5px;
+                    padding: 1px 5px 1px 15px;
                     cursor: pointer;
+                    font-size: 17px;
                 }
                 h4 {
                     color: #d1d1d1;
@@ -153,7 +155,6 @@ header {
                         }
                         h2 {
                             color: #1C8AF5;
-                            margin-left: 10px;
                         }
                         h3:hover {
                             border-left: 5px solid #1C8AF5;
@@ -170,7 +171,6 @@ header {
                     }
                     h2 {
                         color: #0A9C00;
-                        margin-left: 10px;
                     }
                     h3:hover {
                         border-left: 5px solid #0A9C00;
@@ -186,7 +186,6 @@ header {
                     }
                     h2 {
                         color: #D23030;
-                        margin-left: 10px;
                     }
                     h3:hover {
                         border-left: 5px solid #D23030;
@@ -201,7 +200,6 @@ header {
                     }
                     h2 {
                         color: #1C8AF5;
-                        margin-left: 10px;
                     }
                     h3:hover {
                         border-left: 5px solid #1C8AF5;
@@ -255,6 +253,7 @@ header {
                             padding: 0px 5px 0px 5px;
                             cursor: pointer;
                             width: 162px;
+                            font-size: 17px;
 
                         }
                     }
@@ -265,7 +264,6 @@ header {
                     }
                     h2 {
                         color: #D23030;
-                        margin-left: 10px;
                     }
                     h3:hover {
                         border-left: 5px solid #D23030;
@@ -305,8 +303,7 @@ header {
                     border: none;
                     font-weight: 900;
                     font-size: 17px;
-                    -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
-                    box-shadow: 0px 0px 5px 1px #d1d1d1;
+                    border: 1px solid #D5D5D5;
                 }
                 .category-circle-container {
                     width: 300px;
@@ -420,46 +417,48 @@ main {
         }
         .active  {
             display: block;
-            width: 600px;
+            width: 300px;
             margin: 10px;
-            -webkit-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-            -moz-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-            box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-            .title {
-                padding: 5px 0px 5px 0px;
-                font-weight: 300;
-            }
+            -webkit-box-shadow: 0px 0px 5px 1px #dedede;
+            -moz-box-shadow: 0px 0px 5px 1px #dedede;
+            box-shadow: 0px 0px 5px 1px #dedede;
+            border-radius: 6px;
             .add-new-talk-main-container{
                 margin: 10px 10px 0px 10px;
-                display: flex;
-                justify-content: space-around;
+                padding-top: 5px;
+                h3 {
+                    border-left: 4px solid rgb(28, 138, 245);
+                    padding: 5px 0px 5px 5px;
+                }
                 .add-new-talk-text-container {
                     text-aligN: center;
                     font-size: 18px;
-                    input {
-                        width: 200px;
-                        height: 25px;
-                        border: none;
-                        -webkit-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        -moz-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
+                    .entry-title {
+                        width: 100%;
+                        border: 1px solid #D5D5D5;
                         color: rgb(78, 78, 78);
-                        font-size: 16px;
+                        font-size: 17px;
+                        resize: none;
+                        padding: 5px 0px 5px 0px;
+                        margin: 5px 0px 5px 0px;
+                        border-radius: 4px;
                     }
+                    .entry-title::placeholder {padding-left: 9px; font-size: 17px; color: rgb(78, 78, 78);}
                 }
                 .add-new-talk-select {
                     text-aligN: center;
                     font-size: 18px;
                     select {
-                        width: 200px;
-                        height: 25px;
+                        width: 100%;
+                        height: 31px;
                         border: none;
-                        -webkit-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        -moz-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
+                        border: 1px solid #D5D5D5;
                         color: rgb(78, 78, 78);
                         font-size: 16px;
                         color: #1C8AF5;
+                        padding-left: 5px;
+                        margin: 0px 0px 5px 0px;
+                        border-radius: 4px;
                         .to-do {
                             color: #1C8AF5;
                         }
@@ -479,72 +478,72 @@ main {
                 .date {
                     text-aligN: center;
                     font-size: 18px;
+                    display: flex;
+                    justify-content: space-between;
                     .entry-date {
-                        width: 100px;
-                        height: 25px;
+                        width: 68%;
+                        height: 31px;
                         border: none;
-                        -webkit-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        -moz-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
+                        border: 1px solid #D5D5D5;
                         color: rgb(78, 78, 78);
                         font-size: 16px;
                         text-align: center;
+                        border-radius: 4px;
                     }
-                    input::placeholder { font-size: 14px; text-align: center; color: rgb(185, 185, 185);}
+                    input::placeholder {font-size: 15px; color: rgb(78, 78, 78);}
                     .entry-hour  {
-                        width: 44px;
-                        height: 25px;
+                        width: 28%;
+                        height: 31px;
                         border: none;
-                        -webkit-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        -moz-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                        box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
+                        border: 1px solid #D5D5D5;
                         color: rgb(78, 78, 78);
                         font-size: 16px;
                         text-align: center;
+                        border-radius: 4px;
                     }
                     
                 }
             }
             .add-new-talk-field {
                 text-align: center;
-                margin: 0px 10px 10px 10px;
-                textarea {
+                margin: 0px 10px 0px 10px;
+                .text-area {
                     min-height: 70px;
-                    border: none;
-                    -webkit-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                    -moz-box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
-                    box-shadow: 0px 0px 5px 1px rgba(209,209,209,1);
+                    border: 1px solid #D5D5D5;
                     width: 100%;
-                    border: none;
                     resize: none;
+                    padding: 5px 0px 5px 0px;
+                    margin: 5px 0px 5px 0px;
+                    color: #4e4e4e;
+                    font-size: 17px;
+                    border-radius: 4px;
                 }
+                .mess {
+                    color: #D23030;
+                    margin: 0px 0px 10px 0px;
+                    font-weight: 900;
+                }
+                .text-area::placeholder {padding-left: 9px; font-size: 17px; color: rgb(78, 78, 78);}
             }
             .add-new-button-container {
                 justify-content: flex-end;
                 display: flex;
                 align-items: center;
-                .mess {
-                    color: #D23030;
-                    margin-right: 10px;
-                    font-weight: 900;
-                }
                 .exit {
-                    width: 80px;
+                    padding: 4px 9px 4px 9px;
                     border: none;
                     font-size: 15px;
                     border-radius: 6px;
-                    height: 28px;
                     background-color: #1C8AF5;
                     color: white;
                     cursor: pointer;
                     margin-right: 5px;
                 }
                 .add-new {
-                    width: 100px;
+                    padding: 4px 9px 4px 9px;
                     border: none;
                     font-size: 15px;
                     border-radius: 6px;
-                    height: 28px;
                     background-color: #1C8AF5;
                     color: white;
                     cursor: pointer
@@ -709,6 +708,14 @@ main {
 
 #overflow::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: rgb(228, 228, 228);
+}
+
+.overflow-entry::-webkit-scrollbar {
+    width: 12px;
+}
+
+.overflow-entry::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+    background-color: rgb(155, 155, 155);
 }

@@ -131,12 +131,11 @@
             </div>
             <div class="add-new-talk-container">
                 <div class="add-new-talk-main-container">
+                    <h3>Tworzenie zadania</h3>
                     <div class="add-new-talk-text-container">
-                        <h4 class="title">Tytuł</h4>
-                        <input class="entry-title" type="text">
+                        <textarea class="entry-title overflow-entry" type="text" placeholder="Wpisz tytuł"></textarea>
                     </div>
                     <div class="add-new-talk-select">
-                        <h4 class="title">Kategoria</h4>
                         <select id="select">
                             <option class="to-do" value="Do zrobienia">Do zrobienia</option>
                             <option class="important" value="Ważne">Ważne</option>
@@ -144,18 +143,15 @@
                           </select>
                     </div>
                     <div class="date">
-                        <h4 class="title">Do kiedy</h4>
-                        <input type="text" class="entry-date" id="datepicker" placeholder="02/10/2025">
-                        <input type="text" class="entry-hour" placeholder="13:11">
+                        <input type="text" class="entry-date" id="datepicker" placeholder="Podaj datę">
+                        <input type="text" class="entry-hour" placeholder="godzinę">
                     </div>
                 </div>
                 <div class="add-new-talk-field">
-                    <h4 class="title">Treść</h4>
-                    <!-- <input type="text"> -->
-                    <textarea class="text-area"></textarea>
+                    <textarea class="text-area overflow-entry" placeholder="Dodaj szczegóły" ></textarea>
+                    <div class="mess"></div>
                 </div>
                 <div class="add-new-button-container">
-                    <div class="mess"></div>
                     <button class="exit">Anuluj</button>
                     <button class="add-new">Dodaj zadanie</button>
                 </div>
