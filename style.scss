@@ -410,7 +410,6 @@ header {
             .add-button {
                 display: flex;
                 justify-content: left;
-                width: 285px;
                 padding: 0px 0px 20px 20px;
                 // background-color: white;
                 position: fixed;
@@ -640,9 +639,6 @@ main {
         nav {
             width: 275px;
             .date {
-                width: 275px;
-            }
-            .add-button {
                 width: 275px;
             }
         }

@@ -434,7 +434,6 @@ header .add-button {
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
-  width: 285px;
   padding: 0px 0px 20px 20px;
   position: fixed;
   bottom: 0;
@@ -751,9 +750,6 @@ main .top-new-talk .active .add-new-button-container .add-new {
     width: 275px;
   }
   .header nav .date {
-    width: 275px;
-  }
-  .header nav .add-button {
     width: 275px;
   }
 }
