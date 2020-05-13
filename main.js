@@ -977,13 +977,11 @@ const reloadMainTitleSelection = () => {
   const mainTitleSelection = document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction))
 }
 reloadMainTitleSelection();
-
-
 // ----------------------------------------------------------------------------
 
 // Funkcja do godziny 
-
 const entryHour = document.querySelector('.entry-hour');
+const headerNav = document.querySelector('header > nav')
 let numberHour = 0;
 
 const entryHourBlockFunction = () => {
@@ -1007,9 +1005,20 @@ const entryHourBlockFunction = () => {
 }
 
 entryHour.addEventListener('keydown', entryHourBlockFunction);
-
-
 //---------------------------------------------------------------------- 
+
+// Otwieranie / zamykanie menu
+
+const menuOpenClose = document.querySelector('.menu-open-close')
+const header = document.querySelector('header')
+
+const menuOpenCloseFunction = () => {
+  header.classList.toggle('header-active-nav')
+}
+
+menuOpenClose.addEventListener('click', menuOpenCloseFunction);
+
+// -----------------------------------------------
 
 // odświeżanie
 const reloadScript = () => {

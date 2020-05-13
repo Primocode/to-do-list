@@ -11,7 +11,8 @@ body {
 }
 
 header {
-  min-width: 300px;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
 }
 
 header nav {
@@ -21,6 +22,9 @@ header nav {
   position: fixed;
   background-color: white;
   overflow: auto;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  margin-left: -300px;
 }
 
 header nav nav::-webkit-scrollbar {
@@ -423,6 +427,19 @@ main {
 
 main .top-header {
   border-bottom: 1px solid #CBCBCB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .top-header .menu-open-close span {
+  font-size: 31px;
+  padding-left: 15px;
+  cursor: pointer;
+  color: #1C8AF5;
 }
 
 main .top-header h1 {
@@ -676,6 +693,21 @@ main .top-new-talk .active .add-new-button-container .add-new {
   background-color: #1C8AF5;
   color: white;
   cursor: pointer;
+}
+
+.header-active-nav {
+  margin-left: 300px;
+}
+
+@media (max-width: 725px) {
+  .header {
+    margin-left: 300px;
+  }
+  .header-active-nav {
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    margin: 0;
+  }
 }
 
 .main-content-all .main-content-entry .empty-entry-message {
