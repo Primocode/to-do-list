@@ -407,13 +407,9 @@ header .add-button {
           justify-content: center;
   width: 285px;
   padding: 10px 0px 10px 0px;
-  background-color: white;
   position: fixed;
   bottom: 0;
   min-height: 69px;
-  -webkit-box-shadow: -28px 22px 7px 26px #eeeeee;
-  box-shadow: -28px 22px 7px 26px #eeeeee;
-  border-top: 1px solid #CBCBCB;
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
@@ -421,7 +417,6 @@ header .add-button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-right: 1px solid #CBCBCB;
 }
 
 header .add-button .add {
@@ -511,12 +506,12 @@ main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-conta
 }
 
 main .top-new-talk .active .add-new-talk-main-container .add-new-talk-text-container .entry-title {
-  width: 100%;
+  width: 95%;
   border: 1px solid #D5D5D5;
   color: #4e4e4e;
   font-size: 17px;
   resize: none;
-  padding: 5px 0px 5px 0px;
+  padding: 5px;
   margin: 5px 0px 5px 0px;
   border-radius: 4px;
 }
@@ -641,9 +636,9 @@ main .top-new-talk .active .add-new-talk-field {
 main .top-new-talk .active .add-new-talk-field .text-area {
   min-height: 70px;
   border: 1px solid #D5D5D5;
-  width: 100%;
+  width: 95%;
   resize: none;
-  padding: 5px 0px 5px 0px;
+  padding: 5px;
   margin: 5px 0px 5px 0px;
   color: #4e4e4e;
   font-size: 17px;

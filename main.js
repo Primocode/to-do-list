@@ -456,10 +456,7 @@ const addEntryButtonFunction = () => {
   const entryDate = document.querySelector('.entry-date').value;
   const entryHourValue = document.querySelector('.entry-hour').value;
   const currentTime = new Date();
-  if (entryContents.length < 1) {
-    mess.textContent = "Treść nie może zostać pusta";
-  }
-  else if (entryTitle.length < 1) {
+  if (entryTitle.length < 1) {
     mess.textContent = "Tytuł nie może być pusty";
   }
   else if (entryTitleArray.includes(entryTitle)) {
@@ -489,7 +486,6 @@ const addEntryButtonFunction = () => {
     document.querySelector('.text-area').value = null;
     document.querySelector('.entry-title').value = null;
     document.querySelector('.entry-date').value = null;
-    document.querySelector('#select').value = null;
     document.querySelector('.entry-hour').value = null;
   }
   addEntryButton.style.background = "#1C8AF5";

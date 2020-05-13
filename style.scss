@@ -372,16 +372,16 @@ header {
                 justify-content: center;
                 width: 285px;
                 padding: 10px 0px 10px 0px;
-                background-color: white;
+                // background-color: white;
                 position: fixed;
                 bottom: 0;
                 min-height: 69px;
-                -webkit-box-shadow: -28px 22px 7px 26px #eeeeee;
-                box-shadow: -28px 22px 7px 26px #eeeeee;
-                border-top: 1px solid #CBCBCB;
+                // -webkit-box-shadow: -28px 22px 7px 26px #eeeeee;
+                // box-shadow: -28px 22px 7px 26px #eeeeee;
+                // border-top: 1px solid #CBCBCB;
                 flex-direction: column-reverse;
                 align-items: center;
-                border-right: 1px solid #CBCBCB;
+                // border-right: 1px solid #CBCBCB;
                 .add {
                     height: 50px;
                     width: 50px;
@@ -460,12 +460,12 @@ main {
                     text-aligN: center;
                     font-size: 18px;
                     .entry-title {
-                        width: 100%;
+                        width: 95%;
                         border: 1px solid #D5D5D5;
                         color: rgb(78, 78, 78);
                         font-size: 17px;
                         resize: none;
-                        padding: 5px 0px 5px 0px;
+                        padding: 5px;
                         margin: 5px 0px 5px 0px;
                         border-radius: 4px;
                     }
@@ -537,9 +537,9 @@ main {
                 .text-area {
                     min-height: 70px;
                     border: 1px solid #D5D5D5;
-                    width: 100%;
+                    width: 95%;
                     resize: none;
-                    padding: 5px 0px 5px 0px;
+                    padding: 5px;
                     margin: 5px 0px 5px 0px;
                     color: #4e4e4e;
                     font-size: 17px;
