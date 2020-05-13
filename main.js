@@ -147,7 +147,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const entryLeftDate = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftDate);
   entryLeftDate.className = "entry-left-date";
-  entryLeftDate.textContent = entryDateValue; // DATA PODANA PRZEZ UŻYTKOWNIKA
+  entryLeftDate.textContent = "do " + entryDateValue; // DATA PODANA PRZEZ UŻYTKOWNIKA
 
   const entryLeftHour = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftHour);

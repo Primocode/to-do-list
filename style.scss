@@ -409,9 +409,9 @@ header {
             }
             .add-button {
                 display: flex;
-                justify-content: center;
+                justify-content: left;
                 width: 285px;
-                padding: 10px 0px 10px 0px;
+                padding: 0px 0px 20px 20px;
                 // background-color: white;
                 position: fixed;
                 bottom: 0;
@@ -420,7 +420,6 @@ header {
                 // box-shadow: -28px 22px 7px 26px #eeeeee;
                 // border-top: 1px solid #CBCBCB;
                 flex-direction: column-reverse;
-                align-items: center;
                 // border-right: 1px solid #CBCBCB;
                 .add {
                     height: 50px;
