@@ -16,7 +16,7 @@ header {
 }
 
 header nav {
-  width: 300px;
+  width: 285px;
   height: 100vh;
   border-right: 1px solid #CBCBCB;
   position: fixed;
@@ -24,7 +24,7 @@ header nav {
   overflow: auto;
   -webkit-transition-duration: 0.5s;
           transition-duration: 0.5s;
-  margin-left: -300px;
+  margin-left: -285px;
 }
 
 header nav nav::-webkit-scrollbar {
@@ -70,7 +70,7 @@ header nav .date .close-menu {
   right: 0;
   font-size: 35px;
   color: #1C8AF5;
-  padding-right: 15px;
+  padding-right: 20px;
   cursor: pointer;
 }
 
@@ -419,6 +419,7 @@ header .add-button {
   background-color: white;
   position: fixed;
   bottom: 0;
+  height: 69px;
   -webkit-box-shadow: -28px 22px 7px 26px #eeeeee;
   box-shadow: -28px 22px 7px 26px #eeeeee;
   border-top: 1px solid #CBCBCB;
@@ -569,6 +570,7 @@ main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select sel
   padding-left: 5px;
   margin: 0px 0px 5px 0px;
   border-radius: 4px;
+  background-color: white;
 }
 
 main .top-new-talk .active .add-new-talk-main-container .add-new-talk-select select .to-do {
@@ -721,7 +723,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .header-active-nav {
-  margin-left: 300px;
+  margin-left: 285px;
 }
 
 @media (max-width: 725px) {
@@ -732,6 +734,15 @@ main .top-new-talk .active .add-new-button-container .add-new {
   }
   .nav-active {
     margin-left: 0;
+  }
+  .header nav {
+    width: 275px;
+  }
+  .header nav .date {
+    width: 275px;
+  }
+  .header nav .add-button {
+    width: 275px;
   }
 }
 
@@ -746,7 +757,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry {
-  margin: 0px 10px 10px 15px;
+  margin: 0px 10px 10px 10px;
   max-width: 700px;
   border: 1px solid #D5D5D5;
   border-radius: 5px;
@@ -783,6 +794,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
   font-size: 16px;
   color: #1C8AF5;
   margin: 0px 10px 0px 10px;
+  background-color: white;
   border: 1px solid #CBCBCB;
 }
 
@@ -886,7 +898,6 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .remove-entry span {
   font-size: 16px;
-  background-color: whitesmoke;
   width: 16px;
   height: 16px;
 }
@@ -902,7 +913,6 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .done-entry span {
   font-size: 16px;
-  background-color: whitesmoke;
   width: 16px;
   height: 16px;
 }
@@ -918,7 +928,6 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .info-entry span {
   font-size: 16px;
-  background-color: whitesmoke;
   width: 16px;
   height: 16px;
 }

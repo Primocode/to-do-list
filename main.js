@@ -78,11 +78,11 @@ closeMenu.addEventListener('click', menuOpenCloseFunction);
 // -----------------------------------------------
 
 
-let entryTitleArray = [];
-let entryContentsArray = [];
-let entryCategoryArray = [];
-let entryDateArray = [];
-let entryCurrentTime = [];
+let entryTitleArray = ["rower"];
+let entryContentsArray = ["Rower jest super"];
+let entryCategoryArray = ["Do zrobienia"];
+let entryDateArray = ["24/05/20"];
+let entryCurrentTime = ["05/50/5020"];
 
 let categoryArray = [];
 let categoryColorArray = [];
@@ -920,7 +920,6 @@ const mainTitleSelectionFunction = () => {
   if (whatCategory.textContent == "") {
     whatCategory.textContent = "Wszystko";
   }
-  menuOpenCloseFunction();
 }
 
 const reloadMainTitleSelection = () => {
@@ -937,6 +936,19 @@ const reloadMainTitleSelection = () => {
 }
 reloadMainTitleSelection();
 // ----------------------------------------------------------------------------
+
+// Zamykanie okna menu z róznymi rozdzielczościami
+
+const menuCloseFunction = () => {
+  if (window.innerWidth < 725) {
+    menuOpenCloseFunction();
+  }
+}
+
+document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', menuCloseFunction))
+
+// --------------------------------------------------
+
 
 // Funkcja do godziny 
 const entryHour = document.querySelector('.entry-hour');
