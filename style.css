@@ -313,10 +313,10 @@ header .creating-category {
 }
 
 header .creating-category-active {
-  width: 255px;
+  width: 215px;
   position: fixed;
   bottom: 105px;
-  margin: 0px 15px 0px 15px;
+  margin: 0px 30px 0px 30px;
   -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
   box-shadow: 0px 0px 5px 1px #d1d1d1;
   display: -webkit-box;
@@ -419,7 +419,7 @@ header .add-button {
   background-color: white;
   position: fixed;
   bottom: 0;
-  height: 69px;
+  min-height: 69px;
   -webkit-box-shadow: -28px 22px 7px 26px #eeeeee;
   box-shadow: -28px 22px 7px 26px #eeeeee;
   border-top: 1px solid #CBCBCB;
@@ -885,6 +885,13 @@ main .top-new-talk .active .add-new-button-container .add-new {
   color: grey;
   font-weight: 300;
   margin-left: 10px;
+}
+
+.main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-left .entry-left-hour {
+  font-size: 14px;
+  color: grey;
+  font-weight: 300;
+  margin-left: 3px;
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .remove-entry {
