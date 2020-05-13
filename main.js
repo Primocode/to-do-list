@@ -952,36 +952,8 @@ const menuCloseFunction = () => {
 }
 
 document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', menuCloseFunction))
+
 // --------------------------------------------------
-
-
-// Funkcja do godziny 
-const entryHour = document.querySelector('.entry-hour');
-const headerNav = document.querySelector('header > nav')
-let numberHour = 0;
-
-const entryHourBlockFunction = () => {
-  let entryHourValue = document.querySelector('.entry-hour').value;
-  console.log(entryHourValue + " to jest wartość")
-  numberHour++
-  console.log(numberHour);
-  if (event.keyCode == 8) {
-    console.log("kliknięcto backspace")
-    entryHour.value = "";
-    numberHour = 0;
-  }
-  if (numberHour == 3) {
-    console.log('Więcej niż 2')
-    entryHour.value = entryHourValue + ":";
-  }
-  else if (numberHour == 5) {
-    entryHour.value = "";
-    numberHour = 1;
-  }
-}
-
-entryHour.addEventListener('keydown', entryHourBlockFunction);
-//---------------------------------------------------------------------- 
 
 // odświeżanie
 const reloadScript = () => {

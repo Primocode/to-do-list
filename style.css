@@ -81,7 +81,8 @@ header nav .date .close-menu {
 }
 
 header nav .to-do-list-category {
-  margin: 80px 20px 100px 20px;
+  margin: 80px 20px 0px 20px;
+  padding-bottom: 100px;
 }
 
 header nav .to-do-list-category .notes-container-height {
@@ -359,7 +360,6 @@ header .creating-category-active .category-circle-container {
       -ms-flex-pack: center;
           justify-content: center;
   max-width: 200px;
-  margin-bottom: 5px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -377,16 +377,7 @@ header .creating-category-active .error-category {
   font-weight: 900;
   font-size: 14px;
   text-align: center;
-}
-
-header .creating-category-active .category-buttons-container {
-  margin-top: 5px;
-  height: 20px;
-  width: 100%;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  text-align: right;
+  margin: 4px 0px 4px 0px;
 }
 
 header .creating-category-active .category-buttons-container .category-exit {
@@ -661,7 +652,6 @@ main .top-new-talk .active .add-new-talk-field .text-area {
 
 main .top-new-talk .active .add-new-talk-field .mess {
   color: #D23030;
-  margin: 0px 0px 10px 0px;
   font-weight: 900;
 }
 
@@ -709,7 +699,7 @@ main .top-new-talk .active .add-new-button-container .exit {
   background-color: #1C8AF5;
   color: white;
   cursor: pointer;
-  margin-right: 5px;
+  margin: 3px;
 }
 
 main .top-new-talk .active .add-new-button-container .add-new {
@@ -720,6 +710,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
   background-color: #1C8AF5;
   color: white;
   cursor: pointer;
+  margin: 3px;
 }
 
 .header-active-nav {

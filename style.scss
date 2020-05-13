@@ -62,7 +62,9 @@ header {
             }
         }
         .to-do-list-category {
-            margin: 80px 20px 100px 20px;
+            margin: 80px 20px 0px 20px;
+            padding-bottom: 100px;
+
             .notes-container-height {
                 margin-bottom: 20px;
             }
@@ -330,7 +332,6 @@ header {
                     display: flex;
                     justify-content: center;
                     max-width: 200px;
-                    margin-bottom: 5px;
                     flex-wrap: wrap;
                     .category-circle {
                         height: 20px;
@@ -345,13 +346,9 @@ header {
                     font-weight: 900;
                     font-size: 14px;
                     text-align: center;
+                    margin: 4px 0px 4px 0px;
                 }
                 .category-buttons-container {
-                    margin-top: 5px;
-                    height: 20px;
-                    width: 100%;
-                    justify-content: right;
-                    text-align: right;
                     .category-exit {
                         background-color: #1C8AF5;
                         border-radius: 6px;
@@ -550,7 +547,6 @@ main {
                 }
                 .mess {
                     color: #D23030;
-                    margin: 0px 0px 10px 0px;
                     font-weight: 900;
                 }
                 .text-area::placeholder {padding-left: 9px; font-size: 17px; color: rgb(78, 78, 78);}
@@ -567,7 +563,7 @@ main {
                     background-color: #1C8AF5;
                     color: white;
                     cursor: pointer;
-                    margin-right: 5px;
+                    margin: 3px;
                 }
                 .add-new {
                     padding: 4px 9px 4px 9px;
@@ -576,7 +572,8 @@ main {
                     border-radius: 6px;
                     background-color: #1C8AF5;
                     color: white;
-                    cursor: pointer
+                    cursor: pointer;
+                    margin: 3px;
                 }
             }
 
