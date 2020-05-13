@@ -95,6 +95,29 @@ header {
                 }
 
             }
+            @media (max-width: 725px) {
+                .notes-container-height {
+                    margin-bottom: 10px;
+                }
+
+                .main-title {
+                    h2 {
+                        font-size: 19px;
+                    }
+                }
+
+                .main-list {
+                    h4 {
+                        font-size: 14px;
+                    }
+                }
+
+                .cyclicDelete {
+                    font-size: 16px;
+                    padding: 4px;
+                }
+
+            }
 
             .main-title:hover {
                 background-color: #fbfbfb;
@@ -256,6 +279,7 @@ header {
                         .deleted-title {
                             padding: 10px 0px 10px 10px;
                             width: 100%;
+                            font-size: 22px;
                         }
                     }
                     .deleted-text:hover {
@@ -277,6 +301,22 @@ header {
                             width: 162px;
                             font-size: 17px;
 
+                        }
+                    }
+
+                    @media (max-width: 725px) {
+                        .deleted-text {
+                            .deleted-title {
+                                font-size: 19px;
+                            }
+                        }
+                        .deleted-list {
+                            .deleted-list-h4 {
+                                font-size: 14px;
+                            }
+                            .deleted-list-h3-see {
+                                font-size: 15px;
+                            }
                         }
                     }
 
@@ -305,7 +345,7 @@ header {
             .creating-category-active {
                 width: 215px;
                 position: fixed;
-                bottom: 105px;
+                bottom: 80px;
                 margin: 0px 30px 0px 30px;
                 -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
                 box-shadow: 0px 0px 5px 1px #d1d1d1;
@@ -608,8 +648,6 @@ main {
             }
         }
     }
-    
-
 
 }
 

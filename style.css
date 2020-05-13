@@ -125,6 +125,22 @@ header nav .to-do-list-category .main-title .cyclicDelete {
   border-radius: 5px;
 }
 
+@media (max-width: 725px) {
+  header nav .to-do-list-category .notes-container-height {
+    margin-bottom: 10px;
+  }
+  header nav .to-do-list-category .main-title h2 {
+    font-size: 19px;
+  }
+  header nav .to-do-list-category .main-list h4 {
+    font-size: 14px;
+  }
+  header nav .to-do-list-category .cyclicDelete {
+    font-size: 16px;
+    padding: 4px;
+  }
+}
+
 header nav .to-do-list-category .main-title:hover {
   background-color: #fbfbfb;
 }
@@ -266,6 +282,7 @@ header .deleted .deleted-container .deleted-text {
 header .deleted .deleted-container .deleted-text .deleted-title {
   padding: 10px 0px 10px 10px;
   width: 100%;
+  font-size: 22px;
 }
 
 header .deleted .deleted-container .deleted-text:hover {
@@ -292,6 +309,18 @@ header .deleted .deleted-container .deleted-list .deleted-list-h3-see {
   font-size: 17px;
 }
 
+@media (max-width: 725px) {
+  header .deleted .deleted-container .deleted-text .deleted-title {
+    font-size: 19px;
+  }
+  header .deleted .deleted-container .deleted-list .deleted-list-h4 {
+    font-size: 14px;
+  }
+  header .deleted .deleted-container .deleted-list .deleted-list-h3-see {
+    font-size: 15px;
+  }
+}
+
 header .deleted .deleted-container span {
   color: #D23030;
   padding-left: 10px;
@@ -316,7 +345,7 @@ header .creating-category {
 header .creating-category-active {
   width: 215px;
   position: fixed;
-  bottom: 105px;
+  bottom: 80px;
   margin: 0px 30px 0px 30px;
   -webkit-box-shadow: 0px 0px 5px 1px #d1d1d1;
   box-shadow: 0px 0px 5px 1px #d1d1d1;
