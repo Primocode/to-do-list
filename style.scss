@@ -63,8 +63,39 @@ header {
                 }
             }
         }
-        .to-do-list-category {
+        .search-note {
+            text-align: center;
             margin: 80px 20px 0px 20px;
+            .search-input {
+                width: 80%;
+                text-align: center;
+                border: 1px solid #D5D5D5;
+                color: #4e4e4e;
+                font-size: 17px;
+                resize: none;
+                padding: 5px;
+                margin: 5px 0px 5px 0px;
+                border-radius: 20px;
+            }
+            .sophisticated-items-container {
+                cursor: pointer;
+                .empty-search {
+                    color: #808080;
+                    margin-bottom: 5px;
+                }
+                .search-category {
+                    color: #1C8AF5;
+                }
+                .sophisticated-items {
+                }
+            }
+            .sophisticated-items-container:hover {
+                background-color: #fcfcfc;
+            }
+
+        }
+        .to-do-list-category {
+            margin: 0px 20px 0px 20px;
             padding-bottom: 100px;
 
             .notes-container-height {
@@ -593,6 +624,21 @@ main {
                 }
                 .text-area::placeholder {padding-left: 9px; font-size: 17px; color: rgb(78, 78, 78);}
             }
+            // .tag {
+            //     text-align: center;
+            //     margin: 0px 10px 0px 10px;
+            //     .tag-input {
+            //         height: 14px;
+            //         border: 1px solid #D5D5D5;
+            //         width: 95%;
+            //         resize: none;
+            //         padding: 5px;
+            //         color: #4e4e4e;
+            //         font-size: 14px;
+            //         border-radius: 4px;
+            //         overflow: hidden;
+            //     }
+            // }
             .add-new-button-container {
                 justify-content: flex-end;
                 display: flex;

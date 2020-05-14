@@ -82,8 +82,42 @@ header nav .date .close-menu {
   }
 }
 
-header nav .to-do-list-category {
+header nav .search-note {
+  text-align: center;
   margin: 80px 20px 0px 20px;
+}
+
+header nav .search-note .search-input {
+  width: 80%;
+  text-align: center;
+  border: 1px solid #D5D5D5;
+  color: #4e4e4e;
+  font-size: 17px;
+  resize: none;
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 20px;
+}
+
+header nav .search-note .sophisticated-items-container {
+  cursor: pointer;
+}
+
+header nav .search-note .sophisticated-items-container .empty-search {
+  color: #808080;
+  margin-bottom: 5px;
+}
+
+header nav .search-note .sophisticated-items-container .search-category {
+  color: #1C8AF5;
+}
+
+header nav .search-note .sophisticated-items-container:hover {
+  background-color: #fcfcfc;
+}
+
+header nav .to-do-list-category {
+  margin: 0px 20px 0px 20px;
   padding-bottom: 100px;
 }
 

@@ -155,8 +155,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     entryLeftDate.textContent = entryDateValue
   }                                                      
 
-
-
   const entryLeftHour = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftHour);
   entryLeftHour.className = "entry-left-hour";
@@ -764,7 +762,7 @@ const subCategoryClickFunction = () => {
   deletingAllEntries();
   creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue], entryHourTime[indexSubCategoryValue]);
   messageActive();
-  menuOpenCloseFunction();
+  menuCloseFunction();
 }
 
 const checkSubCategory = () => {
@@ -958,6 +956,114 @@ document.querySelectorAll(".selection").forEach(item => item.addEventListener('c
 
 // --------------------------------------------------
 
+// Dodawanie tagów 
+
+// const tagContainer = document.querySelector('.tag');
+// const tagInput = document.querySelector('.tag-input')
+
+// const tagsContainer = document.createElement('ul')
+// tagContainer.appendChild(tagsContainer);
+// tagsContainer.className = "tags-container"
+
+// const tagInputValueFunction = () => {
+//   const tagInputValue = document.querySelector('.tag-input').value
+//   console.log(tagInputValue);
+
+//   const addTag = (value) => {
+//     const createTag = document.createElement('li');
+//     tagsContainer.appendChild(createTag);
+//     createTag.className = "tag"
+//     createTag.textContent = value;
+//   }
+
+//   if (event.keyCode == 13) {
+//     console.log("Wcisnąłeś enter")
+//     document.querySelector('.tag-input').value = null;
+//     addTag(tagInputValue)
+//   }
+//   if (event.keyCode == 32) {
+//     console.log("Wcisnąłeś spacje")
+//     document.querySelector('.tag-input').value = null;
+//     addTag(tagInputValue)
+//   }
+
+//   if (event.keyCode == 8) {
+//     document.querySelector('.tag-input').value = null;
+//   }
+// }
+
+// tagInput.addEventListener('keyup', tagInputValueFunction);
+
+// -----------------------------------------------------------------------------
+
+// Pokazywanie zadania z wyszukiwarki
+
+const showTheTask = (index) => {
+    deletingAllEntries();
+    creationNewEntry(entryContentsArray[index], entryTitleArray[index], entryCategoryArray[index], entryDateArray[index], "nothing", entryCurrentTime[index], entryHourTime[index]);
+    whatCategory.textContent = entryCategoryArray[index]
+}
+
+// ---------------------------------------------------------------------
+
+// Wyszukiwanie zadań
+
+const searchInput = document.querySelector('.search-input');
+const itemsContainer = document.querySelector('.sophisticated-items-container');
+
+const searchElements = () => {
+  const searchInputValue = document.querySelector('.search-input').value;
+  const searchCategoryRemove = document.querySelectorAll('.search-category');
+  const allItemsContainer = document.querySelectorAll('.sophisticated-items');
+  const emptySearch = document.querySelectorAll('.empty-search');
+  for (let i = 0; i < allItemsContainer.length; i++) {
+    allItemsContainer[i].remove();
+    searchCategoryRemove[i].remove();
+  }
+
+  for (let i = 0; i < emptySearch.length; i ++) {
+    emptySearch[i].remove();
+  }
+
+  if (!searchInputValue == "") {
+    const sophisticatedAllItem = document.querySelectorAll('.sophisticated-items-container');
+    for (let i = 0; i > sophisticatedAllItem.length; i++) {
+      searchItemsContainer.remove()
+    }
+  
+    if (!entryTitleArray.find( (item) => item.includes(searchInputValue)) == "") {
+      let result = entryTitleArray.find( (item) => item.startsWith(searchInputValue))
+      const searchItemsContainer = document.createElement('div');
+      itemsContainer.appendChild(searchItemsContainer);
+      searchItemsContainer.className="sophisticated-items";
+      searchItemsContainer.dataset.category = entryCategoryArray[entryTitleArray.indexOf(result)]
+      const searchCategory = document.createElement('h4');
+      itemsContainer.appendChild(searchCategory);
+      searchCategory.className = "search-category";
+      searchCategory.textContent = entryCategoryArray[entryTitleArray.indexOf(result)]
+
+      showTheTask(entryTitleArray.indexOf(result))
+
+      // let result = entryTitleArray.find( (item) => item.includes(searchInputValue))
+      searchItemsContainer.textContent = result;
+    }
+  
+    // Stworzyć sophisticated-items-container 
+
+    if (allItemsContainer.length < 1) {
+      const createEmptyItem = document.createElement('h4');
+      itemsContainer.appendChild(createEmptyItem);
+      createEmptyItem.className = "empty-search"
+      createEmptyItem.textContent = "Nie znaleziono takiego zadania"
+    }
+  }
+}
+
+searchInput.addEventListener('keyup', searchElements);
+// ---------------------------------------------------------------------
+
+
+
 // odświeżanie
 const reloadScript = () => {
   CreatingAllEntries() // Tworzenie wszystkich wpisów
@@ -972,4 +1078,7 @@ const reloadScript = () => {
   reloadMainTitleSelection();
 }
 reloadScript()
+
+
+
 // ------------------------------------------------------------------------------
