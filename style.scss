@@ -724,8 +724,7 @@ main {
             }
         }
         .entry {
-            margin: 0px 10px 10px 10px;
-            max-width: 700px;
+            margin: 0px 40px 10px 40px;
             // border: 1px solid #CBCBCB;
             // border: 1px solid rgb(255, 255, 255);
             border: 1px solid #D5D5D5;
@@ -830,6 +829,7 @@ main {
                 }
                 .entry-bottom-right {
                     .remove-entry {
+                        background-color: #fbfbfb;
                         border: none;
                         cursor: pointer;
                         border-radius: 50%;
@@ -843,6 +843,7 @@ main {
                         }
                     }
                     .done-entry {
+                        background-color: #fbfbfb;
                         border: none;
                         cursor: pointer;
                         border-radius: 50%;
@@ -856,6 +857,7 @@ main {
                         }
                     }
                     .info-entry {
+                        background-color: #fbfbfb;
                         border: none;
                         cursor: pointer;
                         border-radius: 50%;
@@ -883,6 +885,16 @@ main {
                         }
                     }
                 }
+            }
+        }
+        @media (max-width: 1350px) {
+            .entry {
+                margin: 0px 20px 10px 20px;
+            }
+        }
+        @media (max-width: 725px) {
+            .entry {
+                margin: 0px 10px 10px 10px;
             }
         }
     }

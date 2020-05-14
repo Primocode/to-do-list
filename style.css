@@ -813,8 +813,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry {
-  margin: 0px 10px 10px 10px;
-  max-width: 700px;
+  margin: 0px 40px 10px 40px;
   border: 1px solid #D5D5D5;
   border-radius: 5px;
   background-color: white;
@@ -953,6 +952,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .remove-entry {
+  background-color: #fbfbfb;
   border: none;
   cursor: pointer;
   border-radius: 50%;
@@ -968,6 +968,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .done-entry {
+  background-color: #fbfbfb;
   border: none;
   cursor: pointer;
   border-radius: 50%;
@@ -983,6 +984,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .info-entry {
+  background-color: #fbfbfb;
   border: none;
   cursor: pointer;
   border-radius: 50%;
@@ -1011,6 +1013,18 @@ main .top-new-talk .active .add-new-button-container .add-new {
   border-radius: 3px;
   color: #dfdfdf;
   background-color: rgba(22, 22, 22, 0.753);
+}
+
+@media (max-width: 1350px) {
+  .main-content-all .main-content-entry .entry {
+    margin: 0px 20px 10px 20px;
+  }
+}
+
+@media (max-width: 725px) {
+  .main-content-all .main-content-entry .entry {
+    margin: 0px 10px 10px 10px;
+  }
 }
 
 .ui-widget-header {
