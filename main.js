@@ -1,11 +1,12 @@
 // timer
 
 let day = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
+let month = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Pażdziernik", "Listopad", "Grudzień"]
 
 function Timer() {
 let date = new Date();
   document.getElementById("time").innerHTML = date.toLocaleTimeString();
-  document.getElementById("day").innerHTML = day[date.getDay()];
+  document.getElementById("day").innerHTML = day[date.getDay()] + " " + date.getDate() + " " + month[date.getMonth()];
 }
 Timer()
 let myVar = setInterval(Timer, 1000);
@@ -147,7 +148,14 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const entryLeftDate = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftDate);
   entryLeftDate.className = "entry-left-date";
-  entryLeftDate.textContent = "do " + entryDateValue; // DATA PODANA PRZEZ UŻYTKOWNIKA
+  if (entryDateValue.length > 1) {
+    entryLeftDate.textContent = "do " + entryDateValue;  // DATA PODANA PRZEZ UŻYTKOWNIKA
+  }   
+  else {
+    entryLeftDate.textContent = entryDateValue
+  }                                                      
+
+
 
   const entryLeftHour = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftHour);
@@ -634,7 +642,6 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
           entryHourTime.splice(indexToDelete, 1)
         }
       }
-
       deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
       creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
       deletingAllEntries(); // usuwanie wszystkich wpisów
@@ -757,6 +764,7 @@ const subCategoryClickFunction = () => {
   deletingAllEntries();
   creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue], entryHourTime[indexSubCategoryValue]);
   messageActive();
+  menuOpenCloseFunction();
 }
 
 const checkSubCategory = () => {
@@ -909,7 +917,6 @@ const whatCategory = document.querySelector('.top-header-title');
 const mainTitleSelectionFunction = () => {
   reloadMainTitleSelection();
   const howMuchSelection = document.querySelectorAll('.selection');
-  // console.log(howMuchSelection[0]);
   for (let i = 0; i < howMuchSelection.length; i ++) {
     howMuchSelection[i].style.background = "none";
   }
@@ -955,8 +962,7 @@ document.querySelectorAll(".selection").forEach(item => item.addEventListener('c
 const reloadScript = () => {
   CreatingAllEntries() // Tworzenie wszystkich wpisów
   messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
-  // mainTitleReload(); // RELOADOWANIE PRZECHODZENIA DO POSZCZEGÓLNYCH KATEGORI
-  creatingAllCategory();
+  creatingAllCategory(); // Tworzenie wszystkich wpisów
   deletingAllSubCategories(); // usuwanie wszystkich podkategori
   subCategoryFunction() // tworzenie od nowa wszystkich podkategori
   mainTitleReload()

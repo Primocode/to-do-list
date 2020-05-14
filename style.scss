@@ -40,11 +40,13 @@ header {
                 font-size: 30px;
                 text-align: center;
                 color: #1C8AF5;
+                cursor: default;
             }
             #day {
                 color: #1C8AF5;
-                font-size: 20px;
+                font-size: 17px;
                 text-align: center;
+                cursor: default;
             }
             .close-menu {
                 display: none;
@@ -188,6 +190,7 @@ header {
                         font-size: 16px;
                         font-weight: 300;
                         text-align: center;
+                        cursor: default;
                     }
                 }
             }
@@ -443,6 +446,7 @@ main {
         border-bottom: 1px solid #CBCBCB;
         display: flex;
         align-items: center;
+        cursor: default;
         .menu-open-close {
             span {
                 font-size: 31px;
@@ -616,6 +620,11 @@ main {
             }
 
         }
+        @media (max-width: 400px) {
+            .active {
+                max-width: 100%;
+            }
+        }
     }
 }
 
@@ -660,6 +669,7 @@ main {
             display: none;
         }
         .empty-entry-message-active {
+            cursor: default;
             p {
                 font-size: 23px;
                 // font-weight: 600;

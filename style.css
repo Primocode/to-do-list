@@ -56,12 +56,14 @@ header nav .date #time {
   font-size: 30px;
   text-align: center;
   color: #1C8AF5;
+  cursor: default;
 }
 
 header nav .date #day {
   color: #1C8AF5;
-  font-size: 20px;
+  font-size: 17px;
   text-align: center;
+  cursor: default;
 }
 
 header nav .date .close-menu {
@@ -215,6 +217,7 @@ header nav .to-do-list-category .all h3 {
   font-size: 16px;
   font-weight: 300;
   text-align: center;
+  cursor: default;
 }
 
 header nav .to-do .to-do-container span {
@@ -470,6 +473,7 @@ main .top-header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: default;
 }
 
 main .top-header .menu-open-close span {
@@ -733,6 +737,12 @@ main .top-new-talk .active .add-new-button-container .add-new {
   margin: 3px;
 }
 
+@media (max-width: 400px) {
+  main .top-new-talk .active {
+    max-width: 100%;
+  }
+}
+
 .header-active-nav {
   margin-left: 285px;
 }
@@ -756,6 +766,10 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .main-content-all .main-content-entry .empty-entry-message {
   display: none;
+}
+
+.main-content-all .main-content-entry .empty-entry-message-active {
+  cursor: default;
 }
 
 .main-content-all .main-content-entry .empty-entry-message-active p {
