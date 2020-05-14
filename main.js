@@ -69,6 +69,8 @@ const menuOpenCloseFunction = () => {
   else {
     navigation.className = "nav";
   }
+  document.querySelector('.search-input').value = null;
+  document.querySelector('.empty-search').remove();
 }
 
 menuOpenClose.addEventListener('click', menuOpenCloseFunction);
@@ -1002,6 +1004,7 @@ const showTheTask = (index) => {
     deletingAllEntries();
     creationNewEntry(entryContentsArray[index], entryTitleArray[index], entryCategoryArray[index], entryDateArray[index], "nothing", entryCurrentTime[index], entryHourTime[index]);
     whatCategory.textContent = entryCategoryArray[index]
+    messageActive();
 }
 
 // ---------------------------------------------------------------------

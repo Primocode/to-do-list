@@ -916,6 +916,8 @@ main .top-new-talk .active .add-new-button-container .add-new {
       -ms-flex-align: center;
           align-items: center;
   margin: 3px 0px 3px 0px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-left {
