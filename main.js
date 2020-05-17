@@ -78,12 +78,12 @@ closeMenu.addEventListener('click', menuOpenCloseFunction);
 
 // -----------------------------------------------
 
-let entryTitleArray = ["Rower", "Opłacę podatek", "Muszę odrobić lekcję", "Trzeba zrobić obiad", "Muszę zrobić zakupy", "Muszę zrobić prawo jazdy"];
-let entryContentsArray = ["Pojadę na rower", "", "Jakaś notatka", "", "Trzeba zrobić listę zakupów", "Zdać za pierwszym razem"];
-let entryCategoryArray = ["Do zrobienia", "Ważne", "Notatki", "Do zrobienia", "Do zrobienia", "Ważne"];
-let entryDateArray = ["05/15/2020", "04/20/2020", "04/30/2021", "", "", ""];
-let entryCurrentTime = ["Fri May 15 2020 14:47:33 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:47:43 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:47:58 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:48:09 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:48:36 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:48:55 GMT+0200 (czas środkowoeuropejski letni)"];
-let entryHourTime = ["14:44", "", "", "14:44", "14:04", ""];
+let entryTitleArray = [];
+let entryContentsArray = [];
+let entryCategoryArray = [];
+let entryDateArray = [];
+let entryCurrentTime = [];
+let entryHourTime = [];
 
 let categoryArray = [];
 let categoryColorArray = [];
@@ -94,23 +94,6 @@ let deleteEntryCategoryArray = [];
 let deleteEntryDateArray = [];
 let deleteEntryCurrentTime = [];
 let deleteEntryHourTime = [];
-
-// let entryTitleArray = [];
-// let entryContentsArray = [];
-// let entryCategoryArray = [];
-// let entryDateArray = [];
-// let entryCurrentTime = [];
-// let entryHourTime = [];
-
-// let categoryArray = [];
-// let categoryColorArray = [];
-
-// let deleteEntryTitleArray = [];
-// let deleteEntryContentsArray = [];
-// let deleteEntryCategoryArray = [];
-// let deleteEntryDateArray = [];
-// let deleteEntryCurrentTime = [];
-// let deleteEntryHourTime = [];
 
 // Tworzenie nowych wpisów
 number = 0;
@@ -1002,7 +985,6 @@ const showTheTask = (index) => {
 // ---------------------------------------------------------------------
 
 // Wyszkiwarka zadań
-
 const searchInput = document.querySelector('.search-input');
 const itemsContainer = document.querySelector('.sophisticated-items-container');
 
@@ -1058,15 +1040,6 @@ const searchElements = () => {
 
 searchInput.addEventListener('keyup', searchElements);
 // ---------------------------------------------------------------
-
-
-
-
-
-
-
-
-
 
 // Kategorie przy edycji zadania
 
@@ -1130,7 +1103,6 @@ const menuSave = () => {
   reloadScript();
   menuEditClose();
 }
-
 editSave.addEventListener('click', menuSave);
 
 // ------------------------------------------------------------- 
@@ -1143,21 +1115,10 @@ const openingClosingTheMenu = () => {
   }
 }
 
-
 // -------------------------------------------------------------
 
 // odświeżanie
 const reloadScript = () => {
-  // CreatingAllEntries() // Tworzenie wszystkich wpisów
-  // messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
-  // creatingAllCategory(); // Tworzenie wszystkich wpisów
-  // deletingAllSubCategories(); // usuwanie wszystkich podkategori
-  // subCategoryFunction() // tworzenie od nowa wszystkich podkategori
-  // mainTitleReload()
-  // addNewSelectCategory();
-  // counterNumber() // licznik wpisów
-  // deletedElementsCounter(); // licznik usuniętych wpisów
-  // reloadMainTitleSelection();
 
   messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
   deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
