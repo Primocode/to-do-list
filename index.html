@@ -148,7 +148,7 @@
                         <textarea class="entry-title overflow-entry" type="text" placeholder="Wpisz tytuł"></textarea>
                     </div>
                     <div class="add-new-talk-select">
-                        <select id="select">
+                        <select class="select">
                             <option class="to-do" value="Do zrobienia">Do zrobienia</option>
                             <option class="important" value="Ważne">Ważne</option>
                             <option class="notes" value="Notatki">Notatki</option>
@@ -205,7 +205,41 @@
         </div> -->
         <!-- TEST TEST TEST TESTE TEST -->
     </main>
-    
+    <header class="menu-edit " id="menuEdit">
+        <div class="edit-container">
+            <div class="edit-top">
+                <h3 class="edit-task"></h3>
+                <button class="edit-cancel">
+                    <span class="fas fa-times"></span>
+                </button>
+            </div>
+            <div class="edit-content">
+                <div class="edit-title-container">
+                    <textarea type="text" class="edit-title" placeholder="Tytuł" ></textarea>
+                </div>
+                <div class="edit-category-container">
+                    <select class="edit-select">
+                        <option class="edit-to-do" value="Do zrobienia">Do zrobienia</option>
+                        <option class="edit-done" value="Zrobione">Zrobione</option>
+                        <option class="edit-important" value="Ważne">Ważne</option>
+                        <option class="edit-notes" value="Notatki">Notatki</option>
+                      </select>
+                </div>
+                <div class="edit-date-hour">
+                    <input type="text" class="edit-date hasDatepicker" id="datepicker" placeholder="Podaj datę / godzinę ->">
+                    <input type="time" min="00:00" max="24:59" class="edit-hour" placeholder="godzina" required="">
+                </div>
+                <div class="edit-content-container">
+                    <!-- <textarea type="text" class="edit-content" placeholder="Dodaj szczegóły"></textarea> -->
+                    <textarea type="text" class="edit-contents" placeholder="Dodaj szczegóły" ></textarea>
+                </div>
+                <div class="edit-buttons-container">
+                    <button class="edit-cancel">Anuluj</button>
+                    <button class="edit-save">Zapisz zmiany</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <script src="main.js"></script>
     
@@ -214,6 +248,10 @@
     <script type="text/javascript">
         $( function() {
               $( "#datepicker" ).datepicker();
+          } );
+
+          $( function() {
+              $( "#datepicker1" ).datepicker();
           } );
   
   </script>

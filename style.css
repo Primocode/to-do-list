@@ -547,7 +547,7 @@ main .top-new-talk .add-new-talk-container {
 main .top-new-talk .active {
   display: block;
   max-width: 280px;
-  margin: 10px;
+  margin: 0px 10px 10px 10px;
   -webkit-box-shadow: 0px 0px 5px 1px #dedede;
   box-shadow: 0px 0px 5px 1px #dedede;
   border-radius: 6px;
@@ -952,7 +952,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .remove-entry {
-  background-color: #fbfbfb;
+  background-color: #f7f7f7;
   border: none;
   cursor: pointer;
   border-radius: 50%;
@@ -968,7 +968,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .done-entry {
-  background-color: #fbfbfb;
+  background-color: #f7f7f7;
   border: none;
   cursor: pointer;
   border-radius: 50%;
@@ -984,7 +984,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 }
 
 .main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .info-entry {
-  background-color: #fbfbfb;
+  background-color: #f7f7f7;
   border: none;
   cursor: pointer;
   border-radius: 50%;
@@ -1013,6 +1013,22 @@ main .top-new-talk .active .add-new-button-container .add-new {
   border-radius: 3px;
   color: #dfdfdf;
   background-color: rgba(22, 22, 22, 0.753);
+}
+
+.main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .edit-entry {
+  background-color: #f7f7f7;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 0px 5px 0px 5px;
+  color: #ff8d00;
+}
+
+.main-content-all .main-content-entry .entry .entry-bottom-container .entry-bottom-right .edit-entry span {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 @media (max-width: 1350px) {
@@ -1048,5 +1064,162 @@ main .top-new-talk .active .add-new-button-container .add-new {
 .overflow-entry::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #9b9b9b;
+}
+
+.edit-container {
+  background-color: #f7f7f7;
+  height: 100vh;
+  width: 325px;
+  border-left: 1px solid #CBCBCB;
+}
+
+.edit-container .edit-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.edit-container .edit-top h3 {
+  color: #353535;
+  font-size: 23px;
+  padding: 20px 0px 20px 20px;
+}
+
+.edit-container .edit-top .edit-cancel {
+  padding: 5px 15px 5px 15px;
+  font-size: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #f7f7f7;
+  border: none;
+  font-size: 33px;
+  color: #1C8AF5;
+}
+
+.edit-container .edit-content {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.edit-container .edit-content .edit-title-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.edit-container .edit-content .edit-title-container .edit-title {
+  width: 100%;
+  border: 1px solid #D5D5D5;
+  color: #4e4e4e;
+  font-size: 17px;
+  resize: none;
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 4px;
+}
+
+.edit-container .edit-content .edit-category-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.edit-container .edit-content .edit-category-container .edit-select {
+  width: 100%;
+  height: 31px;
+  border: none;
+  border: 1px solid #D5D5D5;
+  color: #4e4e4e;
+  font-size: 16px;
+  color: #1C8AF5;
+  padding-left: 5px;
+  margin: 0px 0px 5px 0px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.edit-container .edit-content .edit-date-hour .edit-date {
+  width: 68%;
+  height: 31px;
+  border: none;
+  border: 1px solid #D5D5D5;
+  color: #4e4e4e;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.edit-container .edit-content .edit-date-hour .edit-hour {
+  width: 29%;
+  height: 31px;
+  border: none;
+  border: 1px solid #D5D5D5;
+  color: #4e4e4e;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.edit-container .edit-content .edit-content-container .edit-contents {
+  min-height: 70px;
+  border: 1px solid #D5D5D5;
+  width: 95%;
+  resize: none;
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+  color: #4e4e4e;
+  font-size: 17px;
+  border-radius: 4px;
+}
+
+.edit-container .edit-content .edit-buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.edit-container .edit-content .edit-buttons-container .edit-cancel {
+  padding: 4px 9px 4px 9px;
+  border: none;
+  font-size: 15px;
+  border-radius: 6px;
+  background-color: #1C8AF5;
+  color: white;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.edit-container .edit-content .edit-buttons-container .edit-save {
+  padding: 4px 9px 4px 9px;
+  border: none;
+  font-size: 15px;
+  border-radius: 6px;
+  background-color: #1C8AF5;
+  color: white;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.menu-edit {
+  display: none;
+}
+
+.edit-active {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

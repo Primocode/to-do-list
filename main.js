@@ -1,5 +1,4 @@
 // timer
-
 let day = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
 let month = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Pażdziernik", "Listopad", "Grudzień"]
 
@@ -44,16 +43,13 @@ const closeCreateCategory = () => {
 }
 
 createCategoryExit.addEventListener('click', closeCreateCategory);
-
 // -----------------------------------------------------------------
 
 // Otwieranie / zamykanie menu
-
 const menuOpenClose = document.querySelector('.menu-open-close')
 const header = document.querySelector('header')
 const closeMenu = document.querySelector('.close-menu');
 const navigation = document.querySelector('nav') 
-
 
 const menuOpenCloseFunction = () => {
   if (header.className == "header-active-nav") {
@@ -70,7 +66,10 @@ const menuOpenCloseFunction = () => {
     navigation.className = "nav";
   }
   document.querySelector('.search-input').value = null;
-  document.querySelector('.empty-search').remove();
+  if (document.querySelector('.empty-search')) {
+    document.querySelector('.empty-search').remove();
+    document.querySelector('.sophisticated-items-container').remove();
+  }
 }
 
 menuOpenClose.addEventListener('click', menuOpenCloseFunction);
@@ -79,12 +78,12 @@ closeMenu.addEventListener('click', menuOpenCloseFunction);
 
 // -----------------------------------------------
 
-let entryTitleArray = [];
-let entryContentsArray = [];
-let entryCategoryArray = [];
-let entryDateArray = [];
-let entryCurrentTime = [];
-let entryHourTime = [];
+let entryTitleArray = ["Rower", "Opłacę podatek", "Muszę odrobić lekcję", "Trzeba zrobić obiad", "Muszę zrobić zakupy", "Muszę zrobić prawo jazdy"];
+let entryContentsArray = ["Pojadę na rower", "", "Jakaś notatka", "", "Trzeba zrobić listę zakupów", "Zdać za pierwszym razem"];
+let entryCategoryArray = ["Do zrobienia", "Ważne", "Notatki", "Do zrobienia", "Do zrobienia", "Ważne"];
+let entryDateArray = ["05/15/2020", "04/20/2020", "04/30/2021", "", "", ""];
+let entryCurrentTime = ["Fri May 15 2020 14:47:33 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:47:43 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:47:58 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:48:09 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:48:36 GMT+0200 (czas środkowoeuropejski letni)", "Fri May 15 2020 14:48:55 GMT+0200 (czas środkowoeuropejski letni)"];
+let entryHourTime = ["14:44", "", "", "14:44", "14:04", ""];
 
 let categoryArray = [];
 let categoryColorArray = [];
@@ -95,6 +94,23 @@ let deleteEntryCategoryArray = [];
 let deleteEntryDateArray = [];
 let deleteEntryCurrentTime = [];
 let deleteEntryHourTime = [];
+
+// let entryTitleArray = [];
+// let entryContentsArray = [];
+// let entryCategoryArray = [];
+// let entryDateArray = [];
+// let entryCurrentTime = [];
+// let entryHourTime = [];
+
+// let categoryArray = [];
+// let categoryColorArray = [];
+
+// let deleteEntryTitleArray = [];
+// let deleteEntryContentsArray = [];
+// let deleteEntryCategoryArray = [];
+// let deleteEntryDateArray = [];
+// let deleteEntryCurrentTime = [];
+// let deleteEntryHourTime = [];
 
 // Tworzenie nowych wpisów
 number = 0;
@@ -150,18 +166,17 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const entryLeftDate = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftDate);
   entryLeftDate.className = "entry-left-date";
-  if (entryDateValue.length > 1) {
+  if (entryDateValue) {
     entryLeftDate.textContent = "do " + entryDateValue;  // DATA PODANA PRZEZ UŻYTKOWNIKA
   }   
   else {
     entryLeftDate.textContent = entryDateValue
-  }                                                      
+  }                                                            
 
   const entryLeftHour = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftHour);
   entryLeftHour.className = "entry-left-hour";
   entryLeftHour.textContent = givenTime
-
   // ------------------------------------------------------------
 
   const entryBottomRight = document.createElement('div');
@@ -201,6 +216,17 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const doneIcon = document.createElement('span');
   doneEntry.appendChild(doneIcon);
   doneIcon.className = "fas fa-check";
+
+  // ICON EDYCJI
+
+  const editEntry = document.createElement('button');
+  entryBottomRight.appendChild(editEntry);
+  editEntry.className = "edit-entry";
+
+  const editIcon = document.createElement('span');
+  editEntry.appendChild(editIcon);
+  editIcon.className = "fas fa-pencil-alt";
+  // --------------------
 
   const whatIndexColors = categoryArray.indexOf(entryCategory);
   console.log(whatIndexColors);
@@ -297,6 +323,8 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     removeIcon.remove();
     doneEntry.remove();
     doneIcon.remove();
+    editEntry.remove();
+    editIcon.remove();
 
     // Przywracanie usuniętych wpisów 
     const restoreButton = document.querySelector('.button-confirm');
@@ -391,8 +419,19 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       deletedElementsCounter();
     }
   }
-  // -----------------------------------------
+  // ----------------------------------------
   removeEntryButton.addEventListener('click', removeIndividualEntryFunction);
+
+  // Funkcja do edycji zadań
+  const editEntryOpenMenu = (e) => {
+    const indexIs = entryCurrentTime.indexOf(hour);
+    console.log(indexIs)
+
+    taskEditing(indexIs);
+  }
+
+  editEntry.addEventListener('click', editEntryOpenMenu)
+  // ------------------------------------------------
 }
 //  --------------------------------------------
 
@@ -460,7 +499,7 @@ const addEntryButton = document.querySelector('.add-new');
 const addEntryButtonFunction = () => {
   const entryContents = document.querySelector('.text-area').value // pobieranie treści
   const entryTitle = document.querySelector('.entry-title').value // pobieranie tytułu
-  const EntryCategory = document.querySelector('#select').value; // pobieranie wartości select z kategori
+  const EntryCategory = document.querySelector('.select').value; // pobieranie wartości select z kategori
   const entryDate = document.querySelector('.entry-date').value;
   const entryHourValue = document.querySelector('.entry-hour').value;
   const currentTime = new Date();
@@ -504,7 +543,7 @@ addEntryButton.addEventListener('click', addEntryButtonFunction);
 
 // usuwanie wszystkich selectów przy dodawaniu nowego wpisu
 const removeAllSelectCategory = () => {
-  const selectValue = document.querySelectorAll('#select > option');
+  const selectValue = document.querySelectorAll('.select > option');
   for (let i = 3; i < selectValue.length; i++) {
     selectValue[i].remove();
   }
@@ -512,7 +551,7 @@ const removeAllSelectCategory = () => {
 
 // dodawanie nowego selecta przy tworzeniu nowego wpisu po zrobieniu nowej kategori 
 const addNewSelectCategory = () => {
-  const selectValue = document.querySelector('#select');
+  const selectValue = document.querySelector('.select');
   removeAllSelectCategory();
   console.log(categoryArray);
 
@@ -642,18 +681,9 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
           entryHourTime.splice(indexToDelete, 1)
         }
       }
-      deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
-      creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
-      deletingAllEntries(); // usuwanie wszystkich wpisów
-      CreatingAllEntries() // Tworzenie wszystkich wpisów
-      deletingAllSubCategories(); // usuwanie wszystkich podkategori
-      subCategoryFunction() // tworzenie od nowa wszystkich podkategori
-      addNewSelectCategory(); // odświeżenie kategori w "Nowy wpis"
-      mainTitleReload(); // refresh
-      counterNumber() // licznik wpisów
-      deletedElementsCounter(); // licznik usuniętych wpisów
-      reloadMainTitleSelection(); // Aktywacja przycisku (Wszystkie)
+      reloadScript();
       cancelDelete();
+      addNewSelectCategoryEdit();
     }
     deleteConfirmButton.addEventListener('click', confirmDelete)
   }
@@ -874,6 +904,7 @@ const createNewCategoryFunction = () => {
   }
   addNewSelectCategory();
   addNewCategory.style.background = "#1C8AF5";
+  addNewSelectCategoryEdit();
 }
 
 addNewCategory.addEventListener('click', createNewCategoryFunction);
@@ -955,61 +986,20 @@ const menuCloseFunction = () => {
 }
 
 document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', menuCloseFunction))
-
 // --------------------------------------------------
 
-// Dodawanie tagów 
-
-// const tagContainer = document.querySelector('.tag');
-// const tagInput = document.querySelector('.tag-input')
-
-// const tagsContainer = document.createElement('ul')
-// tagContainer.appendChild(tagsContainer);
-// tagsContainer.className = "tags-container"
-
-// const tagInputValueFunction = () => {
-//   const tagInputValue = document.querySelector('.tag-input').value
-//   console.log(tagInputValue);
-
-//   const addTag = (value) => {
-//     const createTag = document.createElement('li');
-//     tagsContainer.appendChild(createTag);
-//     createTag.className = "tag"
-//     createTag.textContent = value;
-//   }
-
-//   if (event.keyCode == 13) {
-//     console.log("Wcisnąłeś enter")
-//     document.querySelector('.tag-input').value = null;
-//     addTag(tagInputValue)
-//   }
-//   if (event.keyCode == 32) {
-//     console.log("Wcisnąłeś spacje")
-//     document.querySelector('.tag-input').value = null;
-//     addTag(tagInputValue)
-//   }
-
-//   if (event.keyCode == 8) {
-//     document.querySelector('.tag-input').value = null;
-//   }
-// }
-
-// tagInput.addEventListener('keyup', tagInputValueFunction);
-
-// -----------------------------------------------------------------------------
-
 // Pokazywanie zadania z wyszukiwarki
-
 const showTheTask = (index) => {
     deletingAllEntries();
-    creationNewEntry(entryContentsArray[index], entryTitleArray[index], entryCategoryArray[index], entryDateArray[index], "nothing", entryCurrentTime[index], entryHourTime[index]);
-    whatCategory.textContent = entryCategoryArray[index]
+    if (index >= 0){
+      creationNewEntry(entryContentsArray[index], entryTitleArray[index], entryCategoryArray[index], entryDateArray[index], "nothing", entryCurrentTime[index], entryHourTime[index]);
+      whatCategory.textContent = entryCategoryArray[index]
+    }
     messageActive();
 }
-
 // ---------------------------------------------------------------------
 
-// Wyszukiwanie zadań
+// Wyszkiwarka zadań
 
 const searchInput = document.querySelector('.search-input');
 const itemsContainer = document.querySelector('.sophisticated-items-container');
@@ -1045,43 +1035,130 @@ const searchElements = () => {
       searchCategory.className = "search-category";
       searchCategory.textContent = entryCategoryArray[entryTitleArray.indexOf(result)]
 
-      showTheTask(entryTitleArray.indexOf(result))
-
-      // let result = entryTitleArray.find( (item) => item.includes(searchInputValue))
+      if (entryTitleArray.find( (item) => item.includes(searchInputValue)).length > 1) {
+        showTheTask(entryTitleArray.indexOf(result))
+      }
       searchItemsContainer.textContent = result;
     }
-  
-    // Stworzyć sophisticated-items-container 
 
     if (allItemsContainer.length < 1) {
       const createEmptyItem = document.createElement('h4');
       itemsContainer.appendChild(createEmptyItem);
       createEmptyItem.className = "empty-search"
       createEmptyItem.textContent = "Nie znaleziono takiego zadania"
+      reloadScript(); 
     }
+  }
+  if (searchInputValue.length == 0) {
+    reloadScript();
   }
 }
 
 searchInput.addEventListener('keyup', searchElements);
-// ---------------------------------------------------------------------
+// ---------------------------------------------------------------
 
 
+
+
+
+
+
+
+
+
+// Kategorie przy edycji zadania
+
+const removeAllSelectCategoryEdit = () => {
+  const selectValue = document.querySelectorAll('.edit-select > option');
+  for (let i = 4; i < selectValue.length; i++) {
+    selectValue[i].remove();
+  }
+  console.log(selectValue);
+}
+
+// dodawanie nowego selecta przy tworzeniu nowego wpisu po zrobieniu nowej kategori 
+const addNewSelectCategoryEdit = () => {
+  const selectValue = document.querySelector('.edit-select');
+  removeAllSelectCategoryEdit();
+  console.log(categoryArray);
+
+  for (let i = 0; i < categoryArray.length; i++) {
+    const newSelect = document.createElement('option');
+    selectValue.appendChild(newSelect);
+    newSelect.className = "option"
+    newSelect.value = categoryArray[i]
+    newSelect.textContent = categoryArray[i]
+  }
+}
+// -------------------------------------------------------------------
+
+// Edycja zadań 
+const taskEditing = (index) => {
+  indexTwo = index;
+  const menuEdit = document.querySelector('#menuEdit');
+
+  menuEdit.className = "edit-active"
+
+  // Wklejanie wartości do pól edycyjnych
+  document.querySelector('.edit-task').textContent = entryTitleArray[index];
+  document.querySelector('.edit-title').value = entryTitleArray[index];
+  document.querySelector('.edit-select').value = entryCategoryArray[index];
+  document.querySelector('.edit-date').value = entryDateArray[index];
+  document.querySelector('.edit-hour').value = entryHourTime[index];
+  document.querySelector('.edit-contents').value = entryContentsArray[index];
+  // -------------------------------------------------------------------
+} 
+// ----------------------------------------------
+
+const menuEditClose = () => {
+  menuEdit.className = "menu-edit"
+}
+
+document.querySelectorAll(".edit-cancel").forEach(item => item.addEventListener('click', menuEditClose))
+
+const editSave = document.querySelector('.edit-save');
+
+const menuSave = () => {
+  entryTitleArray[indexTwo] = document.querySelector('.edit-title').value
+  entryContentsArray[indexTwo] = document.querySelector('.edit-contents').value;
+  entryCategoryArray[indexTwo] = document.querySelector('.edit-select').value;
+  entryDateArray[indexTwo] = document.querySelector('.edit-date').value;
+  entryHourTime[indexTwo] = document.querySelector('.edit-hour').value;
+
+  reloadScript();
+  menuEditClose();
+}
+
+editSave.addEventListener('click', menuSave);
+
+// ------------------------------------------------------------- 
 
 // odświeżanie
 const reloadScript = () => {
-  CreatingAllEntries() // Tworzenie wszystkich wpisów
+  // CreatingAllEntries() // Tworzenie wszystkich wpisów
+  // messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
+  // creatingAllCategory(); // Tworzenie wszystkich wpisów
+  // deletingAllSubCategories(); // usuwanie wszystkich podkategori
+  // subCategoryFunction() // tworzenie od nowa wszystkich podkategori
+  // mainTitleReload()
+  // addNewSelectCategory();
+  // counterNumber() // licznik wpisów
+  // deletedElementsCounter(); // licznik usuniętych wpisów
+  // reloadMainTitleSelection();
+
   messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
-  creatingAllCategory(); // Tworzenie wszystkich wpisów
+  deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
+  creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
+  deletingAllEntries(); // usuwanie wszystkich wpisów
+  CreatingAllEntries() // Tworzenie wszystkich wpisów
   deletingAllSubCategories(); // usuwanie wszystkich podkategori
   subCategoryFunction() // tworzenie od nowa wszystkich podkategori
-  mainTitleReload()
-  addNewSelectCategory();
+  addNewSelectCategory(); // odświeżenie kategori w "Nowy wpis"
+  mainTitleReload(); // refresh
   counterNumber() // licznik wpisów
   deletedElementsCounter(); // licznik usuniętych wpisów
-  reloadMainTitleSelection();
+  reloadMainTitleSelection(); // Aktywacja przycisku (Wszystkie)
 }
 reloadScript()
-
-
 
 // ------------------------------------------------------------------------------
