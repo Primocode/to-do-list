@@ -428,6 +428,8 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     console.log(indexIs)
 
     taskEditing(indexIs);
+    // menuEditCloseFunction();
+    openingClosingTheMenu();
   }
 
   editEntry.addEventListener('click', editEntryOpenMenu)
@@ -1132,6 +1134,17 @@ const menuSave = () => {
 editSave.addEventListener('click', menuSave);
 
 // ------------------------------------------------------------- 
+
+const expandingMenu = document.querySelector('#overflow');
+const menuEditDOM = document.querySelector('#menuEdit')
+const openingClosingTheMenu = () => {
+  if (expandingMenu.className == "nav-active") {
+    menuCloseFunction();
+  }
+}
+
+
+// -------------------------------------------------------------
 
 // odświeżanie
 const reloadScript = () => {

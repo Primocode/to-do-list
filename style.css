@@ -1222,4 +1222,12 @@ main .top-new-talk .active .add-new-button-container .add-new {
 .edit-active {
   display: block;
 }
+
+@media (max-width: 1250px) {
+  .edit-container {
+    position: absolute;
+    margin-left: -291px;
+    width: 290px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
