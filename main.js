@@ -9,7 +9,6 @@ let date = new Date();
 }
 Timer()
 let myVar = setInterval(Timer, 1000);
-
 // ------------------------------------------------
 
 // Otwieranie panelu i zamykanie
@@ -53,7 +52,6 @@ const navigation = document.querySelector('nav') ;
 const shadow = document.querySelector('.shadow')
 
 const menuOpenCloseFunction = () => {
-  // shadowFunction();
   if (header.className == "header-active-nav") {
     header.className = "header";
     shadow.className = "shadow-active";
@@ -99,7 +97,6 @@ let deleteEntryDateArray = [];
 let deleteEntryCurrentTime = [];
 let deleteEntryHourTime = [];
 
-
 // Tworzenie nowych zadań
 number = 0;
 let numberDeleted = 0;
@@ -118,7 +115,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   // Tytuł zadania
   const entryTopH2 = document.createElement('h2');
   entryTop.appendChild(entryTopH2);
-  entryTopH2.textContent = title; // - TEXT CONTENT TYTUŁU WPISU
+  entryTopH2.textContent = title; 
 
   const entryTopRightButtons = document.createElement('div');
   entryTop.appendChild(entryTopRightButtons);
@@ -130,7 +127,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
   const entryBottomTextP = document.createElement('p');
   entryBottom.appendChild(entryBottomTextP);
-  entryBottomTextP.textContent = contents; // TU JEST TEXT 
+  entryBottomTextP.textContent = contents; 
 
   // Panel dolny zadania
   const entryBottomContainer = document.createElement('div');
@@ -191,7 +188,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const removeIcon = document.createElement('span');
   removeEntryButton.appendChild(removeIcon);
   removeIcon.className = "fas fa-trash";
-  removeIcon.dataset.key = "88";
+  // removeIcon.dataset.key = "88";
 
   // Ikon dodawania do kategori "Zrobione"
   const doneEntry = document.createElement('button');
@@ -311,7 +308,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     editIcon.remove();
 
     // Funkcja przywracania usuniętych wpisów
-
     const restoreDeletedEntries = (e) => {
       const entryAllDeleted = document.querySelectorAll('.entry');
       for (let i = 0; i < entryAllDeleted.length; i++) {
@@ -367,10 +363,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
   // Funkcja do usuwania poszczególnych wpisów
   const removeIndividualEntryFunction = (e) => {
-    let removeDatasetValue = entry.dataset.value;
-
-    let deleteByIndex = entryTitleArray.indexOf(title);
-
     if (entryTitleArray.indexOf(title) >= 0) {
       deleteEntryTitleArray.push(title);
       deleteEntryContentsArray.push(contents);
@@ -379,14 +371,14 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       deleteEntryCurrentTime.push(hour);
       deleteEntryHourTime.push(givenTime);
 
-      entryTitleArray.splice(deleteByIndex, 1);
-      entryContentsArray.splice(deleteByIndex, 1);
-      entryCategoryArray.splice(deleteByIndex, 1);
-      entryDateArray.splice(deleteByIndex, 1);
-      entryCurrentTime.splice(deleteByIndex, 1);
-      entryHourTime.splice(deleteByIndex, 1);
+      entryTitleArray.splice(entryTitleArray.indexOf(title), 1);
+      entryContentsArray.splice(entryTitleArray.indexOf(title), 1);
+      entryCategoryArray.splice(entryTitleArray.indexOf(title), 1);
+      entryDateArray.splice(entryTitleArray.indexOf(title), 1);
+      entryCurrentTime.splice(entryTitleArray.indexOf(title), 1);
+      entryHourTime.splice(entryTitleArray.indexOf(title), 1);
 
-      entry.remove(removeDatasetValue);
+      entry.remove(entry.dataset.value);
       messageActive();
       counterNumber();
       refreshCategories();
@@ -725,7 +717,13 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     createSubCategory.id = "subCategory";
     createSubCategory.className = "selection";
     createSubCategory.dataset.subCategory = entryTitleArray[indexSubCategorie[i]];
-    createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]];
+    
+    if(entryTitleArray[indexSubCategorie[i]].length > 19) {
+      createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]].slice(0,19) + "..."
+    }
+    else {
+      createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]].slice(0,19)
+    }
     createSubCategory.dataset.category = entryCategoryArray[indexSubCategorie[i]];
   }
   checkSubCategory()
