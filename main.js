@@ -390,9 +390,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
   // Funkcja do edycji zadań 
   const editEntryOpenMenu = (e) => {
-    const indexIs = entryCurrentTime.indexOf(hour);
-
-    taskEditing(indexIs);
+    taskEditing(entryCurrentTime.indexOf(hour));
     openingClosingTheMenu();
   }
 
@@ -448,7 +446,7 @@ let minute = setInterval(error, 4000);
 // -------------------------------------
 
 // Komunikat w panelu podczas tworzenia nowej kategori
-const messCategory = document.querySelector('.error-category')
+const messCategory = document.querySelector('.error-category');
 
 function errorCategory() {
   messCategory.textContent = "";
@@ -613,7 +611,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
     deleteConfirmButton.textContent = "Usuń";
 
     const confirmDelete = () => {
-      let indexDelete = categoryArray.indexOf(nameCategoryArg) ;
+      let indexDelete = categoryArray.indexOf(nameCategoryArg);
       categoryArray.splice(indexDelete, 1); 
       categoryColorArray.splice(indexDelete, 1);
 
@@ -711,7 +709,6 @@ const deleteEmptySubCategory = () => {
 const createSubCategoryFunction = (index, indexSubCategorie, amount) => { 
   for (let i = 0; i < amount; i++) {
     const mainContainerOnSubCatergory = document.querySelectorAll('.main-list');
-    // console.log("----------- w kategori o indeksie " + index + " jest " + amount + " subkategori ------------- do wklejenia w tą kategorie jest ideks " + indexSubCategorie + " który ma " + indexSubCategorie.length + " długość");
     const createSubCategory = document.createElement('h3');
     mainContainerOnSubCatergory[index].appendChild(createSubCategory);
     createSubCategory.id = "subCategory";
@@ -774,7 +771,6 @@ numberSubCategory = -1;
 // Licznik zadań
 const numberEntry = document.querySelector('#number-entry'); 
 const counterNumber = () => {
-  
   numberEntry.textContent = "Aktualnych wpisów: " + entryTitleArray.length;
 }
 // ----------------------------------------------------------
@@ -797,9 +793,8 @@ const creatingAllCategory = () => {
 
 // Wybór koloru przy tworzeniu kategorii
 const categoryColorsFunction = () => {
-  let categoryColor = event.target.dataset.color;
   const CreateNameCategoryValue = document.querySelector('.category-title');
-  CreateNameCategoryValue.style.color = categoryColor;
+  CreateNameCategoryValue.style.color = event.target.dataset.color;
 }
 
 document.querySelectorAll(".category-circle").forEach(item => item.addEventListener('click', categoryColorsFunction));
@@ -880,8 +875,7 @@ const mainTitleSelectionFunction = () => {
   for (let i = 0; i < howMuchSelection.length; i ++) {
     howMuchSelection[i].style.background = "none";
   }
-  let eventTarget = event.target;
-  eventTarget.style.background = "rgb(243, 243, 243)";
+  event.target.style.background = "rgb(243, 243, 243)";
   whatCategory.textContent = "Wszystko";
   whatCategory.textContent = event.target.dataset.category;
 
@@ -901,13 +895,12 @@ const reloadMainTitleSelection = () => {
 
   whatCategory.textContent = "Wszystko";
 
-  const mainTitleSelection = document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction));
+  document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction));
 }
 reloadMainTitleSelection();
 // ----------------------------------------------------------------------------
 
 // Zamykanie okna menu z róznymi rozdzielczościami
-
 const menuCloseFunction = () => {
   if (window.innerWidth < 725) {
     menuOpenCloseFunction();
