@@ -279,6 +279,11 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     buttonConfrim.textContent = "Zapisz";
     buttonConfrim.dataset.value = numberDeleted;
 
+    const selectOption0 = document.createElement('option');
+    selectRestore.appendChild(selectOption0);
+    selectOption0.className = "deleted-option";
+    selectOption0.textContent = "Usuń na zawsze";
+
     const selectOption = document.createElement('option');
     selectRestore.appendChild(selectOption);
     selectOption.className = "deleted-option";
@@ -318,28 +323,39 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
       let indexDelete = deleteEntryCurrentTime.indexOf(hour);
 
-      entryTitleArray.push(deleteEntryTitleArray[indexDelete]);
-      entryContentsArray.push(deleteEntryContentsArray[indexDelete]);
-      entryCategoryArray.push(selectRestoreValue);
-      entryDateArray.push(deleteEntryDateArray[indexDelete]);
-      entryCurrentTime.push(deleteEntryCurrentTime[indexDelete]);
-      entryHourTime.push(deleteEntryHourTime[indexDelete]);
-
-      deleteEntryTitleArray.splice(indexDelete, 1);
-      deleteEntryContentsArray.splice(indexDelete, 1);
-      deleteEntryCategoryArray.splice(indexDelete, 1);
-      deleteEntryDateArray.splice(indexDelete, 1);
-      deleteEntryCurrentTime.splice(indexDelete, 1);
-      deleteEntryHourTime.splice(indexDelete, 1);
+      if (selectRestoreValue == "Usuń na zawsze") {
+        deleteEntryTitleArray.splice(indexDelete, 1);
+        deleteEntryContentsArray.splice(indexDelete, 1);
+        deleteEntryCategoryArray.splice(indexDelete, 1);
+        deleteEntryDateArray.splice(indexDelete, 1);
+        deleteEntryCurrentTime.splice(indexDelete, 1);
+        deleteEntryHourTime.splice(indexDelete, 1);
+      }
+      else {
+        entryTitleArray.push(deleteEntryTitleArray[indexDelete]);
+        entryContentsArray.push(deleteEntryContentsArray[indexDelete]);
+        entryCategoryArray.push(selectRestoreValue);
+        entryDateArray.push(deleteEntryDateArray[indexDelete]);
+        entryCurrentTime.push(deleteEntryCurrentTime[indexDelete]);
+        entryHourTime.push(deleteEntryHourTime[indexDelete]);
+  
+        deleteEntryTitleArray.splice(indexDelete, 1);
+        deleteEntryContentsArray.splice(indexDelete, 1);
+        deleteEntryCategoryArray.splice(indexDelete, 1);
+        deleteEntryDateArray.splice(indexDelete, 1);
+        deleteEntryCurrentTime.splice(indexDelete, 1);
+        deleteEntryHourTime.splice(indexDelete, 1);
+      }
+      for (let i = 0; i < deleteEntryCurrentTime.length; i++) {
+        creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], deleteEntryHourTime[i]);
+      }
       messageActive(); 
       deletingAllSubCategories(); 
       subCategoryFunction();
       mainTitleReload();
 
-      for (let i = 0; i < deleteEntryCurrentTime.length; i++) {
-        creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], deleteEntryHourTime[i]);
-      }
       deletedElementsCounter();
+      counterNumber();
     }
     messageActive();
     counterNumber();
