@@ -87,8 +87,8 @@ let entryDateArray = ["05/20/2020", "05/31/2020", "05/13/2020", "05/19/2020", "0
 let entryCurrentTime = ["Mon May 18 2020 16:23:44 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:24:48 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:25:13 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:25:42 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:26:44 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:28:05 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:29:32 GMT+0200 (czas środkowoeuropejski letni)"];
 let entryHourTime = ["14:30", "00:00", "16:00", "12:30", "18:00", "14:35", ""];
 
-let categoryArray = [];
-let categoryColorArray = [];
+let categoryArray = ["super kategoria", "druga kategoria"];
+let categoryColorArray = ["red", "blue"];
 
 let deleteEntryTitleArray = [];
 let deleteEntryContentsArray = [];
@@ -112,7 +112,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   entry.appendChild(entryTop);
   entryTop.className = "entry-top";
 
-  // Tytuł zadania
   const entryTopH2 = document.createElement('h2');
   entryTop.appendChild(entryTopH2);
   entryTopH2.textContent = title; 
@@ -129,7 +128,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   entryBottom.appendChild(entryBottomTextP);
   entryBottomTextP.textContent = contents; 
 
-  // Panel dolny zadania
   const entryBottomContainer = document.createElement('div');
   entry.appendChild(entryBottomContainer);
   entryBottomContainer.className = "entry-bottom-container";
@@ -138,14 +136,11 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   entryBottomContainer.appendChild(entryLeftBox);
   entryLeftBox.className = "entry-bottom-left";
 
-  // Nazwa kategori
   const entryLeftCategory = document.createElement('h3');
   entryLeftBox.appendChild(entryLeftCategory);
   entryLeftCategory.className = "entry-left-category";
   entryLeftCategory.textContent = entryCategory; 
-  //--------------------------------------------------------------
 
-  // Data podana przez użytkownika
   const entryLeftDate = document.createElement('h4');
   entryLeftBox.appendChild(entryLeftDate);
   entryLeftDate.className = "entry-left-date";
@@ -160,13 +155,11 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   entryLeftBox.appendChild(entryLeftHour);
   entryLeftHour.className = "entry-left-hour";
   entryLeftHour.textContent = givenTime;
-  // ------------------------------------------------------------
 
   const entryBottomRight = document.createElement('div');
   entryBottomContainer.appendChild(entryBottomRight);
   entryBottomRight.className = "entry-bottom-right";
 
-  // Ikona informacji
   const info = document.createElement('button');
   entryBottomRight.appendChild(info);
   info.className = "info-entry";
@@ -180,7 +173,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   infoBox.className = "information";
   infoBox.textContent = "Godzina utworzenia wpisu " + hour; //TUTAJ GODZINA UTWORZENIA WPISU
 
-  // Ikona usuwania zadania
   const removeEntryButton = document.createElement('button');
   entryBottomRight.appendChild(removeEntryButton);
   removeEntryButton.className = "remove-entry"; 
@@ -188,9 +180,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const removeIcon = document.createElement('span');
   removeEntryButton.appendChild(removeIcon);
   removeIcon.className = "fas fa-trash";
-  // removeIcon.dataset.key = "88";
 
-  // Ikon dodawania do kategori "Zrobione"
   const doneEntry = document.createElement('button');
   entryBottomRight.appendChild(doneEntry);
   doneEntry.className = "done-entry";
@@ -199,7 +189,6 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   doneEntry.appendChild(doneIcon);
   doneIcon.className = "fas fa-check";
 
-  // Ikona edycji
   const editEntry = document.createElement('button');
   entryBottomRight.appendChild(editEntry);
   editEntry.className = "edit-entry";
@@ -299,12 +288,12 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     selectOption2.className = "deleted-option";
     selectOption2.textContent = "Notatki";
 
-    for (let i = 0; i < categoryArray.length; i++) {
+    categoryArray.forEach(item => {
       const selectOptionCategory = document.createElement('option');
       selectRestore.appendChild(selectOptionCategory);
       selectOptionCategory.className = "deleted-option";
-      selectOptionCategory.textContent = categoryArray[i];
-    }
+      selectOptionCategory.textContent = item
+    })
     removeEntryButton.remove();
     removeIcon.remove();
     doneEntry.remove();
@@ -315,9 +304,9 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     // Funkcja przywracania usuniętych wpisów
     const restoreDeletedEntries = (e) => {
       const entryAllDeleted = document.querySelectorAll('.entry');
-      for (let i = 0; i < entryAllDeleted.length; i++) {
-        entryAllDeleted[i].remove();
-      }
+      entryAllDeleted.forEach(item => {
+        item.remove();
+      })
 
       let selectRestoreValue = selectRestore.value; // nazwa zaznaczonej kategori
 
@@ -535,14 +524,13 @@ const removeAllSelectCategory = () => {
 const addNewSelectCategory = () => {
   const selectValue = document.querySelector('.select');
   removeAllSelectCategory();
-
-  for (let i = 0; i < categoryArray.length; i++) {
+  categoryArray.forEach(item => {
     const newSelect = document.createElement('option');
     selectValue.appendChild(newSelect);
     newSelect.className = "option";
-    newSelect.value = categoryArray[i]
-    newSelect.textContent = categoryArray[i]
-  }
+    newSelect.value = item;
+    newSelect.textContent = item;
+  })
 }
 
 // Odświeżanie kategori
@@ -597,10 +585,9 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   // Funkcja do usuwania poszczególnych kategorii
   const deletingACategory = () => {
     const deleteBoxLength = document.querySelectorAll('.deletingCategory');
-
-    for (let i = 0; i < deleteBoxLength.length; i++) {
-      deleteBoxLength[i].remove();
-    }
+    deleteBoxLength.forEach(item => {
+      item.remove();
+    })
 
     const deleteBox = document.createElement('div');
     cyclicList.prepend(deleteBox);
@@ -638,7 +625,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
       let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
 
       if (indexes[nameCategoryArg]) {
-        for (let i = 0; i < indexes[nameCategoryArg].length; i++) {
+        indexes[nameCategoryArg].forEach(item => {
           let indexToDelete = entryCategoryArray.indexOf(nameCategoryArg);
   
           deleteEntryTitleArray.push(entryTitleArray[indexToDelete]);
@@ -654,7 +641,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
           entryDateArray.splice(indexToDelete, 1);
           entryCurrentTime.splice(indexToDelete, 1);
           entryHourTime.splice(indexToDelete, 1)
-        }
+        })
       }
       reloadScript();
       cancelDelete();
@@ -701,9 +688,9 @@ const toOoMainTitle = document.querySelectorAll('.to-do-main-title');
 // Usuwanie wszystkich subkategorii
 const deletingAllSubCategories = () => {  
   const allMainListSubCategory = document.querySelectorAll('#subCategory');
-  for (let i = 0; i < allMainListSubCategory.length; i++) {
-    allMainListSubCategory[i].remove(); // działa
-  }
+  allMainListSubCategory.forEach(item => {
+    item.remove();
+  })
 }
 // ----------------------------------
 
@@ -719,9 +706,9 @@ const createEmptySubCategory = (index) => {
 // Usuwanie informacji o pustej kategorii
 const deleteEmptySubCategory = () => {
   const emptySubCategory = document.querySelectorAll('.Empty-sub-category');
-  for (let i = 0; i < emptySubCategory.length; i++) {
-    emptySubCategory[i].remove();
-  }
+  emptySubCategory.forEach(item => {
+    item.remove();
+  })
 }
 // ------------------------------------------------------
 
@@ -770,8 +757,8 @@ const subCategoryFunction = () => {
   let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
   let amount = 0;
   deleteEmptySubCategory();
-  for (let i = 0; i < mainList.length; i++) { 
-    let subCategoryList = mainList[i].dataset.subcategory;
+  mainList.forEach(item => {
+    let subCategoryList = item.dataset.subcategory;
     numberSubCategory++
 
     if (!indexes[subCategoryList]) {
@@ -783,7 +770,7 @@ const subCategoryFunction = () => {
 
     createSubCategoryFunction(numberSubCategory, indexes[subCategoryList], amount);
     amount = 0;
-  }
+  })
 numberSubCategory = -1;
 }
 // ------------------------------------------------------------
@@ -798,9 +785,9 @@ const counterNumber = () => {
 // Funkcja do usuwania wszystkich kategorii dodanych przez użytkownika
 const deleteAllCategories = () => {
   const howMuchUserCategories = document.querySelectorAll('.cyclic');
-  for (let i = 0; i < howMuchUserCategories.length; i++) {
-    howMuchUserCategories[i].remove();
-  }
+  howMuchUserCategories.forEach(item => {
+    item.remove();
+  })
 }
 // ------------------------------------------
 
@@ -892,9 +879,9 @@ const whatCategory = document.querySelector('.top-header-title');
 const mainTitleSelectionFunction = () => {
   reloadMainTitleSelection();
   const howMuchSelection = document.querySelectorAll('.selection');
-  for (let i = 0; i < howMuchSelection.length; i ++) {
-    howMuchSelection[i].style.background = "none";
-  }
+  howMuchSelection.forEach(item => {
+    item.style.background = "none";
+  })
   event.target.style.background = "rgb(243, 243, 243)";
   whatCategory.textContent = "Wszystko";
   whatCategory.textContent = event.target.dataset.category;
@@ -908,9 +895,9 @@ const mainTitleSelectionFunction = () => {
 const reloadMainTitleSelection = () => {
   const whatCategory = document.querySelector('.top-header-title');
   const howMuchSelection = document.querySelectorAll('.selection');
-  for (let i = 0; i < howMuchSelection.length; i ++) {
-    howMuchSelection[i].style.background = "none";
-  }
+  howMuchSelection.forEach(item => {
+    item.style.background = "none";
+  })
   howMuchSelection[0].style.background = "rgb(243, 243, 243)";
 
   whatCategory.textContent = "Wszystko";
@@ -955,15 +942,15 @@ const searchElements = () => {
     searchCategoryRemove[i].remove();
   }
 
-  for (let i = 0; i < emptySearch.length; i ++) {
-    emptySearch[i].remove();
-  }
+  emptySearch.forEach(item => {
+    item.remove();
+  })
 
   if (!searchInputValue == "") {
     const sophisticatedAllItem = document.querySelectorAll('.sophisticated-items-container');
-    for (let i = 0; i > sophisticatedAllItem.length; i++) {
-      searchItemsContainer.remove();
-    }
+    sophisticatedAllItem.forEach(item => {
+      item.remove();
+    })
   
     if (!entryTitleArray.find( (item) => item.includes(searchInputValue)) == "") {
       let result = entryTitleArray.find( (item) => item.startsWith(searchInputValue));
@@ -1010,14 +997,13 @@ const removeAllSelectCategoryEdit = () => {
 const addNewSelectCategoryEdit = () => {
   const selectValue = document.querySelector('.edit-select');
   removeAllSelectCategoryEdit();
-
-  for (let i = 0; i < categoryArray.length; i++) {
+  categoryArray.forEach(item => {
     const newSelect = document.createElement('option');
     selectValue.appendChild(newSelect);
     newSelect.className = "option";
-    newSelect.value = categoryArray[i];
-    newSelect.textContent = categoryArray[i];
-  }
+    newSelect.value = item;
+    newSelect.textContent = item;
+  })
 }
 // -------------------------------------------------------------------
 
