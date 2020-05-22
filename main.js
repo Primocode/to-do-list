@@ -80,12 +80,12 @@ menuOpenClose.addEventListener('click', menuOpenCloseFunction);
 closeMenu.addEventListener('click', menuOpenCloseFunction);
 // -----------------------------------------------
 
-let entryTitleArray = [];
-let entryContentsArray = [];
-let entryCategoryArray = [];
-let entryDateArray = [];
-let entryCurrentTime = [];
-let entryHourTime = [];
+let entryTitleArray = ["Napisanie nowego posta na blogu", "Opłacenie rachunków", "Pójście na rower", "Pójść na siłownie", "Wybrać się na zakupy", "Posprzątać cały dom", "Ciekawy posiłek"];
+let entryContentsArray = ["Wpis będzie poświęcony na temat https://google.com/", "Do opłacenia został internet, prąd i mieszkanie.", "", "", "Kupić - Mleko, jajka, kurs u samuraja.", "", "https://gotuj.xx/bułka-z-chlebem/"];
+let entryCategoryArray = ["Do zrobienia", "Do zrobienia", "Zrobione", "Ważne", "Ważne", "Do zrobienia", "Notatki"];
+let entryDateArray = ["05/20/2020", "05/31/2020", "05/13/2020", "05/19/2020", "05/19/2020", "05/20/2020", ""];
+let entryCurrentTime = ["Mon May 18 2020 16:23:44 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:24:48 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:25:13 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:25:42 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:26:44 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:28:05 GMT+0200 (czas środkowoeuropejski letni)", "Mon May 18 2020 16:29:32 GMT+0200 (czas środkowoeuropejski letni)"];
+let entryHourTime = ["14:30", "00:00", "16:00", "12:30", "18:00", "14:35", ""];
 
 let categoryArray = [];
 let categoryColorArray = [];
@@ -422,9 +422,9 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 // Funkcja do usuwania wszystkich zadań
 const deletingAllEntries = () => {
   const addAllEntry = document.querySelectorAll('.entry');
-  for (let i = 0; i < addAllEntry.length; i++) {
-    addAllEntry[i].remove();
-  }
+  addAllEntry.forEach(item => {
+    item.remove();
+  })
 }
 // --------------------------------------------
 
