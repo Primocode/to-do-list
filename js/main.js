@@ -4,8 +4,8 @@ let month = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipi
 
 function Timer() {
 let date = new Date();
-  document.getElementById("time").innerHTML = date.toLocaleTimeString();
-  document.getElementById("day").innerHTML = day[date.getDay()] + " " + date.getDate() + " " + month[date.getMonth()];
+  document.getElementById("time").textContent = date.toLocaleTimeString();
+  document.getElementById("day").textContent = day[date.getDay()] + " " + date.getDate() + " " + month[date.getMonth()];
 }
 Timer()
 let myVar = setInterval(Timer, 1000);
@@ -81,7 +81,6 @@ closeMenu.addEventListener('click', menuOpenCloseFunction);
 // -----------------------------------------------
 
 let entryTitleArray = [];
-let entryContentsArray = [];
 let entryCategoryArray = [];
 let entryDateArray = [];
 let entryCurrentTime = [];
@@ -335,14 +334,15 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
         deleteEntryCurrentTime.splice(indexDelete, 1);
         deleteEntryHourTime.splice(indexDelete, 1);
       }
-      for (let i = 0; i < deleteEntryCurrentTime.length; i++) {
-        creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], deleteEntryHourTime[i]);
-      }
+      
+      deleteEntryCurrentTime.forEach((item, i) => {
+          creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], deleteEntryHourTime[i]);
+      });
+
       messageActive(); 
       deletingAllSubCategories(); 
       subCategoryFunction();
       mainTitleReload();
-
       deletedElementsCounter();
       counterNumber();
     }
@@ -357,14 +357,14 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     const whatIndex = entryCurrentTime.indexOf(hour);
     entryCategoryArray[whatIndex] = "Zrobione";
 
-    counterNumber(); // odświeża licznik wpisów
-    deletingAllEntries(); // usuwa wszystkie wpisy
-    CreatingAllEntries(); // tworzy wszystkie wpisy od nowa
-    refreshCategories(); // odświeża kategorie
-    reloadMainTitleSelection(); // Przejście do listy (Wszystkie);
+    counterNumber();
+    deletingAllEntries();
+    CreatingAllEntries(); 
+    refreshCategories(); 
+    reloadMainTitleSelection(); 
    }
 
-  doneIcon.addEventListener('click', changeToDone);
+  doneEntry.addEventListener('click', changeToDone);
 
   // Funkcja do usuwania poszczególnych wpisów
   const removeIndividualEntryFunction = (e) => {
@@ -436,9 +436,10 @@ const allButtonCreatingAllEntries = document.querySelector('.all');
 
 const CreatingAllEntries = () => {
   deletingAllEntries();
-  for (let i = 0; i < entryTitleArray.length; i++) {
+  entryTitleArray.forEach((item, i) => {
     creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], " ", entryCurrentTime[i], entryHourTime[i]);
-  }
+  });
+
   messageActive();
 }
 allButtonCreatingAllEntries.addEventListener('click', CreatingAllEntries);
@@ -669,10 +670,10 @@ const mainCategoryFunction = () => {
     messageActive();
   }
   else {
-    for (let i = 0; i < indexes[nameCategory].length; i++) {
-      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], "nothing", entryCurrentTime[indexes[nameCategory][i]], entryHourTime[indexes[nameCategory][i]]);
+    indexes[nameCategory].forEach((item, i) => {
+      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], " ", entryCurrentTime[indexes[nameCategory][i]], entryHourTime[indexes[nameCategory][i]]);
       messageActive();
-      }
+    });
   }
     // ----------------------------------------------
 }
@@ -730,6 +731,7 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     }
     createSubCategory.dataset.category = entryCategoryArray[indexSubCategorie[i]];
   }
+
   checkSubCategory()
 } 
 // ----------------------------------
@@ -793,9 +795,9 @@ const deleteAllCategories = () => {
 
 // Funkcja do tworzenia wszystkich kategorii dodanych przez użytkownika z tablicy
 const creatingAllCategory = () => {
-  for (let i = 0; i < categoryArray.length; i++) {
+  categoryArray.forEach((item, i) => {
     createNewCategory(categoryArray[i], categoryColorArray[i]);
-  }
+  })
 }
 
 // Wybór koloru przy tworzeniu kategorii
@@ -858,9 +860,9 @@ const deletedTextFunction = () => {
   deletingAllEntries();
   messageActive();
   const messageActiveDelete = document.querySelector('.empty-entry-message-active');
-  for (let i = 0; i < deleteEntryTitleArray.length; i++) {
+  deleteEntryTitleArray.forEach((item, i) => {
     creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], deleteEntryHourTime[i]);
-  }
+  })
   if (deleteEntryTitleArray.length >= 1) {
     messageActiveDelete.className = "empty-entry-message";
    
@@ -937,21 +939,19 @@ const searchElements = () => {
   const searchCategoryRemove = document.querySelectorAll('.search-category');
   const allItemsContainer = document.querySelectorAll('.sophisticated-items');
   const emptySearch = document.querySelectorAll('.empty-search');
-  for (let i = 0; i < allItemsContainer.length; i++) {
+
+  allItemsContainer.forEach((item, i) => {
     allItemsContainer[i].remove();
     searchCategoryRemove[i].remove();
-  }
+  })
 
-  emptySearch.forEach(item => {
-    item.remove();
+  emptySearch.forEach((item, i) => {
+    emptySearch[i].remove();
   })
 
   if (!searchInputValue == "") {
     const sophisticatedAllItem = document.querySelectorAll('.sophisticated-items-container');
-    sophisticatedAllItem.forEach(item => {
-      item.remove();
-    })
-  
+
     if (!entryTitleArray.find( (item) => item.includes(searchInputValue)) == "") {
       let result = entryTitleArray.find( (item) => item.startsWith(searchInputValue));
       const searchItemsContainer = document.createElement('div');

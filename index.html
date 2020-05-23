@@ -12,7 +12,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="images/icon.png">
-    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
     
 </head>
 <body>
@@ -146,7 +145,7 @@
                           </select>
                     </div>
                     <div class="date">
-                        <input type="text" class="entry-date" id="datepicker" placeholder="Podaj datę / godzinę ->">
+                        <input type="date" class="entry-date" placeholder="Podaj datę / godzinę ->">
                         <input type="time"  min="00:00" max="24:59" class="entry-hour" placeholder="godzina" required >
                     </div>
                 </div>
@@ -189,7 +188,7 @@
                       </select>
                 </div>
                 <div class="edit-date-hour">
-                    <input type="text" class="edit-date hasDatepicker" id="datepicker" placeholder="Podaj datę / godzinę ->">
+                    <input type="text" class="edit-date hasDatepicker" placeholder="Podaj datę / godzinę ->">
                     <input type="time" min="00:00" max="24:59" class="edit-hour" placeholder="godzina" required="">
                 </div>
                 <div class="edit-content-container">
@@ -203,14 +202,6 @@
         </div>
     </header>
 
-    <script src="main.js"></script>
-    
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript">
-        $( function() {
-              $( "#datepicker" ).datepicker();
-          } );
-  </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
