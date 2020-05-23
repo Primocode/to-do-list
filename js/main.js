@@ -81,6 +81,7 @@ closeMenu.addEventListener('click', menuOpenCloseFunction);
 // -----------------------------------------------
 
 let entryTitleArray = [];
+let entryContentsArray = [];
 let entryCategoryArray = [];
 let entryDateArray = [];
 let entryCurrentTime = [];
