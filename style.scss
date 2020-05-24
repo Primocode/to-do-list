@@ -222,6 +222,66 @@ header {
                         text-align: center;
                         cursor: default;
                     }
+                    .by-the-time-container {
+                        margin: 5px 0px 5px 0px;
+                        cursor: pointer;
+                        .by-the-time {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: 0px 20px 0px 20px;
+                            cursor: pointer;
+                            .current {
+                                border-radius: 50%;
+                                border: 1px solid #1C8AF5;
+                                color: #1C8AF5;
+                                width: 17px;
+                                font-size: 15px;
+                                height: 17px;
+                                text-align: center;
+                                padding: 0;
+                            }
+                            .by-the-time-after {
+                                color: #D23030;
+                            }
+                            span {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            .after {
+                                border-radius: 50%;
+                                border: 1px solid  #D23030;
+                                color:  #D23030;
+                                width: 17px;
+                                font-size: 15px;
+                                height: 17px;
+                                text-align: center;
+                                margin-left: 25px;
+                                padding: 0;
+                            }
+                            .after-text {
+                                color: #D23030;
+                            }
+                        }
+                        .by-the-time:hover {
+                            background-color: rgb(252, 252, 252);
+                        }
+                        h3 {
+                            font-size: 18px;
+                            color: #1C8AF5;
+                            text-align: left;
+                            display: flex;
+                            align-items: center;
+                            padding-right: 10px;
+                            width: 100%;
+                            cursor: pointer;
+                        }
+                        span {
+                            font-size: 10px;
+                            padding-right: 5px;
+                        }
+                    }
                 }
             }
                         // do zrobienia

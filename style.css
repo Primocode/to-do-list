@@ -254,6 +254,92 @@ header nav .to-do-list-category .all h3 {
   cursor: default;
 }
 
+header nav .to-do-list-category .all .by-the-time-container {
+  margin: 5px 0px 5px 0px;
+  cursor: pointer;
+}
+
+header nav .to-do-list-category .all .by-the-time-container .by-the-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0px 20px 0px 20px;
+  cursor: pointer;
+}
+
+header nav .to-do-list-category .all .by-the-time-container .by-the-time .current {
+  border-radius: 50%;
+  border: 1px solid #1C8AF5;
+  color: #1C8AF5;
+  width: 17px;
+  font-size: 15px;
+  height: 17px;
+  text-align: center;
+  padding: 0;
+}
+
+header nav .to-do-list-category .all .by-the-time-container .by-the-time .by-the-time-after {
+  color: #D23030;
+}
+
+header nav .to-do-list-category .all .by-the-time-container .by-the-time span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav .to-do-list-category .all .by-the-time-container .by-the-time .after {
+  border-radius: 50%;
+  border: 1px solid  #D23030;
+  color: #D23030;
+  width: 17px;
+  font-size: 15px;
+  height: 17px;
+  text-align: center;
+  margin-left: 25px;
+  padding: 0;
+}
+
+header nav .to-do-list-category .all .by-the-time-container .by-the-time .after-text {
+  color: #D23030;
+}
+
+header nav .to-do-list-category .all .by-the-time-container .by-the-time:hover {
+  background-color: #fcfcfc;
+}
+
+header nav .to-do-list-category .all .by-the-time-container h3 {
+  font-size: 18px;
+  color: #1C8AF5;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+header nav .to-do-list-category .all .by-the-time-container span {
+  font-size: 10px;
+  padding-right: 5px;
+}
+
 header nav .to-do .to-do-container span {
   color: #1C8AF5;
   padding-left: 10px;

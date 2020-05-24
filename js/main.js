@@ -81,6 +81,7 @@ closeMenu.addEventListener('click', menuOpenCloseFunction);
 // -----------------------------------------------
 
 let entryTitleArray = [];
+let entryContentsArray = [];
 let entryCategoryArray = [];
 let entryDateArray = [];
 let entryCurrentTime = [];
@@ -170,7 +171,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   const infoBox = document.createElement('div');
   info.appendChild(infoBox);
   infoBox.className = "information";
-  infoBox.textContent = "Godzina utworzenia wpisu " + hour; //TUTAJ GODZINA UTWORZENIA WPISU
+  infoBox.textContent = "Czas utworzenia wpisu " + hour; //TUTAJ GODZINA UTWORZENIA WPISU
 
   const removeEntryButton = document.createElement('button');
   entryBottomRight.appendChild(removeEntryButton);
@@ -432,7 +433,7 @@ const messageActive = () => {
 // ---------------------------------------------------------------------
 
 // Funkcja do tworzenia wszystkich zadań
-const allButtonCreatingAllEntries = document.querySelector('.all');
+const allButtonCreatingAllEntries = document.querySelector('.all-button');
 
 const CreatingAllEntries = () => {
   deletingAllEntries();
@@ -474,6 +475,10 @@ const addEntryButtonFunction = () => {
   const EntryCategory = document.querySelector('.select').value; 
   const entryDate = document.querySelector('.entry-date').value;
   const entryHourValue = document.querySelector('.entry-hour').value;
+  // let currentDate = new Date();
+
+
+  // const currentTime = currentDate.getFullYear() + "-" + (1 + currentDate.getMonth()) + "-" + currentDate.getDate() + " godzina " + currentDate.getHours() + ":" + currentDate.getMinutes();
   const currentTime = new Date();
   if (entryTitle.length < 1) {
     mess.textContent = "Tytuł nie może być pusty";
@@ -680,6 +685,11 @@ const mainCategoryFunction = () => {
 
 const mainTitleReload = () => {
   const mainTitle = document.querySelectorAll(".to-do-main-title").forEach(item => item.addEventListener('click', mainCategoryFunction));
+  const byTheTimeContent = document.querySelectorAll('.by-the-time-content');
+
+  byTheTimeContent.forEach(item => {
+    item.style.background = null;
+  })
 }
 mainTitleReload(); 
 
@@ -745,6 +755,12 @@ const subCategoryClickFunction = () => {
   creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue], entryHourTime[indexSubCategoryValue]);
   messageActive();
   menuCloseFunction();
+
+  const byTheTimeContent = document.querySelectorAll('.by-the-time-content');
+
+  byTheTimeContent.forEach(item => {
+    item.style.background = null;
+  })
 }
 
 const checkSubCategory = () => {
@@ -904,6 +920,12 @@ const reloadMainTitleSelection = () => {
 
   whatCategory.textContent = "Wszystko";
 
+  const byTheTimeContent = document.querySelectorAll('.by-the-time-content');
+
+  byTheTimeContent.forEach(item => {
+    item.style.background = null;
+  })
+
   document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', mainTitleSelectionFunction));
 }
 reloadMainTitleSelection();
@@ -1052,6 +1074,75 @@ const openingClosingTheMenu = () => {
   }
 }
 // -------------------------------------------------------------
+
+// Kategoria "Do czasu"
+const categoryTimeSwitching = () => {
+  deletingAllEntries();
+  activeTimeButton();
+  let nameCategoryDate = event.target.dataset.timecategory
+  whatCategory.textContent = event.target.dataset.timecategory
+  let indexes = entryDateArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+  let currentDate = new Date;
+  let monthDate, dayDate
+
+  if ((1 + currentDate.getMonth()) > 9) {
+    monthDate = (1 + currentDate.getMonth());
+  }
+  else {
+    monthDate = "0" + (1 + currentDate.getMonth());
+  }
+  if (currentDate.getDate() > 9) {
+    dayDate = currentDate.getDate();
+  }
+  else {
+    dayDate = "0" + currentDate.getDate();
+  }
+
+
+  let actualDate = currentDate.getFullYear() + "-" + monthDate + "-" + dayDate;
+  if (nameCategoryDate == "Na dzisiaj") {
+    deletingAllEntries();
+      if (indexes[actualDate]) {
+        indexes[actualDate].forEach(item => {
+          creationNewEntry(entryContentsArray[item], entryTitleArray[item], entryCategoryArray[item], entryDateArray[item], " ", entryCurrentTime[item], entryHourTime[item]);
+        })
+      }
+  }
+  // else if (nameCategoryDate == "Po czasie") {
+  //   // deletingAllEntries();
+  //   entryDateArray.forEach(item => {
+  //     if (item < actualDate) {
+  //       if (!item == "") {
+  //         let indexes = entryDateArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+  //         deletingAllEntries();
+  //           indexes[item].forEach(item => { 
+  //             creationNewEntry(entryContentsArray[item], entryTitleArray[item], entryCategoryArray[item], entryDateArray[item], " ", entryCurrentTime[item], entryHourTime[item]);
+  //           })
+  //       }
+  //     }
+  //   })
+  // }
+  messageActive();
+}
+const byTheTime = document.querySelectorAll('.by-the-time-content').forEach(item => item.addEventListener('click', categoryTimeSwitching));
+
+const activeTimeButton = () => {
+  const byTheTimeContent = document.querySelectorAll('.by-the-time-content');
+  byTheTimeContent.forEach(item => {
+    item.style.background = null;
+  })
+  event.target.style.background = "rgb(243, 243, 243)";
+  const selectionActive = document.querySelectorAll('.selection');
+
+  selectionActive.forEach(item => {
+    item.style.background = null;
+  })
+}
+// ------------------------------------------------------------
+
+// let d = new Date();
+// d.setDate(d.getDate() +7);
+// console.log(d.toISOString().split('T')[0]); 
 
 // odświeżanie
 const reloadScript = () => {
