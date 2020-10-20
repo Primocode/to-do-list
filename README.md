@@ -19,6 +19,8 @@ Przy tworzeniu aplikacji był postawiony jeden najważniejszy cel, intuicyjnoś�
   - SCSS
   - JavaScript
 
-![image](https://github.com/Primocode/to-do-list/blob/master/images/main-photo.png)
 ## Live
 https://primocode.github.io/to-do-list/
+
+![image](https://github.com/Primocode/to-do-list/blob/master/images/main-photo.png)
+
