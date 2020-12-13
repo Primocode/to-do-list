@@ -85,8 +85,6 @@ header {
                 .search-category {
                     color: #1C8AF5;
                 }
-                .sophisticated-items {
-                }
             }
             .sophisticated-items-container:hover {
                 background-color: #fcfcfc;
@@ -131,19 +129,16 @@ header {
                 .notes-container-height {
                     margin-bottom: 10px;
                 }
-
                 .main-title {
                     h2 {
                         font-size: 19px;
                     }
                 }
-
                 .main-list {
                     h4 {
                         font-size: 14px;
                     }
                 }
-
                 .cyclicDelete {
                     font-size: 16px;
                     padding: 4px;
@@ -284,7 +279,6 @@ header {
                     }
                 }
             }
-                        // do zrobienia
             .to-do {
                 .to-do-container {
                         span {
@@ -300,7 +294,6 @@ header {
                     }
                 }
             }
-            // Zrobione
             .done {
                 .done-container {
                     span {
@@ -315,7 +308,6 @@ header {
                     }
                 }
             }
-            // Ważne
             .important {
                 .important-container {
                     span {
@@ -381,7 +373,6 @@ header {
 
                         }
                     }
-
                     @media (max-width: 725px) {
                         .deleted-text {
                             .deleted-title {

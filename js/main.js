@@ -331,7 +331,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     entryCategoryArray[entryCurrentTime.indexOf(hour)] = "Zrobione";
     counterNumber();
     deletingAllEntries();
-    CreatingAllEntries(); 
+    creatingAllEntries(); 
     refreshCategories(); 
     reloadMainTitleSelection(); 
    }
@@ -400,14 +400,14 @@ const messageActive = () => {
 // ---------------------------------------------------------------------
 
 // Funkcja do tworzenia wszystkich zadań
-const CreatingAllEntries = () => {
+const creatingAllEntries = () => {
   deletingAllEntries();
   entryTitleArray.forEach((item, i) => {
     creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], " ", entryCurrentTime[i], entryHourTime[i]);
   });
   messageActive();
 }
-document.querySelector('.all-button').addEventListener('click', CreatingAllEntries);
+document.querySelector('.all-button').addEventListener('click', creatingAllEntries);
 // --------------------------------------
 
 // Komunikat w panelu podczas tworzenia nowego zadania
@@ -462,7 +462,7 @@ const addEntryButtonFunction = () => {
     subCategoryFunction();
     counterNumber();
     deletingAllEntries(); 
-    CreatingAllEntries();
+    creatingAllEntries();
     refreshCategories();
     mainTitleSelectionFunction();
     reloadMainTitleSelection(); 
@@ -1040,7 +1040,7 @@ const reloadScript = () => {
   deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
   creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
   deletingAllEntries(); // usuwanie wszystkich wpisów
-  CreatingAllEntries(); // Tworzenie wszystkich wpisów
+  creatingAllEntries(); // Tworzenie wszystkich wpisów
   deletingAllSubCategories(); // usuwanie wszystkich podkategori
   subCategoryFunction(); // tworzenie od nowa wszystkich podkategori
   addNewSelectCategory(); // odświeżenie kategori w "Nowy wpis"
