@@ -68,22 +68,24 @@ document.querySelector('.menu-open-close').addEventListener('click', menuOpenClo
 document.querySelector('.close-menu').addEventListener('click', menuOpenCloseFunction);
 // -----------------------------------------------
 
-let entryTitleArray = [];
-let entryContentsArray = [];
-let entryCategoryArray = [];
-let entryDateArray = [];
-let entryCurrentTime = [];
-let entryHourTime = [];
+const taskValues = {
+  entryTitleArray: [],
+  entryContentsArray: [],
+  entryCategoryArray: [],
+  entryDateArray: [],
+  entryCurrentTime: [],
+  entryHourTime: [],
 
-let categoryArray = [];
-let categoryColorArray = [];
+  categoryArray: [],
+  categoryColorArray: [],
 
-let deleteEntryTitleArray = [];
-let deleteEntryContentsArray = [];
-let deleteEntryCategoryArray = [];
-let deleteEntryDateArray = [];
-let deleteEntryCurrentTime = [];
-let deleteEntryHourTime = [];
+  deleteEntryTitleArray: [],
+  deleteEntryContentsArray: [],
+  deleteEntryCategoryArray: [],
+  deleteEntryDateArray: [],
+  deleteEntryCurrentTime: [],
+  deleteEntryHourTime: [],
+}
 
 // Tworzenie nowych zadań
 let numberDeleted = 0;
@@ -182,7 +184,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
   editEntry.appendChild(editIcon);
   editIcon.className = "fas fa-pencil-alt";
 
-  const whatIndexColors = categoryArray.indexOf(entryCategory);
+  const whatIndexColors = taskValues.categoryArray.indexOf(entryCategory);
 
   if (entryCategory == "Do zrobienia") {
     entryLeftCategory.style.color = "#1C8AF5";
@@ -205,8 +207,8 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     entryTopH2.style.borderLeft = "4px solid #D23030";
   }
   else {
-    entryLeftCategory.style.color = categoryColorArray[whatIndexColors];
-    entryTopH2.style.borderLeft = `4px solid ${categoryColorArray[whatIndexColors]}`;
+    entryLeftCategory.style.color = taskValues.categoryColorArray[whatIndexColors];
+    entryTopH2.style.borderLeft = `4px solid ${taskValues.categoryColorArray[whatIndexColors]}`;
   }
   // ------------------------------------------------------------
 
@@ -269,7 +271,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     selectOption2.className = "deleted-option";
     selectOption2.textContent = "Notatki";
 
-    categoryArray.forEach(item => {
+    taskValues.categoryArray.forEach(item => {
       const selectOptionCategory = document.createElement('option');
       selectRestore.appendChild(selectOptionCategory);
       selectOptionCategory.className = "deleted-option";
@@ -284,34 +286,34 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       document.querySelectorAll('.entry').forEach(item => {
         item.remove();
       })
-      let indexDelete = deleteEntryCurrentTime.indexOf(hour);
+      let indexDelete = taskValues.deleteEntryCurrentTime.indexOf(hour);
 
       if (selectRestore.value == "Usuń na zawsze") {
-        deleteEntryTitleArray.splice(indexDelete, 1);
-        deleteEntryContentsArray.splice(indexDelete, 1);
-        deleteEntryCategoryArray.splice(indexDelete, 1);
-        deleteEntryDateArray.splice(indexDelete, 1);
-        deleteEntryCurrentTime.splice(indexDelete, 1);
-        deleteEntryHourTime.splice(indexDelete, 1);
+        taskValues.deleteEntryTitleArray.splice(indexDelete, 1);
+        taskValues.deleteEntryContentsArray.splice(indexDelete, 1);
+        taskValues.deleteEntryCategoryArray.splice(indexDelete, 1);
+        taskValues.deleteEntryDateArray.splice(indexDelete, 1);
+        taskValues.deleteEntryCurrentTime.splice(indexDelete, 1);
+        taskValues.deleteEntryHourTime.splice(indexDelete, 1);
       }
       else {
-        entryTitleArray.push(deleteEntryTitleArray[indexDelete]);
-        entryContentsArray.push(deleteEntryContentsArray[indexDelete]);
-        entryCategoryArray.push(selectRestore.value);
-        entryDateArray.push(deleteEntryDateArray[indexDelete]);
-        entryCurrentTime.push(deleteEntryCurrentTime[indexDelete]);
-        entryHourTime.push(deleteEntryHourTime[indexDelete]);
+        taskValues.entryTitleArray.push(taskValues.deleteEntryTitleArray[indexDelete]);
+        taskValues.entryContentsArray.push(taskValues.deleteEntryContentsArray[indexDelete]);
+        taskValues.entryCategoryArray.push(selectRestore.value);
+        taskValues.entryDateArray.push(taskValues.deleteEntryDateArray[indexDelete]);
+        taskValues.entryCurrentTime.push(taskValues.deleteEntryCurrentTime[indexDelete]);
+        taskValues.entryHourTime.push(taskValues.deleteEntryHourTime[indexDelete]);
   
-        deleteEntryTitleArray.splice(indexDelete, 1);
-        deleteEntryContentsArray.splice(indexDelete, 1);
-        deleteEntryCategoryArray.splice(indexDelete, 1);
-        deleteEntryDateArray.splice(indexDelete, 1);
-        deleteEntryCurrentTime.splice(indexDelete, 1);
-        deleteEntryHourTime.splice(indexDelete, 1);
+        taskValues.deleteEntryTitleArray.splice(indexDelete, 1);
+        taskValues.deleteEntryContentsArray.splice(indexDelete, 1);
+        taskValues.deleteEntryCategoryArray.splice(indexDelete, 1);
+        taskValues.deleteEntryDateArray.splice(indexDelete, 1);
+        taskValues.deleteEntryCurrentTime.splice(indexDelete, 1);
+        taskValues.deleteEntryHourTime.splice(indexDelete, 1);
       }
       
-      deleteEntryCurrentTime.forEach((item, i) => {
-          creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], deleteEntryHourTime[i]);
+      taskValues.deleteEntryCurrentTime.forEach((item, i) => {
+          creationNewEntry(taskValues.deleteEntryContentsArray[i], taskValues.deleteEntryTitleArray[i], taskValues.deleteEntryCategoryArray[i], taskValues.deleteEntryDateArray[i], "Usunięte", taskValues.deleteEntryCurrentTime[i], taskValues.deleteEntryHourTime[i]);
       });
       messageActive(); 
       deletingAllSubCategories(); 
@@ -328,7 +330,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
   // Funkcja do zmiany wpisów do kategori "Zrobione"
   const changeToDone = (e) => {
-    entryCategoryArray[entryCurrentTime.indexOf(hour)] = "Zrobione";
+    taskValues.entryCategoryArray[taskValues.entryCurrentTime.indexOf(hour)] = "Zrobione";
     counterNumber();
     deletingAllEntries();
     creatingAllEntries(); 
@@ -339,22 +341,22 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
   // Funkcja do usuwania poszczególnych wpisów
   const removeIndividualEntry = (e) => {
-    let deleteByIndex = entryTitleArray.indexOf(title);
+    let deleteByIndex = taskValues.entryTitleArray.indexOf(title);
 
-    if (entryTitleArray.indexOf(title) >= 0) {
-      deleteEntryTitleArray.push(title);
-      deleteEntryContentsArray.push(contents);
-      deleteEntryCategoryArray.push("Usunięte");
-      deleteEntryDateArray.push(entryDateValue);
-      deleteEntryCurrentTime.push(hour);
-      deleteEntryHourTime.push(givenTime);
+    if (taskValues.entryTitleArray.indexOf(title) >= 0) {
+      taskValues.deleteEntryTitleArray.push(title);
+      taskValues.deleteEntryContentsArray.push(contents);
+      taskValues.deleteEntryCategoryArray.push("Usunięte");
+      taskValues.deleteEntryDateArray.push(entryDateValue);
+      taskValues.deleteEntryCurrentTime.push(hour);
+      taskValues.deleteEntryHourTime.push(givenTime);
 
-      entryTitleArray.splice(deleteByIndex, 1);
-      entryContentsArray.splice(deleteByIndex, 1);
-      entryCategoryArray.splice(deleteByIndex, 1);
-      entryDateArray.splice(deleteByIndex, 1);
-      entryCurrentTime.splice(deleteByIndex, 1);
-      entryHourTime.splice(deleteByIndex, 1);
+      taskValues.entryTitleArray.splice(deleteByIndex, 1);
+      taskValues.entryContentsArray.splice(deleteByIndex, 1);
+      taskValues.entryCategoryArray.splice(deleteByIndex, 1);
+      taskValues.entryDateArray.splice(deleteByIndex, 1);
+      taskValues.entryCurrentTime.splice(deleteByIndex, 1);
+      taskValues.entryHourTime.splice(deleteByIndex, 1);
 
       entry.remove(entry.dataset.value);
       messageActive();
@@ -368,7 +370,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
   // Funkcja do edycji zadań 
   const editEntryOpenMenu = (e) => {
-    taskEditing(entryCurrentTime.indexOf(hour));
+    taskEditing(taskValues.entryCurrentTime.indexOf(hour));
     openingClosingTheMenu();
   }
 
@@ -402,8 +404,8 @@ const messageActive = () => {
 // Funkcja do tworzenia wszystkich zadań
 const creatingAllEntries = () => {
   deletingAllEntries();
-  entryTitleArray.forEach((item, i) => {
-    creationNewEntry(entryContentsArray[i], entryTitleArray[i], entryCategoryArray[i], entryDateArray[i], " ", entryCurrentTime[i], entryHourTime[i]);
+  taskValues.entryTitleArray.forEach((item, i) => {
+    creationNewEntry(taskValues.entryContentsArray[i], taskValues.entryTitleArray[i], taskValues.entryCategoryArray[i], taskValues.entryDateArray[i], " ", taskValues.entryCurrentTime[i], taskValues.entryHourTime[i]);
   });
   messageActive();
 }
@@ -442,20 +444,20 @@ const addEntryButtonFunction = () => {
   if (entryTitle.length < 1) {
     mess.textContent = "Tytuł nie może być pusty";
   }
-  else if (entryTitleArray.includes(entryTitle)) {
+  else if (taskValues.entryTitleArray.includes(entryTitle)) {
     mess.textContent = "Taki tytuł już istnieje";
   }
-  else if (deleteEntryTitleArray.includes(entryTitle)) {
+  else if (taskValues.deleteEntryTitleArray.includes(entryTitle)) {
     mess.textContent = "Taki tytuł został wcześniej usunięty";
   }
   else {
     creationNewEntry(entryContents, entryTitle, EntryCategory, entryDate, "nothing" , currentTime, entryHourValue);
-    entryContentsArray.push(entryContents);
-    entryTitleArray.push(entryTitle);
-    entryCategoryArray.push(EntryCategory);
-    entryDateArray.push(entryDate);
-    entryCurrentTime.push(currentTime);
-    entryHourTime.push(entryHourValue);
+    taskValues.entryContentsArray.push(entryContents);
+    taskValues.entryTitleArray.push(entryTitle);
+    taskValues.entryCategoryArray.push(EntryCategory);
+    taskValues.entryDateArray.push(entryDate);
+    taskValues.entryCurrentTime.push(currentTime);
+    taskValues.entryHourTime.push(entryHourValue);
     newEntryOpenBox();
     messageActive();
     deletingAllSubCategories(); 
@@ -487,7 +489,7 @@ const removeAllSelectCategory = () => {
 // Dodawanie nowego selecta przy tworzeniu nowego wpisu po zrobieniu nowej kategori 
 const addNewSelectCategory = () => {
   removeAllSelectCategory();
-  categoryArray.forEach(item => {
+  taskValues.categoryArray.forEach(item => {
     const newSelect = document.createElement('option');
     document.querySelector('.select').appendChild(newSelect);
     newSelect.className = "option";
@@ -578,29 +580,29 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
     deleteConfirmButton.textContent = "Usuń";
 
     const confirmDelete = () => {
-      let indexDelete = categoryArray.indexOf(nameCategoryArg);
-      categoryArray.splice(indexDelete, 1); 
-      categoryColorArray.splice(indexDelete, 1);
+      let indexDelete = taskValues.categoryArray.indexOf(nameCategoryArg);
+      taskValues.categoryArray.splice(indexDelete, 1); 
+      taskValues.categoryColorArray.splice(indexDelete, 1);
 
-      let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+      let indexes = taskValues.entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
 
       if (indexes[nameCategoryArg]) {
         indexes[nameCategoryArg].forEach(item => {
-          let indexToDelete = entryCategoryArray.indexOf(nameCategoryArg);
+          let indexToDelete = taskValues.entryCategoryArray.indexOf(nameCategoryArg);
   
-          deleteEntryTitleArray.push(entryTitleArray[indexToDelete]);
-          deleteEntryContentsArray.push(entryContentsArray[indexToDelete]);
-          deleteEntryCategoryArray.push("Usunięte");
-          deleteEntryDateArray.push(entryDateArray[indexToDelete]);
-          deleteEntryCurrentTime.push(entryCurrentTime[indexToDelete]);
-          deleteEntryHourTime.push(entryHourTime[indexToDelete]);
+          taskValues.deleteEntryTitleArray.push(taskValues.entryTitleArray[indexToDelete]);
+          taskValues.deleteEntryContentsArray.push(taskValues.entryContentsArray[indexToDelete]);
+          taskValues.deleteEntryCategoryArray.push("Usunięte");
+          taskValues.deleteEntryDateArray.push(taskValues.entryDateArray[indexToDelete]);
+          taskValues.deleteEntryCurrentTime.push(taskValues.entryCurrentTime[indexToDelete]);
+          taskValues.deleteEntryHourTime.push(taskValues.entryHourTime[indexToDelete]);
   
-          entryTitleArray.splice(indexToDelete, 1);
-          entryContentsArray.splice(indexToDelete, 1);
-          entryCategoryArray.splice(indexToDelete, 1);
-          entryDateArray.splice(indexToDelete, 1);
-          entryCurrentTime.splice(indexToDelete, 1);
-          entryHourTime.splice(indexToDelete, 1)
+          taskValues.entryTitleArray.splice(indexToDelete, 1);
+          taskValues.entryContentsArray.splice(indexToDelete, 1);
+          taskValues.entryCategoryArray.splice(indexToDelete, 1);
+          taskValues.entryDateArray.splice(indexToDelete, 1);
+          taskValues.entryCurrentTime.splice(indexToDelete, 1);
+          taskValues.entryHourTime.splice(indexToDelete, 1)
         })
       }
       reloadScript();
@@ -622,14 +624,14 @@ const mainCategoryFunction = () => {
   
   mainTitleSelectionFunction();
 
-  let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+  let indexes = taskValues.entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
 
   if (!indexes[nameCategory]) {
     messageActive();
   }
   else {
     indexes[nameCategory].forEach((item, i) => {
-      creationNewEntry(entryContentsArray[indexes[nameCategory][i]], entryTitleArray[indexes[nameCategory][i]], entryCategoryArray[indexes[nameCategory][i]], entryDateArray[indexes[nameCategory][i]], " ", entryCurrentTime[indexes[nameCategory][i]], entryHourTime[indexes[nameCategory][i]]);
+      creationNewEntry(taskValues.entryContentsArray[indexes[nameCategory][i]], taskValues.entryTitleArray[indexes[nameCategory][i]], taskValues.entryCategoryArray[indexes[nameCategory][i]], taskValues.entryDateArray[indexes[nameCategory][i]], " ", taskValues.entryCurrentTime[indexes[nameCategory][i]], taskValues.entryHourTime[indexes[nameCategory][i]]);
       messageActive();
     });
   }
@@ -679,14 +681,14 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
     document.querySelectorAll('.main-list')[index].appendChild(createSubCategory);
     createSubCategory.id = "subCategory";
     createSubCategory.className = "selection";
-    createSubCategory.dataset.subCategory = entryTitleArray[indexSubCategorie[i]];
-    if(entryTitleArray[indexSubCategorie[i]].length > 19) {
-      createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]].slice(0,19) + "...";
+    createSubCategory.dataset.subCategory = taskValues.entryTitleArray[indexSubCategorie[i]];
+    if(taskValues.entryTitleArray[indexSubCategorie[i]].length > 19) {
+      createSubCategory.textContent = taskValues.entryTitleArray[indexSubCategorie[i]].slice(0,19) + "...";
     }
     else {
-      createSubCategory.textContent = entryTitleArray[indexSubCategorie[i]].slice(0,19);
+      createSubCategory.textContent = taskValues.entryTitleArray[indexSubCategorie[i]].slice(0,19);
     }
-    createSubCategory.dataset.category = entryCategoryArray[indexSubCategorie[i]];
+    createSubCategory.dataset.category = taskValues.entryCategoryArray[indexSubCategorie[i]];
   }
   checkSubCategory()
 } 
@@ -694,10 +696,10 @@ const createSubCategoryFunction = (index, indexSubCategorie, amount) => {
 
 // Przechodzenie pomiędzy subkategoriami
 const subCategoryClickFunction = () => {
-  const indexSubCategoryValue = entryTitleArray.indexOf(event.target.dataset.subCategory);
+  const indexSubCategoryValue = taskValues.entryTitleArray.indexOf(event.target.dataset.subCategory);
   mainTitleSelectionFunction();
   deletingAllEntries();
-  creationNewEntry(entryContentsArray[indexSubCategoryValue], entryTitleArray[indexSubCategoryValue], entryCategoryArray[indexSubCategoryValue], entryDateArray[indexSubCategoryValue], "nothing", entryCurrentTime[indexSubCategoryValue], entryHourTime[indexSubCategoryValue]);
+  creationNewEntry(taskValues.entryContentsArray[indexSubCategoryValue], taskValues.entryTitleArray[indexSubCategoryValue], taskValues.entryCategoryArray[indexSubCategoryValue], taskValues.entryDateArray[indexSubCategoryValue], "nothing", taskValues.entryCurrentTime[indexSubCategoryValue], taskValues.entryHourTime[indexSubCategoryValue]);
   messageActive();
   menuCloseFunction();
 
@@ -714,7 +716,7 @@ const checkSubCategory = () => {
 // Subkategorie
 let numberSubCategory = -1;
 const subCategoryFunction = () => {   
-  let indexes = entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+  let indexes = taskValues.entryCategoryArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
   let amount = 0;
   deleteEmptySubCategory();
   document.querySelectorAll('.main-list').forEach(item => {
@@ -737,7 +739,7 @@ numberSubCategory = -1;
 
 // Licznik zadań
 const counterNumber = () => {
-  document.querySelector('#number-entry').textContent = "Aktualnych wpisów: " + entryTitleArray.length;
+  document.querySelector('#number-entry').textContent = "Aktualnych wpisów: " + taskValues.entryTitleArray.length;
 }
 // ----------------------------------------------------------
 
@@ -751,8 +753,8 @@ const deleteAllCategories = () => {
 
 // Funkcja do tworzenia wszystkich kategorii dodanych przez użytkownika z tablicy
 const creatingAllCategory = () => {
-  categoryArray.forEach((item, i) => {
-    createNewCategory(categoryArray[i], categoryColorArray[i]);
+  taskValues.categoryArray.forEach((item, i) => {
+    createNewCategory(taskValues.categoryArray[i], taskValues.categoryColorArray[i]);
   })
 }
 
@@ -772,12 +774,12 @@ const createNewCategoryFunction = () => {
   if (createCategoryColor.style.color == "black") {
     messCategory.textContent = "Musisz wybrać kolor kategori";
   }
-  else if (categoryArray.includes(createNameCategoryValue)) {
+  else if (taskValues.categoryArray.includes(createNameCategoryValue)) {
     messCategory.textContent = "Taka kategoria już istnieje";
   }
   else if (createNameCategoryValue.length >= 1) {
-    categoryArray.push(createNameCategoryValue);
-    categoryColorArray.push(createCategoryColor.style.color);
+    taskValues.categoryArray.push(createNameCategoryValue);
+    taskValues.categoryColorArray.push(createCategoryColor.style.color);
     deleteAllCategories(); 
     creatingAllCategory(); 
     deletingAllSubCategories(); 
@@ -798,7 +800,7 @@ addNewCategory.addEventListener('click', createNewCategoryFunction);
 
 // licznik usuniętych zadań
 const deletedElementsCounter = () => {
-  document.querySelector('.deleted-list-h4').textContent = " Usuniętych zadań " + deleteEntryContentsArray.length;
+  document.querySelector('.deleted-list-h4').textContent = " Usuniętych zadań " + taskValues.deleteEntryContentsArray.length;
 }
 // ----------------------------------------------------------
 
@@ -807,10 +809,10 @@ const deletedTextFunction = () => {
   deletingAllEntries();
   messageActive();
   const messageActiveDelete = document.querySelector('.empty-entry-message-active');
-  deleteEntryTitleArray.forEach((item, i) => {
-    creationNewEntry(deleteEntryContentsArray[i], deleteEntryTitleArray[i], deleteEntryCategoryArray[i], deleteEntryDateArray[i], "Usunięte", deleteEntryCurrentTime[i], deleteEntryHourTime[i]);
+  taskValues.deleteEntryTitleArray.forEach((item, i) => {
+    creationNewEntry(taskValues.deleteEntryContentsArray[i], taskValues.deleteEntryTitleArray[i], taskValues.deleteEntryCategoryArray[i], taskValues.deleteEntryDateArray[i], "Usunięte", taskValues.deleteEntryCurrentTime[i], taskValues.deleteEntryHourTime[i]);
   })
-  if (deleteEntryTitleArray.length >= 1) {
+  if (taskValues.deleteEntryTitleArray.length >= 1) {
     messageActiveDelete.className = "empty-entry-message";
   } 
   else {
@@ -869,8 +871,8 @@ document.querySelectorAll(".selection").forEach(item => item.addEventListener('c
 const showTheTask = (index) => {
     deletingAllEntries();
     if (index >= 0){
-      creationNewEntry(entryContentsArray[index], entryTitleArray[index], entryCategoryArray[index], entryDateArray[index], "nothing", entryCurrentTime[index], entryHourTime[index]);
-      whatCategory.textContent = entryCategoryArray[index];
+      creationNewEntry(taskValues.entryContentsArray[index], taskValues.entryTitleArray[index], taskValues.entryCategoryArray[index], taskValues.entryDateArray[index], "nothing", taskValues.entryCurrentTime[index], taskValues.entryHourTime[index]);
+      whatCategory.textContent = taskValues.entryCategoryArray[index];
     }
     messageActive();
 }
@@ -894,19 +896,19 @@ const searchElements = () => {
   })
 
   if (!searchInputValue == "") {
-    if (!entryTitleArray.find( (item) => item.includes(searchInputValue)) == "") {
-      let result = entryTitleArray.find( (item) => item.startsWith(searchInputValue));
+    if (!taskValues.entryTitleArray.find( (item) => item.includes(searchInputValue)) == "") {
+      let result = taskValues.entryTitleArray.find( (item) => item.startsWith(searchInputValue));
       const searchItemsContainer = document.createElement('div');
       itemsContainer.appendChild(searchItemsContainer);
       searchItemsContainer.className="sophisticated-items";
-      searchItemsContainer.dataset.category = entryCategoryArray[entryTitleArray.indexOf(result)];
+      searchItemsContainer.dataset.category = taskValues.entryCategoryArray[taskValues.entryTitleArray.indexOf(result)];
       const searchCategory = document.createElement('h4');
       itemsContainer.appendChild(searchCategory);
       searchCategory.className = "search-category";
-      searchCategory.textContent = entryCategoryArray[entryTitleArray.indexOf(result)];
+      searchCategory.textContent = taskValues.entryCategoryArray[taskValues.entryTitleArray.indexOf(result)];
 
-      if (entryTitleArray.find( (item) => item.includes(searchInputValue)).length > 1) {
-        showTheTask(entryTitleArray.indexOf(result));
+      if (taskValues.entryTitleArray.find( (item) => item.includes(searchInputValue)).length > 1) {
+        showTheTask(taskValues.entryTitleArray.indexOf(result));
       }
       searchItemsContainer.textContent = result;
     }
@@ -937,7 +939,7 @@ const removeAllSelectCategoryEdit = () => {
 // Dodawanie nowego selecta przy tworzeniu nowego wpisu po zrobieniu nowej kategori 
 const addNewSelectCategoryEdit = () => {
   removeAllSelectCategoryEdit();
-  categoryArray.forEach(item => {
+  taskValues.categoryArray.forEach(item => {
     const newSelect = document.createElement('option');
     document.querySelector('.edit-select').appendChild(newSelect);
     newSelect.className = "option";
@@ -954,12 +956,12 @@ const taskEditing = (index) => {
 
   menuEdit.className = "edit-active";
 
-  document.querySelector('.edit-task').textContent = entryTitleArray[index];
-  document.querySelector('.edit-title').value = entryTitleArray[index];
-  document.querySelector('.edit-select').value = entryCategoryArray[index];
-  document.querySelector('.edit-date').value = entryDateArray[index];
-  document.querySelector('.edit-hour').value = entryHourTime[index];
-  document.querySelector('.edit-contents').value = entryContentsArray[index];
+  document.querySelector('.edit-task').textContent = taskValues.entryTitleArray[index];
+  document.querySelector('.edit-title').value = taskValues.entryTitleArray[index];
+  document.querySelector('.edit-select').value = taskValues.entryCategoryArray[index];
+  document.querySelector('.edit-date').value = taskValues.entryDateArray[index];
+  document.querySelector('.edit-hour').value = taskValues.entryHourTime[index];
+  document.querySelector('.edit-contents').value = taskValues.entryContentsArray[index];
 } 
 // ----------------------------------------------
 
@@ -969,11 +971,11 @@ const menuEditClose = () => {
 document.querySelectorAll(".edit-cancel").forEach(item => item.addEventListener('click', menuEditClose));
 
 const menuSave = () => {
-  entryTitleArray[indexTwo] = document.querySelector('.edit-title').value;
-  entryContentsArray[indexTwo] = document.querySelector('.edit-contents').value;
-  entryCategoryArray[indexTwo] = document.querySelector('.edit-select').value;
-  entryDateArray[indexTwo] = document.querySelector('.edit-date').value;
-  entryHourTime[indexTwo] = document.querySelector('.edit-hour').value;
+  taskValues.entryTitleArray[indexTwo] = document.querySelector('.edit-title').value;
+  taskValues.entryContentsArray[indexTwo] = document.querySelector('.edit-contents').value;
+  taskValues.entryCategoryArray[indexTwo] = document.querySelector('.edit-select').value;
+  taskValues.entryDateArray[indexTwo] = document.querySelector('.edit-date').value;
+  taskValues.entryHourTime[indexTwo] = document.querySelector('.edit-hour').value;
   reloadScript();
   menuEditClose();
 }
@@ -992,7 +994,7 @@ const categoryTimeSwitching = () => {
   deletingAllEntries();
   activeTimeButton();
   whatCategory.textContent = event.target.dataset.timecategory
-  let indexes = entryDateArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
+  let indexes = taskValues.entryDateArray.reduce(function(a,e,i){try{a[e].push(i)}catch(_){a[e]=[i]};return a},{});
   let currentDate = new Date;
   let monthDate, dayDate
 
@@ -1014,7 +1016,7 @@ const categoryTimeSwitching = () => {
     deletingAllEntries();
       if (indexes[actualDate]) {
         indexes[actualDate].forEach(item => {
-          creationNewEntry(entryContentsArray[item], entryTitleArray[item], entryCategoryArray[item], entryDateArray[item], " ", entryCurrentTime[item], entryHourTime[item]);
+          creationNewEntry(taskValues.entryContentsArray[item], taskValues.entryTitleArray[item], taskValues.entryCategoryArray[item], taskValues.entryDateArray[item], " ", taskValues.entryCurrentTime[item], taskValues.entryHourTime[item]);
         })
       }
   }
@@ -1033,6 +1035,62 @@ const activeTimeButton = () => {
   })
 }
 // ------------------------------------------------------------
+
+// const savingTasks = () => {
+//   localStorage.removeItem("entryTitleArray");
+//   localStorage.removeItem("entryContentsArray");
+//   localStorage.removeItem("entryCategoryArray");
+//   localStorage.removeItem("entryDateArray");
+//   localStorage.removeItem("entryCurrentTime");
+//   localStorage.removeItem("entryHourTime");
+
+//   localStorage.removeItem("categoryArray");
+//   localStorage.removeItem("categoryColorArray");
+
+//   localStorage.removeItem("deleteEntryTitleArray");
+//   localStorage.removeItem("deleteEntryContentsArray");
+//   localStorage.removeItem("deleteEntryCategoryArray");
+//   localStorage.removeItem("deleteEntryDateArray");
+//   localStorage.removeItem("deleteEntryCurrentTime");
+//   localStorage.removeItem("deleteEntryHourTime");
+
+//   localStorage.setItem("entryTitleArray", JSON.stringify(entryTitleArray));
+//   localStorage.setItem("entryContentsArray", JSON.stringify(entryContentsArray));
+//   localStorage.setItem("entryCategoryArray", JSON.stringify(entryCategoryArray));
+//   localStorage.setItem("entryDateArray", JSON.stringify(entryDateArray));
+//   localStorage.setItem("entryCurrentTime", JSON.stringify(entryCurrentTime));
+//   localStorage.setItem("entryHourTime", JSON.stringify(entryHourTime));
+
+//   localStorage.setItem("categoryArray", JSON.stringify(categoryArray));
+//   localStorage.setItem("categoryColorArray", JSON.stringify(categoryColorArray));
+
+//   localStorage.setItem("deleteEntryTitleArray", JSON.stringify(deleteEntryTitleArray));
+//   localStorage.setItem("deleteEntryContentsArray", JSON.stringify(deleteEntryContentsArray));
+//   localStorage.setItem("deleteEntryCategoryArray", JSON.stringify(deleteEntryCategoryArray));
+//   localStorage.setItem("deleteEntryDateArray", JSON.stringify(deleteEntryDateArray));
+//   localStorage.setItem("deleteEntryCurrentTime", JSON.stringify(deleteEntryCurrentTime));
+//   localStorage.setItem("deleteEntryHourTime", JSON.stringify(deleteEntryHourTime));
+// }
+// savingTasks()
+
+// const loadingDataFromMemory = () => {
+//     let storageValues = JSON.parse(localStorage.getItem("entryTitleArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("entryContentsArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("entryCategoryArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("entryDateArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("entryCurrentTime"));
+//     let storageValues = JSON.parse(localStorage.getItem("entryHourTime"));
+
+//     let storageValues = JSON.parse(localStorage.getItem("categoryArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("categoryColorArray"));
+
+//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryTitleArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryContentsArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryCategoryArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryDateArray"));
+//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryCurrentTime"));
+//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryHourTime"));
+// }
 
 // odświeżanie
 const reloadScript = () => {
