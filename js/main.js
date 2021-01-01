@@ -542,7 +542,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   const emptyCategory = document.createElement('h4');
   cyclicList.appendChild(emptyCategory);
   emptyCategory.className = "Empty-sub-category";
-  emptyCategory.textContent = "Pusto, dodaj coś";
+  emptyCategory.textContent = "Pusta kategoria";
 
   // Funkcja do usuwania poszczególnych kategorii
   const deletingACategory = () => {
@@ -661,7 +661,7 @@ const createEmptySubCategory = (index) => {
   const emptySubCategory = document.createElement('h4');
   document.querySelectorAll('.main-list')[index].appendChild(emptySubCategory);
   emptySubCategory.className = "Empty-sub-category";
-  emptySubCategory.textContent = "Pusto, dodaj coś";
+  emptySubCategory.textContent = "Pusta kategoria";
 }
 
 // Usuwanie informacji o pustej kategorii

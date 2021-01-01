@@ -138,11 +138,14 @@ header nav .to-do-list-category .main-title {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 header nav .to-do-list-category .main-title h2 {
   padding-left: 10px;
   font-size: 22px;
+  border-radius: 2px;
 }
 
 header nav .to-do-list-category .main-title span {
@@ -426,9 +429,8 @@ header .deleted .deleted-container .deleted-list .deleted-list-h4 {
 header .deleted .deleted-container .deleted-list .deleted-list-h3-see {
   color: #696969;
   font-weight: 300;
-  padding: 0px 5px 0px 5px;
+  padding: 5px 5px 5px 5px;
   cursor: pointer;
-  width: 162px;
   font-size: 17px;
 }
 
@@ -1100,6 +1102,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
   height: auto;
   position: absolute;
   padding: 4px;
+  margin-top: 5px;
   text-align: center;
   font-size: 12px;
   border-radius: 3px;
