@@ -366,6 +366,9 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       refreshCategories();
       deletedElementsCounter();
       savingTasks();
+      deletingAllEntries();
+      creatingAllEntries(); 
+      reloadMainTitleSelection();
     }
   }
   // ----------------------------------------
