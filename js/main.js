@@ -242,7 +242,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
 
     const selectRestore = document.createElement('select');
     topPanelContainer.appendChild(selectRestore);
-    selectRestore.id = "select-restore";
+    selectRestore.className = "select-restore";
     selectRestore.dataset.value = numberDeleted;
 
     const buttonConfrim = document.createElement('button');
@@ -1088,6 +1088,7 @@ const reloadScript = () => {
   counterNumber(); // licznik wpisów
   deletedElementsCounter(); // licznik usuniętych wpisów
   reloadMainTitleSelection(); // Aktywacja przycisku (Wszystkie)
+  addNewSelectCategoryEdit(); // reload kategorii w edycji
 }
 reloadScript();
 // ------------------------------------------------------------------------------

@@ -935,7 +935,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
   color: #1C8AF5;
 }
 
-.main-content-all .main-content-entry .entry .top-panel .top-panel-container #select-restore {
+.main-content-all .main-content-entry .entry .top-panel .top-panel-container .select-restore {
   width: 150px;
   height: 25px;
   border: none;
