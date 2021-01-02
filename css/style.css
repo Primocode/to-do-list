@@ -1163,7 +1163,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 .edit-container {
   background-color: #f7f7f7;
-  height: 100vh;
+  height: 100%;
   width: 325px;
   border-left: 1px solid #CBCBCB;
 }
@@ -1320,7 +1320,7 @@ main .top-new-talk .active .add-new-button-container .add-new {
 
 @media (max-width: 1250px) {
   .edit-container {
-    position: absolute;
+    position: fixed;
     margin-left: -291px;
     width: 290px;
     height: 100%;
