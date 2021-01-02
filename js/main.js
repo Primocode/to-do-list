@@ -321,6 +321,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       mainTitleReload();
       deletedElementsCounter();
       counterNumber();
+      savingTasks();
     }
     messageActive();
     counterNumber();
@@ -336,6 +337,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
     creatingAllEntries(); 
     refreshCategories(); 
     reloadMainTitleSelection(); 
+    savingTasks();
    }
   doneEntry.addEventListener('click', changeToDone);
 
@@ -363,6 +365,7 @@ const creationNewEntry = (contents, title, entryCategory, entryDateValue, delete
       counterNumber();
       refreshCategories();
       deletedElementsCounter();
+      savingTasks();
     }
   }
   // ----------------------------------------
@@ -472,6 +475,7 @@ const addEntryButtonFunction = () => {
     document.querySelector('.entry-title').value = null;
     document.querySelector('.entry-date').value = null;
     document.querySelector('.entry-hour').value = null;
+    savingTasks();
   }
   addEntryButton.style.background = "#1C8AF5";
 }
@@ -605,6 +609,7 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
           taskValues.entryHourTime.splice(indexToDelete, 1)
         })
       }
+      savingTasks();
       reloadScript();
       cancelDelete();
       addNewSelectCategoryEdit();
@@ -787,6 +792,7 @@ const createNewCategoryFunction = () => {
     addNewSelectCategory();
     closeCreateCategory(); 
     mainTitleReload(); 
+    savingTasks();
     document.querySelector('.category-title').value = null;
   }
   else {
@@ -976,6 +982,7 @@ const menuSave = () => {
   taskValues.entryCategoryArray[indexTwo] = document.querySelector('.edit-select').value;
   taskValues.entryDateArray[indexTwo] = document.querySelector('.edit-date').value;
   taskValues.entryHourTime[indexTwo] = document.querySelector('.edit-hour').value;
+  savingTasks();
   reloadScript();
   menuEditClose();
 }
@@ -1036,64 +1043,39 @@ const activeTimeButton = () => {
 }
 // ------------------------------------------------------------
 
-// const savingTasks = () => {
-//   localStorage.removeItem("entryTitleArray");
-//   localStorage.removeItem("entryContentsArray");
-//   localStorage.removeItem("entryCategoryArray");
-//   localStorage.removeItem("entryDateArray");
-//   localStorage.removeItem("entryCurrentTime");
-//   localStorage.removeItem("entryHourTime");
+const savingTasks = () => {
+  localStorage.removeItem("tasksValues");
+  localStorage.setItem("tasksValues", JSON.stringify(taskValues));
+}
 
-//   localStorage.removeItem("categoryArray");
-//   localStorage.removeItem("categoryColorArray");
+const loadingDataFromMemory = () => {
+  let storageValues = JSON.parse(localStorage.getItem("tasksValues"));
 
-//   localStorage.removeItem("deleteEntryTitleArray");
-//   localStorage.removeItem("deleteEntryContentsArray");
-//   localStorage.removeItem("deleteEntryCategoryArray");
-//   localStorage.removeItem("deleteEntryDateArray");
-//   localStorage.removeItem("deleteEntryCurrentTime");
-//   localStorage.removeItem("deleteEntryHourTime");
+  taskValues.entryTitleArray = storageValues.entryTitleArray
+  taskValues.entryContentsArray = storageValues.entryContentsArray
+  taskValues.entryCategoryArray = storageValues.entryCategoryArray
+  taskValues.entryDateArray = storageValues.entryDateArray
+  taskValues.entryCurrentTime = storageValues.entryCurrentTime
+  taskValues.entryHourTime = storageValues.entryHourTime
 
-//   localStorage.setItem("entryTitleArray", JSON.stringify(entryTitleArray));
-//   localStorage.setItem("entryContentsArray", JSON.stringify(entryContentsArray));
-//   localStorage.setItem("entryCategoryArray", JSON.stringify(entryCategoryArray));
-//   localStorage.setItem("entryDateArray", JSON.stringify(entryDateArray));
-//   localStorage.setItem("entryCurrentTime", JSON.stringify(entryCurrentTime));
-//   localStorage.setItem("entryHourTime", JSON.stringify(entryHourTime));
+  taskValues.categoryArray = storageValues.categoryArray
+  taskValues.categoryColorArray = storageValues.categoryColorArray
 
-//   localStorage.setItem("categoryArray", JSON.stringify(categoryArray));
-//   localStorage.setItem("categoryColorArray", JSON.stringify(categoryColorArray));
-
-//   localStorage.setItem("deleteEntryTitleArray", JSON.stringify(deleteEntryTitleArray));
-//   localStorage.setItem("deleteEntryContentsArray", JSON.stringify(deleteEntryContentsArray));
-//   localStorage.setItem("deleteEntryCategoryArray", JSON.stringify(deleteEntryCategoryArray));
-//   localStorage.setItem("deleteEntryDateArray", JSON.stringify(deleteEntryDateArray));
-//   localStorage.setItem("deleteEntryCurrentTime", JSON.stringify(deleteEntryCurrentTime));
-//   localStorage.setItem("deleteEntryHourTime", JSON.stringify(deleteEntryHourTime));
-// }
-// savingTasks()
-
-// const loadingDataFromMemory = () => {
-//     let storageValues = JSON.parse(localStorage.getItem("entryTitleArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("entryContentsArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("entryCategoryArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("entryDateArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("entryCurrentTime"));
-//     let storageValues = JSON.parse(localStorage.getItem("entryHourTime"));
-
-//     let storageValues = JSON.parse(localStorage.getItem("categoryArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("categoryColorArray"));
-
-//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryTitleArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryContentsArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryCategoryArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryDateArray"));
-//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryCurrentTime"));
-//     let storageValues = JSON.parse(localStorage.getItem("deleteEntryHourTime"));
-// }
+  taskValues.deleteEntryTitleArray = storageValues.deleteEntryTitleArray
+  taskValues.deleteEntryContentsArray = storageValues.deleteEntryContentsArray
+  taskValues.deleteEntryCategoryArray = storageValues.deleteEntryCategoryArray
+  taskValues.deleteEntryDateArray = storageValues.deleteEntryDateArray
+  taskValues.deleteEntryCurrentTime = storageValues.deleteEntryCurrentTime
+  taskValues.deleteEntryHourTime = storageValues.deleteEntryHourTime
+}
 
 // odświeżanie
 const reloadScript = () => {
+  if (!window.localStorage.getItem("tasksValues")) {
+    localStorage.setItem("tasksValues", JSON.stringify(taskValues));
+}
+  loadingDataFromMemory();
+
   messageActive(); // aktywacja komunikatu o wypełnieniu subkategori
   deleteAllCategories(); // usuwanie wszystkich kategori dodanych przez użytkownika.
   creatingAllCategory(); //tworzenie od nowa wszystkich kategori z listy
