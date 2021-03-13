@@ -553,6 +553,8 @@ const createNewCategory = (nameCategoryArg, colorCategory) => {
   emptyCategory.className = "Empty-sub-category";
   emptyCategory.textContent = "Pusta kategoria";
 
+  menuCloseEvent()
+
   // Funkcja do usuwania poszczególnych kategorii
   const deletingACategory = () => {
     document.querySelectorAll('.deletingCategory').forEach(item => {
@@ -873,7 +875,11 @@ const menuCloseFunction = () => {
     menuOpenCloseFunction();
   }
 }
-document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', menuCloseFunction));
+
+const menuCloseEvent = () => {
+  document.querySelectorAll(".selection").forEach(item => item.addEventListener('click', menuCloseFunction));
+}
+menuCloseEvent();
 // --------------------------------------------------
 
 // Pokazywanie zadania z wyszukiwarki
@@ -1071,6 +1077,19 @@ const loadingDataFromMemory = () => {
   taskValues.deleteEntryCurrentTime = storageValues.deleteEntryCurrentTime
   taskValues.deleteEntryHourTime = storageValues.deleteEntryHourTime
 }
+
+// zamkniecie menu
+
+const closeTheMenuByClicking = () => {
+  menuCloseFunction();
+}
+
+document.querySelector('#menu-shadow').addEventListener('click', closeTheMenuByClicking)
+
+
+
+
+// end zamkniecie menu
 
 // odświeżanie
 const reloadScript = () => {
